@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import Footer from '@/components/Footer';
@@ -8,6 +8,38 @@ import './women-training.css';
 
 export default function WomenTraining() {
   const p2HeaderRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState<string>('paradigma');
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0.1 }
+    );
+
+    sections.forEach((s) => {
+      observer.observe(s);
+    });
+
+    return () => {
+      sections.forEach((s) => {
+        observer.unobserve(s);
+      });
+    };
+  }, []);
+
+  const part1Ids = ['paradigma', 'agentes', 'demos', 'governanca', 'alucinacao', 'casos', 'adocao', 'comecar', 'qa', 'takeaways'];
+  const part2Ids = ['parte2', 'sdlc', 'stack', 'contexto', 'lab', 'dogfooding', 'modelos', 'otimizacao', 'encerramento'];
+
+  const isPart2Active = part2Ids.includes(activeSection);
+  const activePart = isPart2Active ? 'parte2' : 'parte1';
 
   return (
     <>
@@ -30,10 +62,123 @@ export default function WomenTraining() {
         </div>
       </header>
 
-      <div className="wrap" style={{ paddingTop: '32px' }}>
-        <main className="content-main" style={{ maxWidth: '100%' }}>
-          {/* 1 */}
-          <section id="paradigma">
+      {/* Part 1 and Part 2 Navigation Bar */}
+      <nav className="part-nav">
+        <div className="part-nav-inner">
+          <a 
+            href="#paradigma" 
+            className={`part-nav-btn ${activePart === 'parte1' ? 'active' : ''}`}
+          >
+            🎙️ Parte 1: Visão &amp; Agentes
+          </a>
+          <a 
+            href="#parte2" 
+            className={`part-nav-btn p2 ${activePart === 'parte2' ? 'active' : ''}`}
+          >
+            👩‍💻 Parte 2: Hands-on / Técnico
+          </a>
+        </div>
+      </nav>
+
+      <div style={{ paddingTop: '32px' }}>
+        <div className={`training-layout ${isCollapsed ? 'collapsed' : ''}`}>
+          <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+            <div className="sidebar-header">
+              <button 
+                className="sidebar-toggle" 
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                title={isCollapsed ? "Expandir menu" : "Recolher menu"}
+              >
+                {isCollapsed ? '📁' : '📂 Recolher Menu'}
+              </button>
+            </div>
+            <nav className="toc">
+              <span className="toc-title">Parte 1 &mdash; Visão</span>
+              <a href="#paradigma" className={activeSection === 'paradigma' ? 'active' : ''}>
+                <span className="toc-num">1</span>
+                <span className="toc-text">Mudança de paradigma com IA</span>
+              </a>
+              <a href="#agentes" className={activeSection === 'agentes' ? 'active' : ''}>
+                <span className="toc-num">2</span>
+                <span className="toc-text">Conceito central: agentes</span>
+              </a>
+              <a href="#demos" className={activeSection === 'demos' ? 'active' : ''}>
+                <span className="toc-num">3</span>
+                <span className="toc-text">Demonstrações práticas ao vivo</span>
+              </a>
+              <a href="#governanca" className={activeSection === 'governanca' ? 'active' : ''}>
+                <span className="toc-num">4</span>
+                <span className="toc-text">Governança e riscos</span>
+              </a>
+              <a href="#alucinacao" className={activeSection === 'alucinacao' ? 'active' : ''}>
+                <span className="toc-num">5</span>
+                <span className="toc-text">Alucinação e qualidade</span>
+              </a>
+              <a href="#casos" className={activeSection === 'casos' ? 'active' : ''}>
+                <span className="toc-num">6</span>
+                <span className="toc-text">Casos reais (Sales Excellence)</span>
+              </a>
+              <a href="#adocao" className={activeSection === 'adocao' ? 'active' : ''}>
+                <span className="toc-num">7</span>
+                <span className="toc-text">Framework de adoção</span>
+              </a>
+              <a href="#comecar" className={activeSection === 'comecar' ? 'active' : ''}>
+                <span className="toc-num">8</span>
+                <span className="toc-text">Playbook prático</span>
+              </a>
+              <a href="#qa" className={activeSection === 'qa' ? 'active' : ''}>
+                <span className="toc-num">9</span>
+                <span className="toc-text">Perguntas &amp; Respostas</span>
+              </a>
+              <a href="#takeaways" className={activeSection === 'takeaways' ? 'active' : ''}>
+                <span className="toc-num">10</span>
+                <span className="toc-text">Mensagens estratégicas</span>
+              </a>
+
+              <span className="toc-title">Parte 2 &mdash; Hands-on</span>
+              <a href="#parte2" className={activeSection === 'parte2' ? 'active' : ''}>
+                <span className="toc-num">★</span>
+                <span className="toc-text">Introdução Parte 2</span>
+              </a>
+              <a href="#sdlc" className={activeSection === 'sdlc' ? 'active' : ''}>
+                <span className="toc-num">11</span>
+                <span className="toc-text">Ciclo de vida: Agentic SDLC</span>
+              </a>
+              <a href="#stack" className={activeSection === 'stack' ? 'active' : ''}>
+                <span className="toc-num">12</span>
+                <span className="toc-text">Stack de inteligência</span>
+              </a>
+              <a href="#contexto" className={activeSection === 'contexto' ? 'active' : ''}>
+                <span className="toc-num">13</span>
+                <span className="toc-text">Context Engineering</span>
+              </a>
+              <a href="#lab" className={activeSection === 'lab' ? 'active' : ''}>
+                <span className="toc-num">14</span>
+                <span className="toc-text">Lab prático: Pokédex</span>
+              </a>
+              <a href="#dogfooding" className={activeSection === 'dogfooding' ? 'active' : ''}>
+                <span className="toc-num">15</span>
+                <span className="toc-text">Testar com IA: dogfooding</span>
+              </a>
+              <a href="#modelos" className={activeSection === 'modelos' ? 'active' : ''}>
+                <span className="toc-num">16</span>
+                <span className="toc-text">Orquestração de modelos</span>
+              </a>
+              <a href="#otimizacao" className={activeSection === 'otimizacao' ? 'active' : ''}>
+                <span className="toc-num">17</span>
+                <span className="toc-text">Eficiência e custos</span>
+              </a>
+              <a href="#encerramento" className={activeSection === 'encerramento' ? 'active' : ''}>
+                <span className="toc-num">18</span>
+                <span className="toc-text">Encerramento da Cynthia</span>
+              </a>
+            </nav>
+          </aside>
+
+          <main className="content-main">
+            {/* 1 */}
+            <section id="paradigma">
             <h2 className="pink">1. Mudança de paradigma com IA</h2>
             <div className="quote">&ldquo;Não é mais SE você usa IA — é COMO você usa.&rdquo;</div>
             <p className="lead">
@@ -349,7 +494,7 @@ export default function WomenTraining() {
               Cynthia introduziu a sessão com uma reflexão sobre a evolução do desenvolvimento de software e a transição das ondas de uso de IA, destacando o papel fundamental do <strong>Agentic SDLC</strong> (Ciclo de Vida de Desenvolvimento de Software Agêntico):
             </p>
 
-            <div className="grid g3` progression" style={{ marginBottom: '24px' }}>
+            <div className="grid g3 progression" style={{ marginBottom: '24px' }}>
               <div className="card b-purple">
                 <span className="badge" style={{ background: 'var(--purple)' }}>Onda 1 (2021-2023)</span>
                 <h3>Pair Programmer</h3>
@@ -758,8 +903,9 @@ export default function WomenTraining() {
           </section>
         </main>
       </div>
+    </div>
 
-      <Footer />
+    <Footer />
     </>
   );
 }
