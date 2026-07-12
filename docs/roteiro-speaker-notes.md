@@ -1,0 +1,990 @@
+# Roteiro de falas — Git & GitHub
+
+Speaker notes por slide para as 16 aulas do curso, alinhados aos slides do projeto
+(`src/app/git-github/aula-N/page.tsx`).
+
+## Como usar este documento
+
+- Cada aula lista os slides na **ordem em que aparecem no deck**.
+- O cabeçalho de cada slide traz **número · nome do slide `(id)`** — o `id` é o mesmo
+  usado no código (`DeckSlide.id`), útil para localizar o slide rapidamente.
+- **Fala sugerida** é a narração recomendada; adapte às suas palavras.
+- **[clique]** marca um *reveal step* — o ponto exato em que você deve avançar
+  (seta → ou clique) para revelar o próximo bloco na tela. Só aparece em slides que
+  têm revelação progressiva.
+- **Mensagem-chave** é a frase que a turma deve levar do slide.
+- 💡 **Você sabia?** aparece nos slides de encerramento, como no material original.
+- Os tempos são estimativas para uma aula de ~30 min; ajuste conforme a turma.
+
+---
+
+# Aula 1 — O que é versionamento e por que usar Git
+
+**Objetivo da aula:** entender o que é versionamento, os problemas de trabalhar sem
+controle de versão, por que o Git existe e seus principais benefícios.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Objetivo:** abrir a aula e apresentar os objetivos de aprendizagem.
+- **Fala sugerida:** "Bem-vindas! Antes de qualquer comando, vamos entender a ideia por
+  trás do controle de versões — é a base de tudo o que faremos no curso. Ao final desta
+  aula você vai entender o que é versionamento, reconhecer os problemas de trabalhar sem
+  ele e saber por que o Git foi criado."
+- **Mensagem-chave:** a base vem antes dos comandos.
+
+### Slide 2 · O problema `(problema)` — ~2 min
+- **Objetivo:** despertar interesse com um problema que todo mundo já viveu.
+- **Fala sugerida:** "Se você já criou arquivos com nomes como `ProjetoFinal`,
+  `ProjetoFinal2` ou `ProjetoFinalAgoraVai`, saiba que você não está sozinha. Ou talvez
+  já tenha apagado uma parte do código e depois desejado voltar atrás, mas percebeu que
+  não tinha mais aquela versão. Essas situações acontecem porque estamos trabalhando sem
+  uma forma organizada de controlar as mudanças."
+- **Mensagem-chave:** versionamento é a forma de **registrar e organizar a evolução** de
+  um projeto ao longo do tempo.
+
+### Slide 3 · O que é versionamento `(conceito)` · 1 revelação — ~3 min
+- **Objetivo:** apresentar o conceito com o exemplo do dia a dia (antes/depois).
+- **Fala sugerida:** "Imagine que você está escrevendo um trabalho importante. No
+  primeiro dia salva como `Trabalho.docx`, no dia seguinte `TrabalhoFinal.docx`, depois
+  `TrabalhoFinal2.docx`… e aí já não sabe mais qual é a versão correta."
+- **[clique]** "Versionamento resolve exatamente isso: em vez de cópias soltas, você tem
+  um único arquivo com todo o histórico registrado."
+- **Mensagem-chave:** versionar **não** é criar várias cópias — é **registrar a evolução**.
+
+### Slide 4 · Histórico organizado `(historico)` · 3 revelações — ~3 min
+- **Objetivo:** visualizar o histórico como uma linha do tempo ordenada.
+- **Fala sugerida:** "Em vez de arquivos novos, o sistema guarda cada mudança em um único
+  histórico ordenado."
+- **[clique] ×3** revele **Versão 2**, depois **Versão 3**, depois **Versão 4**,
+  narrando: "Cada alteração vira um ponto na linha do tempo — e dá para voltar a qualquer
+  um deles."
+- **Mensagem-chave:** cada mudança fica registrada; dá para **voltar no tempo** quando
+  precisar.
+
+### Slide 5 · Por que usar Git `(por-que-git)` · 4 revelações — ~4 min
+- **Objetivo:** apresentar o Git como a ferramenta que faz esse controle.
+- **Fala sugerida:** "Agora que entendemos o conceito, surge a pergunta: quem faz esse
+  controle? A resposta é o **Git** — uma ferramenta que registra as alterações de forma
+  rápida, segura e organizada."
+- **[clique] ×4** revele cada capacidade: **Registrar → Voltar → Comparar → Identificar →
+  Colaborar**, comentando uma frase por card.
+- **Mensagem-chave:** o Git registra **toda a história do seu projeto**.
+
+### Slide 6 · Onde é usado `(onde)` — ~2 min
+- **Objetivo:** mostrar que o Git é padrão da indústria.
+- **Fala sugerida:** "Hoje praticamente todas as empresas que desenvolvem software usam
+  Git — de projetos pessoais a plataformas usadas por milhões. Mesmo trabalhando sozinha,
+  usar Git é considerado boa prática. Mais adiante conheceremos plataformas que guardam
+  projetos na nuvem."
+- **Mensagem-chave:** aprender Git é uma **habilidade essencial** para quem desenvolve.
+
+### Slide 7 · Boas práticas `(boas-praticas)` — ~2 min
+- **Objetivo:** três dicas rápidas para iniciantes.
+- **Fala sugerida:** "Não espere trabalhar em equipe para usar Git; comece a versionar
+  desde o início do projeto; e não tenha medo de experimentar — uma das maiores vantagens
+  é poder voltar atrás."
+- **Mensagem-chave:** versione desde o primeiro dia.
+
+### Slide 8 · Prática guiada `(pratica)` · 1 revelação — ~3 min
+- **Objetivo:** consolidar os conceitos (ainda sem comandos).
+- **Fala sugerida:** "Nesta primeira aula ainda não usamos comandos — o objetivo é fixar
+  as ideias. Vamos ao checklist mental."
+- **[clique]** revele as perguntas de discussão: "Você já perdeu uma versão importante?
+  Já precisou desfazer uma alteração? Já editou um documento junto com outra pessoa?"
+- **Mensagem-chave:** conecte os exemplos ao dia a dia da turma.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Objetivo:** fechar a aula e criar ponte para a próxima.
+- **Fala sugerida:** "Hoje entendemos o que é versionamento e por que o Git é tão
+  importante. Na próxima aula vamos instalar o Git e fazer a configuração inicial."
+- 💡 **Você sabia?** O Git foi criado para ser extremamente rápido: mesmo projetos com
+  milhares de arquivos registram novas versões em poucos segundos.
+- **Mensagem-chave:** próximo passo — **instalar o Git**.
+
+---
+
+# Aula 2 — Instalação e configuração inicial do Git
+
+**Objetivo da aula:** instalar o Git, verificar a instalação, configurar nome e e-mail e
+entender por que essas informações importam.
+
+### Slide 1 · Capa `(capa)` — ~1 min
+- **Objetivo:** retomar a aula anterior e apresentar os objetivos.
+- **Fala sugerida:** "Na aula anterior entendemos o que é versionamento. Agora vamos
+  preparar o computador para usar o Git na prática — é simples e você só faz isso uma vez."
+- **Mensagem-chave:** antes de usar o Git, preparamos o ambiente.
+
+### Slide 2 · Preparar o ambiente `(ambiente)` — ~2 min
+- **Objetivo:** contextualizar o que precisa estar instalado.
+- **Fala sugerida:** "O Git é um programa que precisa estar instalado no computador.
+  Depois de instalado, ele serve para qualquer projeto. Também vamos informar ao Git quem
+  somos, para que ele identifique quem fez cada alteração."
+- **Mensagem-chave:** ambiente pronto = Git instalado + identidade configurada.
+
+### Slide 3 · Instalando o Git `(instalar)` · 1 revelação — ~5 min
+- **Objetivo:** mostrar de onde baixar e como verificar a instalação.
+- **Fala sugerida:** "O primeiro passo é instalar. Acesse `https://git-scm.com`, baixe a
+  versão do seu sistema operacional e instale. Depois abra o VS Code e um terminal
+  integrado (menu Terminal → New Terminal) e execute `git --version`."
+- **[clique]** revele o caso de erro: "Se aparecer `git: command not found`, normalmente
+  significa que o Git ainda não foi instalado ou a instalação não terminou."
+- **Mensagem-chave:** para verificar se o Git está instalado, use `git --version`.
+
+### Slide 4 · Configurando identidade `(identidade)` — ~6 min
+- **Objetivo:** configurar nome e e-mail do autor.
+- **Fala sugerida:** "Agora vamos dizer ao Git quem somos. Cada alteração registra autor,
+  e-mail, data e horário. Execute `git config --global user.name \"Seu Nome\"` e depois
+  `git config --global user.email \"seu@email.com\"`."
+- **Mensagem-chave:** `user.name` e `user.email` identificam o autor dos commits.
+
+### Slide 5 · Verificando `(verificar)` — ~2 min
+- **Objetivo:** conferir a configuração aplicada.
+- **Fala sugerida:** "Para conferir, execute `git config --global --list`. Deve aparecer
+  `user.name=` e `user.email=` com o que você configurou. Se quiser corrigir, basta rodar
+  o comando de novo com o novo valor."
+- **Mensagem-chave:** `git config --global --list` mostra suas configurações globais.
+
+### Slide 6 · Configuração global `(global)` — ~3 min
+- **Objetivo:** explicar o que `--global` significa.
+- **Fala sugerida:** "Repare na palavra `--global`. Ela faz a configuração valer para
+  **todos** os projetos do seu computador — você não precisa configurar seu nome toda vez
+  que criar um projeto novo."
+- **Mensagem-chave:** `--global` = a configuração vale para todos os projetos da máquina.
+
+### Slide 7 · Boas práticas `(boas-praticas)` — ~3 min
+- **Objetivo:** dicas de identidade.
+- **Fala sugerida:** "Use um nome reconhecível (ex.: `Ana Silva`, não `Notebook Novo`) e
+  um e-mail que você realmente usa — de preferência o mesmo que usará no GitHub. Na dúvida,
+  confira com `git config --global --list`."
+- **Mensagem-chave:** nome reconhecível + e-mail real.
+
+### Slide 8 · Prática guiada `(pratica)` — ~8 min
+- **Objetivo:** acompanhar a turma executando o fluxo.
+- **Fala sugerida:** "Vamos juntas: instalar Git, abrir o VS Code, abrir o terminal,
+  `git --version`, configurar `user.name`, `user.email` e conferir com
+  `git config --global --list`. Peça para copiarem os comandos antes de personalizar."
+- **Mensagem-chave:** garanta que todas obtiveram resposta ao `git --version` — é
+  pré-requisito das próximas aulas.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você preparou o computador e configurou sua identidade. Na
+  próxima aula vamos criar nosso primeiro repositório e transformar uma pasta comum em um
+  projeto versionado."
+- 💡 **Você sabia?** O Git foi criado em 2005 por Linus Torvalds, o mesmo criador do
+  Linux, para facilitar o trabalho colaborativo no kernel do Linux.
+- **Mensagem-chave:** próximo passo — **criar o primeiro repositório**.
+
+---
+
+# Aula 3 — Criando seu primeiro repositório Git (`git init`)
+
+**Objetivo da aula:** entender o que é um repositório, criar um com `git init`, reconhecer
+a pasta `.git` e diferenciar pasta comum de projeto versionado.
+
+### Slide 1 · Capa `(capa)` — ~1 min
+- **Fala sugerida:** "Já instalamos e configuramos o Git. Agora vamos dar o primeiro passo
+  para controlar versões: antes do Git, uma pasta é só uma pasta; depois do Git, ela passa
+  a registrar todo o histórico."
+- **Mensagem-chave:** o Git só acompanha projetos **inicializados** como repositórios.
+
+### Slide 2 · O que é um repositório `(repositorio)` — ~4 min
+- **Fala sugerida:** "Você vai ouvir muito a palavra *repositório*. Um repositório é o
+  local onde o Git guarda o histórico e acompanha todas as mudanças de um projeto. Numa
+  pasta comum de Documentos, quais o Git está controlando? Nenhuma — ele só começa quando
+  criamos um repositório."
+- **Mensagem-chave:** um repositório é um projeto que está sendo acompanhado pelo Git.
+
+### Slide 3 · Criar a pasta `(criar-pasta)` — ~4 min
+- **Fala sugerida:** "Vamos criar um projeto simples que usaremos nas próximas aulas. No
+  VS Code, File → Open Folder, crie a pasta `meu-primeiro-projeto` e dentro dela um
+  `README.md` com o conteúdo `# Meu Primeiro Projeto`. Neste momento é só uma pasta comum —
+  o Git ainda não faz nada."
+- **Mensagem-chave:** por enquanto, pasta comum; o Git ainda não entrou em cena.
+
+### Slide 4 · git init `(git-init)` — ~8 min
+- **Fala sugerida:** "Agora transformamos essa pasta em um projeto controlado pelo Git.
+  No terminal, dentro da pasta, execute `git init`. Deve aparecer
+  `Initialized empty Git repository in ...`. Visualmente, o que mudou? Quase nada — a maior
+  parte do trabalho do Git acontece nos bastidores."
+- **Mensagem-chave:** `git init` transforma a pasta em repositório (executado uma vez por projeto).
+
+### Slide 5 · A pasta .git `(pasta-git)` — ~6 min
+- **Fala sugerida:** "Habilitando arquivos ocultos, aparece uma nova pasta `.git`. Ela é
+  criada automaticamente e guarda histórico, configurações, branches e versões do código
+  (arquivos como `config`, `HEAD`, `objects`, `refs`). Você nunca precisa editar nada aí
+  dentro — o Git cuida disso."
+- **Mensagem-chave:** o conteúdo do projeto não mudou; o que mudou foi o comportamento da pasta.
+
+### Slide 6 · E se apagar .git? `(apagar-git)` · 3 revelações — ~3 min
+- **Fala sugerida:** "Imagine que alguém apagou a pasta `.git`. O `README` continua
+  existindo?"
+- **[clique]** "Sim. O projeto continua existindo?"
+- **[clique]** "Sim. E o histórico?"
+- **[clique]** "Não — apagar `.git` remove todo o controle de versões. (Não faça a
+  demonstração apagando; apenas explique.)"
+- **Mensagem-chave:** a pasta `.git` contém toda a inteligência do Git.
+
+### Slide 7 · Boas práticas `(boas-praticas)` — ~3 min
+- **Fala sugerida:** "Inicialize o Git logo no início do projeto; um projeto = um
+  repositório; e nunca altere os arquivos internos da pasta `.git`."
+- **Mensagem-chave:** um projeto, um repositório — e deixe o `.git` em paz.
+
+### Slide 8 · Prática guiada `(pratica)` — ~8 min
+- **Fala sugerida:** "Vamos juntas: criar `meu-primeiro-projeto`, criar `README.md` com
+  uma linha, abrir o terminal, `git init`, confirmar a mensagem de sucesso e visualizar a
+  pasta `.git`."
+- **Mensagem-chave:** `git init` roda uma única vez por projeto; nenhum arquivo é alterado.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você criou seu primeiro repositório. Na próxima aula vamos
+  registrar alterações com o ciclo `status`, `add` e `commit`."
+- 💡 **Você sabia?** `git init` não cria um projeto — ele transforma uma pasta existente em
+  repositório. Dá para versionar tanto um projeto novo quanto um que já existe.
+- **Mensagem-chave:** próximo passo — **registrar alterações**.
+
+---
+
+# Aula 4 — Registrando alterações: `git status`, `git add`, `git commit`
+
+**Objetivo da aula:** entender o ciclo básico, verificar o estado com `git status`,
+preparar com `git add` e registrar uma versão com `git commit`.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Já temos um repositório, mas o Git ainda não salvou nenhuma versão.
+  Hoje vamos aprender a registrar alterações para construir o histórico."
+- **Mensagem-chave:** o Git não salva sozinho — **nós** decidimos quando criar uma versão.
+
+### Slide 2 · O ciclo básico `(ciclo)` — ~5 min
+- **Fala sugerida:** "Antes dos comandos, o fluxo: você edita no *Working Directory*, com
+  `git add` move para a *Staging Area* (área de preparação) e com `git commit` grava no
+  histórico. Pense numa fotografia: você organiza tudo (`add`) e depois tira a foto
+  (`commit`)."
+- **Mensagem-chave:** um commit é uma **fotografia** do projeto naquele momento.
+
+### Slide 3 · git status `(status)` · 1 revelação — ~6 min
+- **Fala sugerida:** "Comando que você usará todos os dias: `git status`. No começo mostra
+  `No commits yet` / `nothing to commit`."
+- **[clique]** "Agora altere o `README` e rode `git status` de novo: aparece
+  `Changes not staged for commit` — o Git percebeu a mudança, mas ela ainda não foi
+  preparada."
+- **Mensagem-chave:** `git status` responde "qual é a situação atual do meu projeto?".
+
+### Slide 4 · git add `(add)` · 1 revelação — ~8 min
+- **Fala sugerida:** "Vamos preparar a alteração: `git add README.md`."
+- **[clique]** "Rodando `git status` de novo, o arquivo muda de seção para
+  `Changes to be committed` — está pronto para virar uma nova versão. `git add .` prepara
+  todos os arquivos modificados da pasta."
+- **Mensagem-chave:** `git add` prepara alterações para o próximo commit.
+
+### Slide 5 · git commit `(commit)` — ~8 min
+- **Fala sugerida:** "Agora criamos a versão: `git commit -m \"Adiciona descrição inicial
+  ao projeto\"`. Rodando `git status`, aparece `nothing to commit, working tree clean` —
+  tudo foi salvo."
+- **Mensagem-chave:** cada commit representa um ponto da evolução do projeto.
+
+### Slide 6 · Mensagens de commit `(mensagens)` — ~5 min
+- **Fala sugerida:** "Além de salvar, precisamos explicar o que mudou. Mensagens como
+  `teste`, `alterações` ou `123` não ajudam ninguém dali a seis meses. Prefira
+  `Adiciona descrição inicial ao projeto`, `Cria página inicial`, `Atualiza README`."
+- **Mensagem-chave:** uma boa mensagem responde: "o que mudou?".
+
+### Slide 7 · Boas práticas `(boas-praticas)` — ~3 min
+- **Fala sugerida:** "Consulte o `git status` com frequência, faça commits pequenos e
+  escreva mensagens objetivas (`Adiciona formulário de contato`, não `Atualizações`)."
+- **Mensagem-chave:** commits pequenos e mensagens claras.
+
+### Slide 8 · Prática guiada `(pratica)` — ~10 min
+- **Fala sugerida:** "Vamos juntas: adicionar uma linha ao `README`, `git status`,
+  `git add README.md`, `git status`, `git commit -m \"Atualiza README com descrição do
+  projeto\"` e conferir `working tree clean`. Rodem `git status` após cada passo para ver a
+  mudança de estado."
+- **Mensagem-chave:** observar a saída do `status` em cada etapa é o que fixa o fluxo.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você registrou sua primeira versão em três etapas: verificar,
+  preparar e commitar. Na próxima aula vamos consultar o histórico e ver como boas
+  mensagens fazem diferença."
+- 💡 **Você sabia?** Projetos como Linux ou VS Code têm milhares de commits — por isso
+  mensagens claras são tão valorizadas.
+- **Mensagem-chave:** próximo passo — **consultar o histórico**.
+
+---
+
+# Aula 5 — Histórico e boas práticas de commit
+
+**Objetivo da aula:** consultar o histórico com `git log`, interpretar um commit e aplicar
+boas práticas de mensagem.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Já criamos commits; agora imagine descobrir, meses depois, quando uma
+  funcionalidade foi adicionada ou quem fez uma alteração. É para isso que existe o
+  histórico."
+- **Mensagem-chave:** o histórico é a **linha do tempo** da evolução do projeto.
+
+### Slide 2 · O histórico `(historico)` — ~3 min
+- **Fala sugerida:** "Cada commit guarda muito mais do que os arquivos: autor, data,
+  horário, mensagem e um identificador único (hash). Cada commit é um momento específico
+  da evolução."
+- **Mensagem-chave:** todo commit é um instante registrado do projeto.
+
+### Slide 3 · git log `(git-log)` — ~8 min
+- **Fala sugerida:** "Para ver o histórico, `git log`. Ele mostra, por commit: o **hash**
+  (a impressão digital daquele commit), o **Author** (o nome que configuramos na Aula 2),
+  a **data** e a **mensagem**."
+- **Mensagem-chave:** `git log` mostra toda a história do projeto.
+
+### Slide 4 · git log --oneline `(oneline)` — ~4 min
+- **Fala sugerida:** "Em projetos grandes o histórico é enorme. `git log --oneline` mostra
+  só o hash reduzido e a mensagem — muito mais rápido para consultas do dia a dia."
+- **Mensagem-chave:** `git log --oneline` é a forma rápida de visualizar o histórico.
+
+### Slide 5 · Histórico útil `(mensagens)` — ~8 min
+- **Fala sugerida:** "O histórico só é útil se dá para entender rapidamente o que
+  aconteceu. Mensagens como `teste`, `atualização`, `123` não dizem nada. Prefira
+  `Cria arquivo README`, `Adiciona descrição inicial`, `Corrige erro de digitação no
+  README`. Pergunta-guia: daqui a seis meses, essa mensagem me faria lembrar a mudança?"
+- **Mensagem-chave:** uma boa mensagem responde "o que mudou?".
+
+### Slide 6 · Boas práticas `(verbos)` — ~5 min
+- **Fala sugerida:** "Faça commits pequenos e frequentes e comece a mensagem com um verbo:
+  Adiciona, Atualiza, Remove, Corrige, Cria. Isso deixa o histórico consistente."
+- **Mensagem-chave:** commits pequenos + mensagens que começam com verbo.
+
+### Slide 7 · Prática guiada `(pratica)` — ~8 min
+- **Fala sugerida:** "Vamos juntas: adicionar uma seção ao `README` (ex.: `## Autor`),
+  `git status`, `git add`, `git commit -m \"Adiciona seção de autor ao README\"` e
+  `git log --oneline` para ver o novo commit no topo. Comparem `git log` e
+  `git log --oneline`."
+- **Mensagem-chave:** o histórico é ferramenta de **comunicação** entre pessoas, não só um
+  registro técnico.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você aprendeu que cada commit faz parte da história e que um bom
+  histórico depende de mensagens claras. Na próxima aula conheceremos o GitHub e criaremos
+  nosso primeiro repositório remoto."
+- 💡 **Você sabia?** Muitas empresas usam o histórico de commits para investigar quando um
+  problema surgiu e até gerar notas de versão (release notes) automaticamente.
+- **Mensagem-chave:** próximo passo — **conhecer o GitHub**.
+
+---
+
+# Aula 6 — Criando seu primeiro repositório no GitHub
+
+**Objetivo da aula:** diferenciar repositório local de remoto, criar conta e repositório no
+GitHub e reconhecer a página de um repositório.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Até agora tudo ficou só no computador. Isso funciona sozinha, mas e
+  se a máquina falhar, ou se você precisar compartilhar? É aqui que entra o GitHub."
+- **Mensagem-chave:** Git controla versões; GitHub hospeda e compartilha repositórios.
+
+### Slide 2 · Git × GitHub `(git-x-github)` — ~5 min
+- **Fala sugerida:** "Dúvida clássica: Git e GitHub não são a mesma coisa. Git é instalado
+  no computador, controla versões e funciona offline (2005). GitHub é uma plataforma na
+  nuvem que hospeda repositórios e facilita colaboração (2008). Analogia: o Git é como
+  escrever no Word; o GitHub é como salvar no OneDrive/Google Drive."
+- **Mensagem-chave:** você pode usar Git sem GitHub, mas não usa o GitHub para versionar
+  sem Git.
+
+### Slide 3 · Criar conta `(conta)` — ~5 min
+- **Fala sugerida:** "Se ainda não tem conta, acesse `https://github.com` e clique em
+  *Sign up* — Username, Email, Password. Se já tem conta, é só fazer login. (Não preencha
+  dados pessoais reais na demonstração.)"
+- **Mensagem-chave:** conta criada = porta de entrada para os repositórios remotos.
+
+### Slide 4 · Criar repositório `(novo-repo)` — ~8 min
+- **Fala sugerida:** "Clique em *New Repository*. Nome: `meu-primeiro-projeto` (de
+  preferência igual à pasta local). Visibilidade: escolha **Public**. **Importante:** como
+  já temos um `README` local, **não marque** *Add a README file*, nem `.gitignore` nem
+  *License* — veremos esses recursos depois. Clique em *Create repository*."
+- **Mensagem-chave:** não marque *Add README* — evita criar um histórico separado do local.
+
+### Slide 5 · Local × remoto `(local-remoto)` — ~6 min
+- **Fala sugerida:** "A página aparece vazia porque ainda não enviamos nada. Existem dois
+  lados: o repositório **local** (no computador) e o **remoto** (no GitHub). Hoje só
+  criamos o espaço remoto — ainda não há conexão entre eles. Isso será feito na próxima
+  aula."
+- **Mensagem-chave:** criar o repositório no GitHub **não** envia automaticamente os
+  arquivos.
+
+### Slide 6 · Prática guiada `(pratica)` — ~10 min
+- **Fala sugerida:** "Vamos juntas: criar conta (se preciso), login, *New Repository*, nome
+  `meu-primeiro-projeto`, **Public**, sem README/`.gitignore`/License, *Create repository*
+  e confirmar a página do repositório vazio."
+- **Mensagem-chave:** é normal o repositório aparecer vazio agora.
+
+### Slide 7 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você criou o repositório remoto e entendeu a diferença entre
+  local e remoto. Na próxima aula vamos conectar os dois e publicar o código com
+  `git remote add` e `git push`."
+- 💡 **Você sabia?** O GitHub hospeda centenas de milhões de repositórios, incluindo VS
+  Code, React, Node.js e Python.
+- **Mensagem-chave:** próximo passo — **conectar local e remoto**.
+
+---
+
+# Aula 7 — Conectando seu projeto ao GitHub (`git remote` e `git push`)
+
+**Objetivo da aula:** entender repositório remoto, conectar o local com `git remote add`,
+publicar com `git push` e confirmar o envio.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Criamos o repositório no GitHub, mas ele continua vazio: nosso projeto
+  ainda está só no computador. Hoje vamos conectar os dois e publicar pela primeira vez."
+- **Mensagem-chave:** criar o repositório remoto não envia os arquivos — falta conectar.
+
+### Slide 2 · Repositório remoto `(remoto)` — ~4 min
+- **Fala sugerida:** "O remoto é apenas outra cópia do projeto, armazenada no GitHub. Falta
+  dizer ao Git **onde** esse repositório remoto está."
+- **Mensagem-chave:** o remoto é uma cópia do projeto que vive no GitHub.
+
+### Slide 3 · git remote add `(remote-add)` — ~8 min
+- **Fala sugerida:** "No GitHub, clique em *Code* e copie a URL HTTPS
+  (`https://github.com/seu-usuario/meu-primeiro-projeto.git`). No VS Code, execute
+  `git remote add origin <URL>`. Quebrando: `remote` gerencia remotos, `add` adiciona um,
+  `origin` é o apelido — só uma convenção, mas praticamente todo mundo usa."
+- **Mensagem-chave:** `git remote add` registra o endereço do repositório remoto.
+
+### Slide 4 · git remote -v `(remote-v)` — ~3 min
+- **Fala sugerida:** "Confirme com `git remote -v`: aparece `origin` com a URL (para fetch
+  e para push). A conexão está registrada, mas ainda não enviamos nada. Dica: rode
+  `git remote -v` **antes** do `remote add` (nada) e **depois** (aparece o `origin`) — o
+  antes/depois deixa claro que `remote add` só registra o endereço."
+- **Mensagem-chave:** `git remote add` **registra** o endereço; não envia arquivos.
+
+### Slide 5 · git push `(push)` — ~10 min
+- **Fala sugerida:** "Agora sim: `git push -u origin main`. `push` envia; `origin` é o
+  remoto; `main` é a branch. Atualize o navegador — o `README` e todo o projeto aparecem.
+  Esse é um bom momento para comemorar! (Se a branch principal for `master`, explique que
+  varia conforme a configuração; `git branch` mostra o nome atual.)"
+- **Mensagem-chave:** agora seu projeto também está salvo no GitHub.
+
+### Slide 6 · Dois lugares `(dois-lugares)` — ~4 min
+- **Fala sugerida:** "O projeto agora existe em dois lugares: local e remoto. Se o
+  computador quebrar hoje, o projeto continua existindo? Sim — porque há uma cópia no
+  GitHub."
+- **Mensagem-chave:** local e remoto trabalham juntos; um é o backup do outro.
+
+### Slide 7 · Prática guiada `(pratica)` — ~10 min
+- **Fala sugerida:** "Vamos juntas: copiar a URL, `git remote add origin <URL>`,
+  `git remote -v`, `git push -u origin main`, atualizar o navegador e confirmar README,
+  arquivos e projeto publicado. O GitHub pode pedir autenticação/token — faz parte da
+  segurança."
+- **Mensagem-chave:** confirme sempre que os arquivos apareceram no GitHub.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você publicou seu projeto pela primeira vez. Na próxima aula
+  vamos repetir todo o fluxo do zero, sem consultar anotações."
+- 💡 **Você sabia?** O primeiro `git push` costuma ser um marco: a partir dele você já
+  compartilha projetos, monta portfólio e contribui com projetos colaborativos.
+- **Mensagem-chave:** próximo passo — **fixar o fluxo completo**.
+
+---
+
+# Aula 8 — Prática guiada: publicando um projeto do zero
+
+**Objetivo da aula:** consolidar todo o fluxo (criar projeto → `init` → commits → repo no
+GitHub → conectar → publicar). Sem comandos novos.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Nas últimas aulas aprendemos cada peça separadamente. Hoje juntamos
+  tudo em um único fluxo e publicamos um projeto completo usando só o que já sabemos."
+- **Mensagem-chave:** aprender Git é entender um **fluxo de trabalho**, não decorar comandos.
+
+### Slide 2 · Fluxo completo `(fluxo)` — ~3 min
+- **Fala sugerida:** "Relembrando a sequência: criar projeto → `git init` → `git status` →
+  `git add` → `git commit` → criar repositório no GitHub → `git remote add origin` →
+  `git push`. É exatamente esse o caminho que vamos percorrer."
+- **Mensagem-chave:** este é o fluxo que um dev usa ao iniciar um projeto novo.
+
+### Slide 3 · Demonstração `(demo)` — ~20 min
+- **Fala sugerida:** "Faço o processo inteiro sem interrupções longas — vocês acompanham.
+  Criar `lista-de-tarefas`, `README.md` com `# Lista de Tarefas`, `git init`, `git status`,
+  `git add README.md`, `git commit -m \"Cria projeto inicial\"`, criar o repositório no
+  GitHub (sem README/License/`.gitignore`), copiar a URL HTTPS,
+  `git remote add origin <URL>`, `git push -u origin main` e atualizar o navegador."
+- **Mensagem-chave:** o fluxo do início ao fim, na ordem real de uso.
+
+### Slide 4 · Erros comuns `(erros)` — ~8 min
+- **Fala sugerida:** "Três armadilhas: esquecer o `git add` (o commit reclama que não há
+  nada para commitar); esquecer o `git init` (`fatal: not a git repository`); e criar um
+  README no GitHub ao abrir o repo (gera um histórico separado — veremos como resolver mais
+  adiante)."
+- **Mensagem-chave:** a maioria dos erros de iniciante é pular uma etapa do fluxo.
+
+### Slide 5 · Checklist final `(checklist)` — ~3 min
+- **Fala sugerida:** "Fechando: projeto criado ✔, Git inicializado ✔, primeiro commit ✔,
+  repositório no GitHub ✔, projeto publicado ✔. Esse é exatamente o fluxo de um projeto
+  novo."
+- **Mensagem-chave:** dominar esse checklist é dominar a base do trabalho com Git.
+
+### Slide 6 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Parabéns — você já domina o fluxo básico de criar e publicar um
+  projeto. Até aqui trabalhamos como quem cria projetos sozinha; a partir da próxima aula
+  vamos ver como equipes colaboram usando **branches**."
+- 💡 **Você sabia?** Mesmo equipes com centenas de devs iniciam um projeto exatamente
+  assim; o que muda é como várias pessoas colaboram ao mesmo tempo.
+- **Mensagem-chave:** próximo passo — **branches**.
+
+---
+
+# Aula 9 — O que é uma branch e por que ela existe
+
+**Objetivo da aula:** entender o conceito de branch, por que equipes as usam, identificar a
+branch principal e visualizar desenvolvimento em paralelo. (Sem criar branches.)
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Até agora fizemos tudo direto no projeto — ótimo quando se trabalha
+  sozinha. Mas imagine dez pessoas alterando os mesmos arquivos ao mesmo tempo. É para
+  resolver isso que existem as **branches**."
+- **Mensagem-chave:** branches permitem desenvolver sem afetar a versão principal.
+
+### Slide 2 · O problema `(problema)` — ~5 min
+- **Fala sugerida:** "Imagine a `main` com o site funcionando. A Maria começa uma
+  funcionalidade, o João outra, o Pedro corrige um bug — todos na mesma branch. O que
+  acontece? Alterações incompletas, bugs, dificuldade para revisar, mais risco."
+- **Mensagem-chave:** trabalhar direto na `main`, em equipe, gera caos.
+
+### Slide 3 · O que é uma branch `(o-que-e)` — ~8 min
+- **Fala sugerida:** "Uma branch é uma linha independente de desenvolvimento: dá para
+  testar ideias, adicionar funcionalidades e corrigir bugs sem alterar a versão principal.
+  Analogia: em vez de mexer no documento original, você cria uma cópia, faz as mudanças e,
+  quando estiver pronta, substitui o original."
+- **Mensagem-chave:** branch = linha de trabalho isolada.
+
+### Slide 4 · A branch main `(main)` — ~5 min
+- **Fala sugerida:** "Quando criamos um repositório, já existe uma branch principal —
+  normalmente a `main` — que representa a versão estável. As novas funcionalidades
+  normalmente **não** são desenvolvidas diretamente nela."
+- **Mensagem-chave:** a `main` é a versão estável do projeto.
+
+### Slide 5 · Como equipes usam `(equipes)` — ~8 min
+- **Fala sugerida:** "Na prática, cada funcionalidade ganha sua branch: `login`,
+  `cadastro`, `contato`, `correção-menu`… Quando fica pronta, ela retorna para a `main`."
+- **Mensagem-chave:** uma funcionalidade, uma branch.
+
+### Slide 6 · Boas práticas `(boas-praticas)` — ~3 min
+- **Fala sugerida:** "Nunca desenvolva diretamente na `main`; cada funcionalidade em uma
+  branch; e use nomes descritivos."
+- **Mensagem-chave:** nomes descritivos + uma branch por funcionalidade.
+
+### Slide 7 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você entendeu como equipes trabalham no mesmo projeto sem se
+  atrapalhar. Na próxima aula vamos criar nossas próprias branches e alternar entre elas."
+- 💡 **Você sabia?** Em projetos open source como o VS Code, o desenvolvimento acontece em
+  centenas de branches ao mesmo tempo, mantendo a principal sempre estável.
+- **Mensagem-chave:** próximo passo — **criar e trocar branches**.
+
+---
+
+# Aula 10 — Criando e trocando branches
+
+**Objetivo da aula:** identificar a branch atual, criar uma branch, alternar entre elas e
+entender que cada branch tem seu próprio conjunto de alterações.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Entendemos por que equipes usam branches; agora vamos criá-las e
+  navegar entre elas — trabalhando como equipes profissionais."
+- **Mensagem-chave:** branch = espaço isolado para desenvolver funcionalidades.
+
+### Slide 2 · git branch `(git-branch)` — ~4 min
+- **Fala sugerida:** "Antes de criar, vamos ver onde estamos: `git branch` mostra `* main`.
+  O asterisco indica a branch atual. Se eu commitar agora, vai para a `main`."
+- **Mensagem-chave:** `git branch` lista as branches e destaca a atual.
+
+### Slide 3 · Criar branch `(criar)` — ~8 min
+- **Fala sugerida:** "Vamos criar uma branch para uma funcionalidade:
+  `git branch feature-contato`. Rodando `git branch` de novo, aparecem `* main` e
+  `feature-contato` — ela foi **criada**, mas ainda estamos na `main`."
+- **Mensagem-chave:** `git branch` cria uma branch, mas **não** muda para ela.
+
+### Slide 4 · git switch `(switch)` · 1 revelação — ~8 min
+- **Fala sugerida:** "Para mudar: `git switch feature-contato` →
+  `Switched to branch 'feature-contato'`. Agora o `*` está na nova branch e todos os
+  commits vão para ela."
+- **[clique]** revele o atalho e o `checkout`: "Como criar + trocar é comum, existe
+  `git switch -c feature-sobre` (cria e já muda). E se você vir `git checkout <branch>` em
+  tutoriais antigos, saiba que hoje o Git recomenda `git switch` para trocar de branch."
+- **Mensagem-chave:** `git switch` muda a branch de trabalho; `-c` cria e troca de uma vez.
+
+### Slide 5 · Cada branch, sua evolução `(isolamento)` — ~10 min
+- **Fala sugerida:** "Demonstração mais importante da aula. Em `feature-contato`, adicione
+  ao `README` uma seção `## Contato`, faça o commit e volte com `git switch main`. Abra o
+  `README`: cadê a seção Contato? Sumiu — ficou só na outra branch. Volte com
+  `git switch feature-contato` e ela reaparece."
+- **Mensagem-chave:** cada branch tem seu próprio histórico e suas próprias alterações.
+
+### Slide 6 · Boas práticas `(boas-praticas)` — ~3 min
+- **Fala sugerida:** "Use nomes descritivos (`feature-login`, `fix-menu`, não `teste` ou
+  `branch1`); uma branch por funcionalidade; e sempre verifique em qual branch está com
+  `git branch` antes de começar."
+- **Mensagem-chave:** confira a branch atual antes de trabalhar.
+
+### Slide 7 · Prática guiada `(pratica)` — ~10 min
+- **Fala sugerida:** "Vamos juntas: `git branch`, criar `feature-sobre`, trocar para ela,
+  adicionar `## Sobre` ao `README`, `git add` + `git commit`, `git switch main` (some),
+  voltar para `feature-sobre` (reaparece)."
+- **Mensagem-chave:** isso só funciona porque as mudanças estavam **salvas em um commit**
+  antes da troca.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você criou branches e alternou entre elas. Na próxima aula vamos
+  ver o fluxo de trabalho mais usado por equipes: o *feature branch*."
+- 💡 **Você sabia?** Em muitas empresas os devs quase nunca commitam direto na `main`: cada
+  funcionalidade começa em uma branch própria.
+- **Mensagem-chave:** próximo passo — **fluxo com feature branch**.
+
+---
+
+# Aula 11 — Fluxo de trabalho com Feature Branch
+
+**Objetivo da aula:** entender o fluxo baseado em feature branches, suas etapas e por que
+equipes o adotam. (Sem comandos novos.)
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Já sabemos criar branches. Mas quando criar uma? E o que fazer
+  depois? Hoje aprendemos o fluxo usado por grande parte das equipes."
+- **Mensagem-chave:** uma branch faz parte de um **fluxo de trabalho**.
+
+### Slide 2 · O fluxo `(fluxo)` — ~8 min
+- **Fala sugerida:** "Assim como comprar online tem uma ordem (carrinho → endereço →
+  pagamento → finalizar), o Git também: criar branch → desenvolver → commit → push → Pull
+  Request → review → merge → `main` atualizada. Cada funcionalidade percorre esse caminho
+  antes de chegar à principal."
+- **Mensagem-chave:** uma funcionalidade percorre etapas antes de entrar na `main`.
+
+### Slide 3 · Demonstração `(demo)` — ~12 min
+- **Fala sugerida:** "Usando o projeto do curso: `git switch -c feature-projetos`, edite o
+  `README` com `## Projetos` / `Em breve...`, `git add README.md`,
+  `git commit -m \"Adiciona seção de projetos\"`, `git push -u origin feature-projetos`.
+  **Pare aqui** — não abra o Pull Request ainda; isso é a próxima aula."
+- **Mensagem-chave:** o fluxo até o `push` da branch já entrega o trabalho para a equipe ver.
+
+### Slide 4 · No GitHub `(no-github)` — ~5 min
+- **Fala sugerida:** "No GitHub agora existem duas branches: `main` e `feature-projetos`. A
+  funcionalidade já está lá, mas ainda não entrou na `main`. O GitHub provavelmente mostra
+  *Compare & pull request* — **não clique ainda**; é o que veremos a seguir."
+- **Mensagem-chave:** a branch está publicada, mas ainda separada da `main`.
+
+### Slide 5 · Erros comuns `(erros)` — ~4 min
+- **Fala sugerida:** "Trabalhar direto na `main` (funciona, mas dificulta revisão); criar
+  uma branch e nunca dar push (a equipe não vê seu trabalho); e misturar várias
+  funcionalidades numa branch só (fica difícil revisar). Cada branch resolve um problema."
+- **Mensagem-chave:** cada branch deve resolver **apenas um** problema.
+
+### Slide 6 · Boas práticas `(boas-praticas)` — ~3 min
+- **Fala sugerida:** "Uma funcionalidade, uma branch; commits pequenos = histórico
+  organizado; e envie com frequência para a equipe acompanhar a evolução."
+- **Mensagem-chave:** envie cedo e com frequência.
+
+### Slide 7 · Prática guiada `(pratica)` — ~10 min
+- **Fala sugerida:** "Vamos juntas: criar `feature-redes-sociais`, adicionar
+  `## Redes Sociais` (LinkedIn, GitHub), `git add`, `git commit`,
+  `git push -u origin feature-redes-sociais`, abrir o GitHub e confirmar a branch. **Não
+  criem o PR ainda.**"
+- **Mensagem-chave:** o objetivo desta aula é o fluxo até o envio da branch.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você executou o fluxo profissional até o `push`. Na próxima aula
+  vamos pedir a integração dessa funcionalidade com um **Pull Request**."
+- 💡 **Você sabia?** O *Feature Branch Workflow* é um dos modelos de colaboração mais usados;
+  GitHub, GitLab e Azure DevOps foram feitos para facilitá-lo.
+- **Mensagem-chave:** próximo passo — **Pull Request**.
+
+---
+
+# Aula 12 — Pull Request: solicitando a integração de uma funcionalidade
+
+**Objetivo da aula:** entender o que é um PR, quando criá-lo, abrir um PR no GitHub e
+compreender seu papel na colaboração. (Sem merge.)
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Desenvolvemos uma funcionalidade em uma branch e enviamos ao GitHub,
+  mas ela ainda não faz parte da `main`. Como chega lá? Normalmente alguém precisa
+  revisá-la antes — é para isso que existe o **Pull Request**."
+- **Mensagem-chave:** o PR é um pedido para que sua alteração seja analisada antes de entrar
+  na `main`.
+
+### Slide 2 · O que é um PR `(o-que-e)` — ~5 min
+- **Fala sugerida:** "Apesar do nome, o Pull Request **não** envia o código para a `main`
+  automaticamente — ele **solicita** que a alteração seja revisada e inicia uma conversa.
+  Analogia: você entrega o trabalho ao professor, ele revisa e só depois aprova."
+- **Mensagem-chave:** abrir um PR não significa concluir a funcionalidade.
+
+### Slide 3 · Criando o PR `(criar)` — ~10 min
+- **Fala sugerida:** "Depois do push, o GitHub sugere *Compare & pull request*. Ele detecta
+  que existe uma branch não integrada. Base: `main`; Compare: `feature-projetos` — ou seja,
+  'quero levar esta branch para a main'. Preencha um **título** claro
+  (`Adiciona seção de projetos`) e uma **descrição** e clique em *Create Pull Request*.
+  Pronto — o PR foi criado, mas ainda **não** houve merge."
+- **Mensagem-chave:** título e descrição claros facilitam a revisão.
+
+### Slide 4 · Página do PR `(pagina)` — ~8 min
+- **Fala sugerida:** "A página tem *Conversation* (discussão), *Commits* (todos os commits
+  da branch) e *Files changed* (o GitHub destaca o que foi adicionado e removido). É
+  exatamente essa tela que outras pessoas usam para revisar código."
+- **Mensagem-chave:** o PR reúne tudo o que é preciso para revisar uma alteração.
+
+### Slide 5 · O que acontece depois `(depois)` — ~5 min
+- **Fala sugerida:** "O fluxo completo é: criar branch → desenvolver → commit → push → Pull
+  Request → review → merge. Hoje chegamos até o Pull Request; as próximas etapas vêm nas
+  próximas aulas."
+- **Mensagem-chave:** o PR é uma **etapa** do processo, não o fim.
+
+### Slide 6 · Boas práticas `(boas-praticas)` — ~4 min
+- **Fala sugerida:** "Escreva títulos claros, explique o objetivo da alteração, um PR por
+  funcionalidade e evite PRs enormes."
+- **Mensagem-chave:** um PR pequeno e bem descrito é fácil de revisar.
+
+### Slide 7 · Prática guiada `(pratica)` — ~12 min
+- **Fala sugerida:** "Vamos juntas: abrir o GitHub, selecionar a branch da aula anterior,
+  *Compare & pull request*, título `Adiciona seção de redes sociais`, descrição, criar o PR
+  e explorar *Conversation*, *Commits* e *Files changed*. **Não façam merge.**"
+- **Mensagem-chave:** o PR permanece aberto até alguém aprovar e fazer o merge.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você abriu um PR e viu que ele é muito mais que um botão de
+  juntar código: é um espaço para apresentar e discutir a alteração. Na próxima aula vamos
+  assumir o papel de quem revisa — o **Code Review**."
+- 💡 **Você sabia?** Em muitas empresas, nenhum código chega à `main` sem passar por um Pull
+  Request.
+- **Mensagem-chave:** próximo passo — **Code Review**.
+
+---
+
+# Aula 13 — Code Review: revisando alterações em um Pull Request
+
+**Objetivo da aula:** entender o propósito do Code Review, navegar pelas alterações,
+comentar e compreender como a revisão melhora o projeto. (Sem merge.)
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Abrimos um PR; antes da integração, normalmente outra pessoa revisa.
+  Por quê? Mesmo devs experientes deixam passar detalhes — outra pessoa olhando aumenta a
+  qualidade e reduz erros."
+- **Mensagem-chave:** Code Review é etapa de **colaboração**, não de julgamento.
+
+### Slide 2 · O que é Code Review `(o-que-e)` — ~5 min
+- **Fala sugerida:** "No fluxo, o review vem entre o Pull Request e o merge. A pessoa
+  revisora verifica se a alteração resolve o problema, se o código está claro e se segue o
+  padrão do projeto. O objetivo não é achar culpados — é melhorar o projeto. Analogia:
+  revisar um artigo antes de publicar."
+- **Mensagem-chave:** o foco é melhorar o código e **compartilhar conhecimento**.
+
+### Slide 3 · A tela de revisão `(tela)` — ~8 min
+- **Fala sugerida:** "A aba *Files changed* é a mais usada por quem revisa: o GitHub destaca
+  as linhas adicionadas e removidas, deixando claríssimo o que mudou."
+- **Mensagem-chave:** *Files changed* mostra exatamente o que mudou.
+
+### Slide 4 · Bons comentários `(comentarios)` — ~10 min
+- **Fala sugerida:** "A revisão acontece por comentários. Passe o mouse sobre uma linha,
+  clique no ícone de comentário. Exemplos construtivos: 'Gostei da ideia — que tal detalhar
+  esta seção?', 'Podemos deixar esse título mais descritivo?', 'Excelente organização do
+  README'. Nem todo comentário aponta problema — também reconhecemos boas soluções."
+- **Mensagem-chave:** comentários devem **ajudar** quem desenvolveu a melhorar o código.
+
+### Slide 5 · O que revisar `(o-que-revisar)` — ~6 min
+- **Fala sugerida:** "Para iniciantes, mantenha simples: a alteração resolve o problema?
+  Está fácil de entender? A mensagem do commit faz sentido? O PR tem título e descrição
+  claros? Ainda não precisamos avaliar arquitetura ou desempenho — isso vem com
+  experiência."
+- **Mensagem-chave:** comece pelo essencial: clareza e propósito.
+
+### Slide 6 · Boas práticas `(boas-praticas)` — ~3 min
+- **Fala sugerida:** "Comentários respeitosos; explique o motivo da sugestão; reconheça
+  boas soluções; e lembre: revise o **código**, não a pessoa. Comece sempre destacando algo
+  positivo."
+- **Mensagem-chave:** revise o código, não a pessoa.
+
+### Slide 7 · Prática guiada `(pratica)` — ~12 min
+- **Fala sugerida:** "Em dupla, cada pessoa revisa o PR da colega (ou use um PR preparado).
+  Adicione pelo menos um comentário positivo e uma sugestão de melhoria — por exemplo,
+  'Gostei da organização desta seção' e 'Que tal detalhar um pouco mais esta descrição?'.
+  Mostrem que quem abriu o PR pode responder, virando uma conversa técnica."
+- **Mensagem-chave:** uma sugestão não quer dizer que o código está 'errado' — muitas vezes
+  há mais de uma solução correta.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Hoje você conheceu uma das práticas mais importantes do
+  desenvolvimento colaborativo. Na próxima aula concluímos o fluxo com o **merge**."
+- 💡 **Você sabia?** O Code Review é uma das principais formas de aprendizado entre devs:
+  revisões constantes elevam o nível de toda a equipe.
+- **Mensagem-chave:** próximo passo — **merge**.
+
+---
+
+# Aula 14 — Merge: integrando uma funcionalidade ao projeto
+
+**Objetivo da aula:** entender o merge, integrar uma branch à `main` pelo GitHub, entender
+o que acontece depois e aplicar boas práticas.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Desenvolvemos uma funcionalidade em uma branch, enviamos, abrimos um
+  PR e revisamos. Agora chegou o momento de concluir: integrar a funcionalidade à branch
+  principal."
+- **Mensagem-chave:** o merge une o trabalho da branch com a versão principal do projeto.
+
+### Slide 2 · O que é um merge `(o-que-e)` — ~5 min
+- **Fala sugerida:** "Durante o desenvolvimento as alterações ficaram separadas em uma
+  branch. Depois do merge, elas passam a fazer parte da `main`. Analogia: um autor escreve
+  um capítulo à parte e, depois da revisão, ele é incorporado ao livro."
+- **Mensagem-chave:** o merge incorpora a funcionalidade à versão principal.
+
+### Slide 3 · Realizando o merge `(realizando)` — ~12 min
+- **Fala sugerida:** "Devemos fazer merge logo depois de criar a branch? Não — antes vêm
+  concluir a funcionalidade, commits, push, PR e revisão. No PR, o GitHub mostra *Able to
+  merge* (sem conflitos). Clique em *Merge pull request* e depois *Confirm merge*. Pronto:
+  a funcionalidade agora faz parte da `main`. Momento importante — vale a pausa."
+- **Mensagem-chave:** faça o merge apenas **após** a revisão.
+
+### Slide 4 · Depois do merge `(depois)` — ~8 min
+- **Fala sugerida:** "A `main` no GitHub agora contém a seção adicionada. A branch
+  `feature-projetos` continua existindo, mas normalmente não será mais usada — o GitHub
+  oferece *Delete branch*. Apagar a branch **não** apaga a funcionalidade: ela já foi
+  incorporada ao histórico da `main`."
+- **Mensagem-chave:** depois do merge, a branch normalmente pode ser removida.
+
+### Slide 5 · Atualizar o local `(atualizar)` — ~8 min
+- **Fala sugerida:** "Ponto que muitos esquecem: o GitHub foi atualizado, mas o computador
+  ainda tem a `main` antiga. Rode `git switch main` e `git pull origin main` para trazer as
+  alterações integradas. Esse passo faz parte do fluxo diário."
+- **Mensagem-chave:** `git pull` sincroniza a sua `main` local com a do GitHub.
+
+### Slide 6 · Boas práticas `(boas-praticas)` — ~5 min
+- **Fala sugerida:** "Faça merge apenas após revisão; mantenha PRs pequenos; atualize a
+  `main` local com frequência; e remova branches já integradas."
+- **Mensagem-chave:** mantenha local e remoto sincronizados.
+
+### Slide 7 · Prática guiada `(pratica)` — ~12 min
+- **Fala sugerida:** "Vamos juntas: abrir o PR, confirmar *Able to merge*, *Merge pull
+  request*, *Confirm merge*, *Delete branch*; depois no VS Code `git switch main` e
+  `git pull origin main`, confirmando o `README` atualizado. Comparem a `main` no GitHub e
+  no local: ficam diferentes até o `git pull`."
+- **Mensagem-chave:** apagar a branch após o merge não apaga a funcionalidade.
+
+### Slide 8 · Encerramento `(encerramento)` — ~2 min
+- **Fala sugerida:** "Hoje concluímos todo o fluxo colaborativo: criamos, revisamos e
+  integramos uma funcionalidade. Na próxima aula veremos um cenário muito comum: duas
+  pessoas mexendo no mesmo trecho — o **conflito** — e como resolvê-lo."
+- 💡 **Você sabia?** Dependendo das regras do projeto, o GitHub pode exigir aprovações e
+  testes automatizados antes de liberar o botão de merge.
+- **Mensagem-chave:** próximo passo — **resolver conflitos**.
+
+---
+
+# Aula 15 — Resolvendo conflitos de merge
+
+**Objetivo da aula:** entender por que conflitos acontecem, identificá-los, resolver um
+conflito simples no VS Code e concluir a integração.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Até agora tudo integrou sem problemas. Mas se duas pessoas alteram
+  exatamente a mesma parte de um arquivo, como o Git decide qual manter? Ele não decide — e
+  é aí que surge um **conflito**."
+- **Mensagem-chave:** um conflito acontece quando o Git não consegue decidir sozinho qual
+  alteração manter.
+
+### Slide 2 · Quando acontece `(quando)` — ~5 min
+- **Fala sugerida:** "Arquivo original com um contato. A Pessoa A muda a linha para o
+  LinkedIn; a Pessoa B muda a **mesma** linha para o GitHub. Qual versão fica? O Git não
+  sabe, então interrompe o merge. É como duas pessoas editando a mesma frase de um
+  documento compartilhado."
+- **Mensagem-chave:** conflitos surgem quando duas alterações afetam o **mesmo trecho**.
+
+### Slide 3 · Como aparece `(como-aparece)` — ~8 min
+- **Fala sugerida:** "No VS Code o conflito aparece com marcadores: `<<<<<<< HEAD` (versão
+  atual), `=======` (separador) e `>>>>>>> feature-linkedin` (versão da outra branch).
+  Parece estranho no começo, mas são só as duas versões lado a lado."
+- **Mensagem-chave:** os marcadores mostram as duas versões que precisam ser conciliadas.
+
+### Slide 4 · Resolvendo `(resolvendo)` — ~10 min
+- **Fala sugerida:** "O VS Code oferece *Accept Current*, *Accept Incoming* e *Accept Both*.
+  Em muitos casos a melhor solução é **combinar** as alterações (Accept Both). Depois de
+  resolver, finalize com `git add README.md` e
+  `git commit -m \"Resolve conflito de merge\"`."
+- **Mensagem-chave:** resolver um conflito é decidir manualmente qual versão permanece.
+
+### Slide 5 · Boas práticas `(boas-praticas)` — ~5 min
+- **Fala sugerida:** "Faça `pull` com frequência; commits pequenos; uma branch por
+  funcionalidade; e converse com a equipe quando várias pessoas mexem no mesmo arquivo."
+- **Mensagem-chave:** prevenção: sincronize cedo e comunique-se.
+
+### Slide 6 · Prática guiada `(pratica)` — ~12 min
+- **Fala sugerida:** "Vamos juntas: criar uma branch, alterar uma linha, voltar para a
+  `main`, alterar a **mesma** linha, tentar o merge, ler os marcadores (identifiquem o que é
+  da `main` e o que é da branch), resolver no VS Code e finalizar com commit."
+- **Mensagem-chave:** pense na melhor solução antes de clicar — nem sempre uma opção pronta
+  basta.
+
+### Slide 7 · Encerramento `(encerramento)` — ~2 min
+- **Fala sugerida:** "Hoje você viu que conflitos fazem parte do trabalho colaborativo. O
+  importante não é evitar todos, mas entender por que acontecem e resolvê-los com
+  segurança. Na próxima aula juntamos tudo em um fluxo completo em equipe."
+- 💡 **Você sabia?** Conflitos são comuns até em equipes experientes — resolvê-los bem é uma
+  habilidade valorizada, não sinal de erro.
+- **Mensagem-chave:** próximo passo — **projeto final colaborativo**.
+
+---
+
+# Aula 16 — Projeto final: fluxo completo de colaboração com Git e GitHub
+
+**Objetivo da aula:** aplicar todo o fluxo aprendido, colaborar com branches e PRs,
+participar de Code Review, fazer merge e trabalhar em equipe. (Aula prática.)
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Parabéns por chegar até aqui! Aprendemos cada etapa separadamente;
+  hoje unimos tudo em um projeto colaborativo, como acontece em equipes de
+  desenvolvimento."
+- **Mensagem-chave:** o objetivo não é aprender comandos novos, mas usar o fluxo completo
+  com confiança.
+
+### Slide 2 · Fluxo completo `(fluxo)` — ~4 min
+- **Fala sugerida:** "O diagrama final: criar branch → desenvolver → commit → push → Pull
+  Request → Code Review → merge → atualizar a `main`. Todo projeto colaborativo passa por
+  essas etapas — hoje percorremos cada uma."
+- **Mensagem-chave:** este é o ciclo completo de colaboração.
+
+### Slide 3 · Cenário `(cenario)` — ~5 min
+- **Fala sugerida:** "Imagine que a equipe desenvolve um site institucional. Cada pessoa
+  fica responsável por uma funcionalidade — Sobre, Projetos, Contato, Tecnologias — e todas
+  trabalham no **mesmo** repositório."
+- **Mensagem-chave:** cada pessoa, uma funcionalidade; todas no mesmo repositório.
+
+### Slide 4 · Demonstração `(demo)` — ~12 min
+- **Fala sugerida:** "Demonstração rápida antes de liberar a turma: `git switch -c
+  feature-faq`, editar `README` com `## FAQ`, `git add`, `git commit -m \"Adiciona seção
+  FAQ\"`, `git push -u origin feature-faq`, abrir PR, revisar, merge e depois `git switch
+  main` + `git pull origin main`. É exatamente o fluxo esperado."
+- **Mensagem-chave:** o fluxo do início ao fim, uma vez, para servir de modelo.
+
+### Slide 5 · Prática em grupo `(pratica-grupo)` — ~30 min
+- **Fala sugerida:** "Agora vocês executam, em grupo, no mesmo repositório. Cada pessoa: 1)
+  `git switch main` + `git pull`; 2) criar `feature-nome-da-funcionalidade`; 3) editar o
+  `README`; 4) `git add` + `git commit`; 5) `git push -u origin <branch>`; 6) abrir PR; 7)
+  revisar o PR de uma colega (um elogio + uma sugestão); 8) após aprovação, merge; 9) todas
+  atualizam a `main`. Estudando sozinha? Repita o fluxo com duas branches e dois PRs,
+  revisando manualmente."
+- **Mensagem-chave:** o importante é executar **todas** as etapas.
+
+### Slide 6 · Checklist final `(checklist)` — ~5 min
+- **Fala sugerida:** "Conferindo: criou branch ✔, desenvolveu ✔, commits ✔, enviou ao
+  GitHub ✔, abriu PR ✔, participou de Code Review ✔, fez merge ✔, atualizou o projeto local
+  ✔. Conseguimos completar todas as etapas?"
+- **Mensagem-chave:** esse checklist é a base usada diariamente por quem desenvolve.
+
+### Slide 7 · Próximos passos `(proximos)` — ~3 min
+- **Fala sugerida:** "Este curso apresentou o fluxo essencial. Daqui pra frente você pode
+  aprofundar: `.gitignore`, GitHub Issues, Projects, Actions, Releases, Tags, Forks,
+  Codespaces, GitHub Copilot, GitHub Desktop, estratégias de branching (GitFlow, Trunk
+  Based) e rebase. Tudo isso amplia — mas depende da base construída aqui."
+- **Mensagem-chave:** a base deste curso sustenta todos os recursos avançados.
+
+### Slide 8 · Encerramento do curso `(encerramento)` — ~4 min
+- **Fala sugerida:** "Parabéns! Você concluiu todo o fluxo com Git e GitHub. Hoje já é capaz
+  de iniciar um projeto, controlar versões, colaborar e participar do processo de
+  desenvolvimento usado em equipes profissionais. Durante o curso você aprendeu a: entender
+  o versionamento, criar repositórios, registrar alterações, consultar histórico, publicar
+  no GitHub, trabalhar com branches, abrir PRs, revisar código, fazer merges e resolver
+  conflitos."
+- 💡 **Você sabia?** Aprender Git não é memorizar comandos — é compreender o fluxo de
+  colaboração. Ferramentas mudam, mas versionamento, branches, PRs, revisão e integração
+  contínua seguem sendo a rotina do desenvolvimento de software.
+- **Mensagem-chave:** você domina a base do trabalho colaborativo com Git e GitHub. 🎉
