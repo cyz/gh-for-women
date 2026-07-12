@@ -29,7 +29,7 @@ interface SlideDeckProps {
  * Content is supplied per lesson via the `slides` array so the exact same
  * navigation UX is shared across all 16 lessons.
  */
-export default function SlideDeck({ slides, backHref = '/git-github', backLabel = 'Todas as aulas', kicker }: SlideDeckProps) {
+export default function SlideDeck({ slides, backHref = '/', backLabel = 'Todas as aulas', kicker }: SlideDeckProps) {
   const total = slides.length;
   const [index, setIndex] = useState(0); // 0-based slide index
   const [step, setStep] = useState(0); // reveal step within current slide
