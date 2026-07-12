@@ -1,0 +1,88 @@
+/* Índice da trilha Git & GitHub — lista de aulas */
+
+.lessons-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.module-block { margin-top: 52px; }
+
+.module-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.module-kicker {
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: #fff;
+}
+.module-kicker.m1 { background: var(--blue); }
+.module-kicker.m2 { background: var(--green); }
+.module-kicker.m3 { background: var(--purple); }
+.module-head h2 { font-size: 1.35em; font-weight: 700; color: var(--ink); }
+.module-head .module-sub { color: var(--muted); font-size: 0.92em; margin-left: auto; }
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.lesson-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.lesson-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--gray-40);
+}
+
+.lesson-badge {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.05em;
+  color: #fff;
+  background: var(--blue);
+}
+.lesson-card.m2 .lesson-badge { background: var(--green); }
+.lesson-card.m3 .lesson-badge { background: var(--purple); }
+
+.lesson-info h3 { font-size: 1.0em; margin-bottom: 4px; color: var(--ink); line-height: 1.35; }
+.lesson-info p { font-size: 0.85em; color: var(--muted); line-height: 1.45; }
+.lesson-dur {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.74em;
+  font-weight: 600;
+  color: var(--blue);
+}
+.lesson-card.m2 .lesson-dur { color: var(--green); }
+.lesson-card.m3 .lesson-dur { color: var(--purple); }
+
+@media (max-width: 700px) {
+  .lessons-grid { grid-template-columns: 1fr; }
+  .module-head .module-sub { display: none; }
+}
