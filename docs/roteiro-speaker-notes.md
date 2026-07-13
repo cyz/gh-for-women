@@ -90,6 +90,12 @@ controle de versão, por que o Git existe e seus principais benefícios.
   as ideias. Vamos ao checklist mental."
 - **[clique]** revele as perguntas de discussão: "Você já perdeu uma versão importante?
   Já precisou desfazer uma alteração? Já editou um documento junto com outra pessoa?"
+- **Como conduzir (exemplo):** peça 2–3 relatos rápidos da turma e anote no quadro o par
+  "problema → o que o Git resolveria". Ex.: *"Perdi a versão final do TCC"* → o Git
+  guardaria cada versão; *"Reescrevi um trecho e queria o antigo de volta"* → o Git permite
+  voltar no tempo; *"Editei um doc junto com uma amiga e sobrescrevemos o trabalho"* → o Git
+  organiza contribuições em paralelo. Feche ligando cada relato a uma capacidade vista no
+  slide 5 (Registrar, Voltar, Comparar, Identificar, Colaborar).
 - **Mensagem-chave:** conecte os exemplos ao dia a dia da turma.
 
 ### Slide 9 · Encerramento `(encerramento)` — ~1 min
@@ -162,6 +168,23 @@ entender por que essas informações importam.
 - **Fala sugerida:** "Vamos juntas: instalar Git, abrir o VS Code, abrir o terminal,
   `git --version`, configurar `user.name`, `user.email` e conferir com
   `git config --global --list`. Peça para copiarem os comandos antes de personalizar."
+- **Passo a passo da demo (execute e narre cada linha):**
+  ```bash
+  git --version
+  # → git version 2.45.2   (o número varia; o importante é surgir "git version ...")
+
+  git config --global user.name "Ana Silva"
+  git config --global user.email "ana.silva@email.com"
+
+  git config --global --list
+  # → user.name=Ana Silva
+  # → user.email=ana.silva@email.com
+  ```
+- **Exemplo de personalização:** oriente cada aluna a trocar `"Ana Silva"` pelo próprio nome
+  e o e-mail pelo que usará no GitHub. Mostre que rodar o comando de novo com outro valor
+  **sobrescreve** o anterior (útil se digitou errado) — não cria duplicata.
+- **Checagem coletiva:** peça um "joinha" de quem viu `user.name=` e `user.email=` corretos.
+  Só avance quando todas confirmarem.
 - **Mensagem-chave:** garanta que todas obtiveram resposta ao `git --version` — é
   pré-requisito das próximas aulas.
 
@@ -232,6 +255,25 @@ a pasta `.git` e diferenciar pasta comum de projeto versionado.
 - **Fala sugerida:** "Vamos juntas: criar `meu-primeiro-projeto`, criar `README.md` com
   uma linha, abrir o terminal, `git init`, confirmar a mensagem de sucesso e visualizar a
   pasta `.git`."
+- **Passo a passo da demo:**
+  ```bash
+  # No VS Code: File → Open Folder → crie a pasta meu-primeiro-projeto
+  # Crie o README.md com a linha:  # Meu Primeiro Projeto
+
+  pwd
+  # → .../meu-primeiro-projeto   (confirme que está na pasta certa antes de continuar)
+
+  git init
+  # → Initialized empty Git repository in .../meu-primeiro-projeto/.git/
+
+  ls -a
+  # → .  ..  .git  README.md    (a pasta .git é a novidade)
+  ```
+- **Exemplo visual:** ative "mostrar arquivos ocultos" no explorador do VS Code (ou rode
+  `ls -a`) para a turma ver a pasta `.git` aparecer. Reforce: o `README.md` continua igual —
+  nenhum conteúdo do projeto mudou, só o comportamento da pasta.
+- **Erro comum na prática:** rodar `git init` na pasta errada. Por isso o `pwd` antes: ele
+  deve terminar em `/meu-primeiro-projeto`.
 - **Mensagem-chave:** `git init` roda uma única vez por projeto; nenhum arquivo é alterado.
 
 ### Slide 9 · Encerramento `(encerramento)` — ~1 min
@@ -299,6 +341,32 @@ preparar com `git add` e registrar uma versão com `git commit`.
   `git add README.md`, `git status`, `git commit -m \"Atualiza README com descrição do
   projeto\"` e conferir `working tree clean`. Rodem `git status` após cada passo para ver a
   mudança de estado."
+- **Passo a passo da demo (mostre o `status` mudando de seção a cada etapa):**
+  ```bash
+  # 1. Edite o README (ex.: acrescente a linha "Projeto do curso de Git.") e salve
+
+  git status
+  # → Changes not staged for commit:
+  # →   modified:   README.md      (aparece em vermelho — Git viu, mas não preparou)
+
+  git add README.md
+  git status
+  # → Changes to be committed:
+  # →   modified:   README.md      (agora em verde — preparado na Staging Area)
+
+  git commit -m "Atualiza README com descrição do projeto"
+  # → [main abc1234] Atualiza README com descrição do projeto
+  # →  1 file changed, 1 insertion(+)
+
+  git status
+  # → nothing to commit, working tree clean   (versão salva no histórico)
+  ```
+- **Exemplo de boa vs. má mensagem:** escreva no quadro `git commit -m "coisas"` ❌ ao lado
+  de `git commit -m "Atualiza README com descrição do projeto"` ✔ e pergunte qual ajudaria
+  a turma a lembrar da mudança daqui a seis meses.
+- **Dica de condução:** rode `git status` em voz alta antes e depois de cada comando; é a
+  repetição desse "antes/depois" que fixa a diferença entre Working Directory, Staging Area
+  e histórico.
 - **Mensagem-chave:** observar a saída do `status` em cada etapa é o que fixa o fluxo.
 
 ### Slide 9 · Encerramento `(encerramento)` — ~1 min
@@ -404,6 +472,35 @@ aplicar boas práticas de mensagem.
   `git log --oneline` para ver o novo commit no topo. Depois, `git show` no hash desse commit
   e um `git checkout` em um commit anterior — só para sentir a navegação — voltando com
   `git switch main`."
+- **Passo a passo da demo:**
+  ```bash
+  # 1. Adicione ao README uma seção:  ## Autor\nSeu Nome  e salve
+
+  git add README.md
+  git commit -m "Adiciona seção de autor ao README"
+
+  git log --oneline
+  # → a3f7d8e Adiciona seção de autor ao README     (novo commit no topo)
+  # → 9c1b2a4 Atualiza README com descrição do projeto
+  # → 4e5d6f7 Cria README inicial
+
+  git show a3f7d8e
+  # → Author / Date / mensagem e o diff:
+  # → + ## Autor
+  # → + Seu Nome        (linhas adicionadas em verde, com +)
+
+  git checkout 9c1b2a4      # visitar um commit anterior
+  # → You are in 'detached HEAD' state...   (NORMAL, não é erro)
+  # → abra o README: a seção ## Autor sumiu (voltamos no tempo)
+
+  git switch main           # voltar ao presente
+  # → Switched to branch 'main'  → a seção ## Autor reaparece
+  ```
+- **Exemplo para fixar o `diff`:** antes de commitar, edite mais uma linha e rode `git diff`
+  para a turma ver o `+`/`-` do que ainda **não** foi commitado — e conecte: é o mesmo `+`/`-`
+  que aparecerá nos Pull Requests (Aula 12).
+- **Tranquilize a turma:** o aviso `detached HEAD` assusta, mas nada se perde; `git switch
+  main` sempre traz de volta. Faça a ida e a volta duas vezes para dissolver o medo.
 - **Mensagem-chave:** o histórico é ferramenta de **comunicação** entre pessoas, não só um
   registro técnico.
 
@@ -468,6 +565,19 @@ GitHub e reconhecer a página de um repositório.
 - **Fala sugerida:** "Vamos juntas: criar conta (se preciso), login, *New Repository*, nome
   `meu-primeiro-projeto`, **Public**, sem README/`.gitignore`/License, *Create repository*
   e confirmar a página do repositório vazio."
+- **Checklist da tela (projeção passo a passo):**
+  1. Botão **+** no topo direito → *New repository*.
+  2. **Repository name:** `meu-primeiro-projeto` (igual à pasta local).
+  3. **Visibility:** marque **Public**.
+  4. **Initialize this repository with:** deixe TUDO desmarcado (sem *Add a README*, sem
+     *.gitignore*, sem *License*) — este é o ponto que mais gera erro depois.
+  5. **Create repository**.
+- **Exemplo do que observar:** após criar, mostre a tela de *Quick setup* e aponte a **URL**
+  (`https://github.com/seu-usuario/meu-primeiro-projeto.git`). Diga: "guardem esse endereço,
+  vamos usá-lo na próxima aula".
+- **Por que sem README:** explique com um exemplo — se marcar *Add a README*, o GitHub cria
+  um commit inicial lá; como já temos um commit local, os dois históricos começam separados e
+  o `push` reclama. Prevenir agora evita a dor de cabeça da Aula 8.
 - **Mensagem-chave:** é normal o repositório aparecer vazio agora.
 
 ### Slide 8 · Encerramento `(encerramento)` — ~1 min
@@ -532,6 +642,28 @@ publicar com `git push` e confirmar o envio.
   `git remote -v`, `git push -u origin main`, atualizar o navegador e confirmar README,
   arquivos e projeto publicado. O GitHub pode pedir autenticação/token — faz parte da
   segurança."
+- **Passo a passo da demo (mostre o antes/depois do `remote -v`):**
+  ```bash
+  git remote -v
+  # → (nada)   — ainda não há remoto registrado
+
+  git remote add origin https://github.com/seu-usuario/meu-primeiro-projeto.git
+
+  git remote -v
+  # → origin  https://github.com/seu-usuario/meu-primeiro-projeto.git (fetch)
+  # → origin  https://github.com/seu-usuario/meu-primeiro-projeto.git (push)
+
+  git push -u origin main
+  # → Enumerating objects... Writing objects... 100%
+  # → branch 'main' set up to track 'origin/main'.
+  ```
+- **Exemplo de validação:** atualize o navegador na página do repositório — o `README` e os
+  arquivos aparecem. Este é o "momento de comemorar"; deixe a turma ver o próprio projeto no
+  ar.
+- **Se pedir login/token:** normalize — o GitHub pede autenticação na primeira vez. Explique
+  que é segurança e que existe login pelo navegador ou por *Personal Access Token*.
+- **Erro comum:** `error: remote origin already exists` (rodou `remote add` duas vezes). A
+  saída é `git remote set-url origin <URL>` para corrigir o endereço.
 - **Mensagem-chave:** confirme sempre que os arquivos apareceram no GitHub.
 
 ### Slide 8 · Encerramento `(encerramento)` — ~1 min
@@ -567,6 +699,39 @@ Manual da Comunidade. Sem comandos novos. Aula sem gravação: apoie-se no guia 
   `git commit -m \"Cria manual da comunidade\"`, criar o repositório no GitHub (sem
   README/License/`.gitignore`), copiar a URL HTTPS, `git remote add origin <URL>`,
   `git push -u origin main` e atualizar o navegador."
+- **Roteiro completo da demo (rode do início ao fim, narrando cada etapa):**
+  ```bash
+  # 1. Criar o projeto (pasta + arquivos markdown do manual)
+  mkdir manual-comunidade && cd manual-comunidade
+  # crie no VS Code: README.md, sobre.md, faq.md, contato.md, codigo-de-conduta.md
+
+  # 2. Inicializar o repositório
+  git init
+  # → Initialized empty Git repository in .../manual-comunidade/.git/
+
+  # 3. Conferir o estado (tudo "untracked")
+  git status
+  # → Untracked files: README.md sobre.md faq.md contato.md codigo-de-conduta.md
+
+  # 4. Preparar e commitar TUDO de uma vez
+  git add .
+  git commit -m "Cria manual da comunidade"
+  # → [main root-commit abc1234] Cria manual da comunidade
+  # →  5 files changed, N insertions(+)
+
+  # 5. No GitHub: New repository → manual-comunidade → Public → SEM README/License/.gitignore
+  #    Copiar a URL HTTPS mostrada na tela de Quick setup
+
+  # 6. Conectar e publicar
+  git remote add origin https://github.com/seu-usuario/manual-comunidade.git
+  git push -u origin main
+  # → branch 'main' set up to track 'origin/main'.
+
+  # 7. Atualizar o navegador → os 5 arquivos aparecem no GitHub
+  ```
+- **Dica de ritmo:** anuncie cada bloco ("criar → inicializar → commitar → conectar →
+  publicar") antes de digitá-lo, para a turma reconhecer que é o mesmo fluxo das Aulas 3 a 7,
+  agora emendado sem pausas.
 - **Mensagem-chave:** o fluxo do início ao fim, na ordem real de uso.
 
 ### Slide 4 · Erros comuns `(erros)` — ~8 min
@@ -576,6 +741,18 @@ Manual da Comunidade. Sem comandos novos. Aula sem gravação: apoie-se no guia 
   saída simples é rodar `git pull origin main` **antes** do `push`: ele traz o que está no
   GitHub, junta com o que você tem local e aí o `push` funciona. Melhor ainda: não marcar
   *Add a README* ao criar o repositório."
+- **Exemplos das mensagens de erro (mostre de propósito, se der tempo):**
+  ```bash
+  git commit -m "..."
+  # → nothing to commit (esqueceu o git add)  → rode: git add .
+
+  git status
+  # → fatal: not a git repository (esqueceu o git init)  → rode: git init
+
+  git push -u origin main
+  # → ! [rejected]  ... (fetch first)   (README criado no GitHub)
+  # → solução: git pull origin main --allow-unrelated-histories  e depois git push
+  ```
 - **Mensagem-chave:** a maioria dos erros de iniciante é pular uma etapa do fluxo.
 
 ### Slide 5 · Materiais para praticar `(materiais)` — ~4 min
@@ -637,6 +814,17 @@ branch principal e visualizar desenvolvimento em paralelo. (Sem criar branches.)
 ### Slide 5 · Como equipes usam `(equipes)` — ~8 min
 - **Fala sugerida:** "Na prática, cada funcionalidade ganha sua branch: `login`,
   `cadastro`, `contato`, `correção-menu`… Quando fica pronta, ela retorna para a `main`."
+- **Exemplo concreto (desenhe no quadro):** imagine uma equipe de 3 pessoas no mesmo site.
+  | Pessoa | Branch | O que faz |
+  |---|---|---|
+  | Maria | `feature-login` | tela de login |
+  | João | `feature-cadastro` | formulário de cadastro |
+  | Pedro | `fix-menu` | corrige o menu quebrado |
+
+  As três trabalham ao mesmo tempo sem se atrapalhar; a `main` continua estável enquanto
+  isso. Quando cada uma termina, a branch volta para a `main`.
+- **Pergunta para a turma:** "se a Maria ainda não terminou o login, isso atrapalha o João?"
+  (Não — estão em branches separadas.) Use a resposta para reforçar o isolamento.
 - **Mensagem-chave:** uma funcionalidade, uma branch.
 
 ### Slide 6 · Boas práticas `(boas-praticas)` — ~3 min
@@ -724,6 +912,33 @@ entender que cada branch tem seu próprio conjunto de alterações.
 - **Fala sugerida:** "Vamos juntas: `git branch`, criar `feature-sobre`, trocar para ela,
   adicionar `## Sobre` ao `README`, `git add` + `git commit`, `git switch main` (some),
   voltar para `feature-sobre` (reaparece) e, por fim, `git merge feature-sobre` para integrar."
+- **Passo a passo da demo (o "sumiu/reapareceu" é o ponto alto):**
+  ```bash
+  git branch
+  # → * main            (o asterisco mostra onde você está)
+
+  git branch feature-sobre
+  git switch feature-sobre
+  # → Switched to branch 'feature-sobre'
+
+  # edite o README: adicione  ## Sobre\nProjeto do curso.  e salve
+  git add README.md
+  git commit -m "Adiciona seção Sobre ao README"
+
+  git switch main
+  # → abra o README: a seção ## Sobre SUMIU (está só na outra branch)
+
+  git switch feature-sobre
+  # → a seção ## Sobre REAPARECE
+
+  git switch main
+  git merge feature-sobre
+  # → Fast-forward  → agora a seção ## Sobre também está na main
+  ```
+- **Exemplo do atalho:** mostre `git switch -c feature-contato` (cria e já troca) para a
+  turma ver que é o mesmo resultado de `git branch` + `git switch` em um comando só.
+- **Dica de condução:** abra o `README` no editor ao lado do terminal e alterne as branches
+  duas vezes — ver o texto aparecer/sumir em tempo real é o que fixa a ideia de isolamento.
 - **Mensagem-chave:** isso só funciona porque as mudanças estavam **salvas em um commit**
   antes da troca.
 
@@ -758,6 +973,24 @@ equipes o adotam. (Sem comandos novos.)
   `README` com `## Projetos` / `Em breve...`, `git add README.md`,
   `git commit -m \"Adiciona seção de projetos\"`, `git push -u origin feature-projetos`.
   **Pare aqui** — não abra o Pull Request ainda; isso é a próxima aula."
+- **Roteiro da demo (fluxo profissional até o push):**
+  ```bash
+  git switch -c feature-projetos       # cria a branch e já troca
+  # → Switched to a new branch 'feature-projetos'
+
+  # edite o README: adicione  ## Projetos\nEm breve...  e salve
+  git add README.md
+  git commit -m "Adiciona seção de projetos"
+
+  git push -u origin feature-projetos
+  # → remote: Create a pull request for 'feature-projetos' on GitHub by visiting:
+  # → remote:   https://github.com/seu-usuario/.../pull/new/feature-projetos
+  # → branch 'feature-projetos' set up to track 'origin/feature-projetos'.
+  ```
+- **Ponto de parada (importante):** o GitHub já oferece *Compare & pull request*. Diga em voz
+  alta: "**não cliquem** — abrir o PR é a próxima aula". Deixe a branch publicada e visível.
+- **Exemplo para conectar:** atualize o GitHub e mostre o seletor de branches com `main` e
+  `feature-projetos` lado a lado — prova de que o trabalho foi entregue sem tocar na `main`.
 - **Mensagem-chave:** o fluxo até o `push` da branch já entrega o trabalho para a equipe ver.
 
 ### Slide 4 · No GitHub `(no-github)` — ~5 min
@@ -785,6 +1018,25 @@ equipes o adotam. (Sem comandos novos.)
   `## Redes Sociais` (LinkedIn, GitHub), `git add`, `git commit`,
   `git push -u origin feature-redes-sociais`, abrir o GitHub e confirmar a branch. **Não
   criem o PR ainda.**"
+- **Passo a passo da prática:**
+  ```bash
+  git switch main                      # sempre parta da main atualizada
+  git switch -c feature-redes-sociais
+
+  # edite o README:
+  #   ## Redes Sociais
+  #   - LinkedIn: /in/seu-perfil
+  #   - GitHub: /seu-usuario
+  git add README.md
+  git commit -m "Adiciona seção de redes sociais"
+
+  git push -u origin feature-redes-sociais
+  # → branch 'feature-redes-sociais' set up to track 'origin/feature-redes-sociais'.
+  ```
+- **Conferência no GitHub:** abra o repositório, clique no seletor de branches e confirme que
+  `feature-redes-sociais` aparece na lista. Pare aqui — **sem PR**.
+- **Erro comum:** esquecer o `-u origin <branch>` e o Git reclamar `no upstream branch`. A
+  primeira publicação de cada branch precisa do `-u`; depois basta `git push`.
 - **Mensagem-chave:** o objetivo desta aula é o fluxo até o envio da branch.
 
 ### Slide 8 · Encerramento `(encerramento)` — ~1 min
@@ -853,6 +1105,27 @@ compreender seu papel na colaboração. (Sem merge.)
 - **Fala sugerida:** "Vamos juntas: abrir o GitHub, selecionar a branch da aula anterior,
   *Compare & pull request*, título `Adiciona seção de redes sociais`, descrição, criar o PR
   e explorar *Conversation*, *Commits* e *Files changed*. **Não façam merge.**"
+- **Passo a passo da tela (projeção):**
+  1. Na página do repositório, clique no banner **Compare & pull request** (ou aba
+     *Pull requests* → *New pull request*).
+  2. Confira **base: `main`** ← **compare: `feature-redes-sociais`** ("levar esta branch
+     para a main").
+  3. **Título:** `Adiciona seção de redes sociais`.
+  4. **Descrição (exemplo pronto para copiar):**
+     ```markdown
+     ## O que muda
+     Adiciona a seção "Redes Sociais" no README com LinkedIn e GitHub.
+
+     ## Por que
+     Facilita que visitantes encontrem os perfis da autora.
+
+     ## Como testar
+     Abrir o README e conferir a nova seção no final.
+     ```
+  5. **Create pull request** (ou *Create draft* — slide 4).
+- **Explore as abas:** *Conversation* (a discussão), *Commits* (o commit da branch) e
+  *Files changed* (o `+`/`-` em verde/vermelho — o mesmo `git diff` da Aula 5, agora no
+  navegador). **Não cliquem em Merge.**
 - **Mensagem-chave:** o PR permanece aberto até alguém aprovar e fazer o merge.
 
 ### Slide 9 · Encerramento `(encerramento)` — ~1 min
@@ -897,6 +1170,19 @@ na main.)
   `git switch faq-horarios` entra na branch do PR para você ler o texto de perto. Se quiser
   garantir que a branch continua funcionando junto com a `main`, rode `git merge main` — e,
   se as duas mexeram na mesma linha, aparece um conflito (que resolvemos como na Aula 15)."
+- **Passo a passo da revisão local:**
+  ```bash
+  git fetch origin
+  # → * [new branch]      faq-horarios -> origin/faq-horarios
+
+  git switch faq-horarios
+  # → Switched to a new branch 'faq-horarios'  (agora você lê o código da colega)
+
+  git merge main          # opcional: confere se a branch segue compatível com a main
+  # → Already up to date.   (ou CONFLICT, se mexeram na mesma linha)
+  ```
+- **Exemplo de condução:** abra o arquivo do PR no VS Code e leia um trecho em voz alta,
+  mostrando que revisar localmente permite testar e navegar, não só ler o diff.
 - **Quebrando o comando:** `git fetch origin` (baixa novidades sem juntar) · `git switch
   <branch>` (entra na branch do PR) · `git merge main` (traz a main para dentro da branch).
 - **Atalho:** com o GitHub CLI, `gh pr checkout <número>` faz o fetch + switch de uma vez.
@@ -934,6 +1220,18 @@ na main.)
   Adicione pelo menos um comentário positivo e uma sugestão de melhoria — por exemplo,
   'Gostei da organização desta seção' e 'Que tal detalhar um pouco mais esta descrição?'.
   Mostrem que quem abriu o PR pode responder, virando uma conversa técnica."
+- **Roteiro do exercício (passo a passo):**
+  1. Abra o PR da colega → aba **Files changed**.
+  2. Passe o mouse sobre uma linha → clique no ícone **+** azul → escreva o comentário.
+  3. Envie um **elogio** e uma **sugestão**. Exemplos prontos:
+     - Elogio: *"Excelente organização do FAQ, ficou fácil de ler."*
+     - Sugestão: *"Que tal incluir o horário de atendimento também no sábado?"*
+     - Pergunta: *"Esse link está atualizado? Achei que apontava para outra página."*
+  4. Finalize em **Review changes** escolhendo **Comment** (sem aprovar/barrar nesta
+     prática).
+  5. Quem abriu o PR **responde** cada comentário, transformando em conversa.
+- **Regra do exercício:** comece sempre pelo elogio; a sugestão vem depois. Reforça que
+  review é colaboração, não julgamento.
 - **Mensagem-chave:** uma sugestão não quer dizer que o código está 'errado' — muitas vezes
   há mais de uma solução correta.
 
@@ -1007,6 +1305,21 @@ o que acontece depois e aplicar boas práticas.
   request*, *Confirm merge*, *Delete branch*; depois no VS Code `git switch main` e
   `git pull origin main`, confirmando o `README` atualizado. Comparem a `main` no GitHub e
   no local: ficam diferentes até o `git pull`."
+- **Passo a passo (metade no GitHub, metade no terminal):**
+  1. No PR, confirme o selo verde **Able to merge** (sem conflitos).
+  2. **Merge pull request** → **Confirm merge** → o PR fica roxo com *Merged*.
+  3. **Delete branch** (a funcionalidade já está na `main`; a branch não é mais necessária).
+  4. Volte ao VS Code e sincronize o local:
+  ```bash
+  git switch main
+  git pull origin main
+  # → Updating 9c1b2a4..a3f7d8e
+  # → Fast-forward
+  # →  README.md | 2 ++
+  ```
+- **Exemplo do "local desatualizado":** antes do `git pull`, abra o `README` local e mostre
+  que a seção nova **ainda não está lá**; depois do `pull`, ela aparece. É o momento que fixa
+  por que o `pull` faz parte da rotina diária.
 - **Mensagem-chave:** apagar a branch após o merge não apaga a funcionalidade.
 
 ### Slide 9 · Encerramento `(encerramento)` — ~2 min
@@ -1046,6 +1359,23 @@ integração.
   e `git commit -am \"Atualiza contato\"`. Volte com `git switch main`, edite a **mesma**
   linha diferente e `git commit -am \"Ajusta contato\"`. Agora `git merge atualiza-contato`
   → o Git avisa `CONFLICT`."
+- **Roteiro para gerar o conflito (rode exatamente nesta ordem):**
+  ```bash
+  git switch -c atualiza-contato
+  # no contato.md, mude a linha de contato para:  E-mail: contato@comunidade.dev
+  git commit -am "Atualiza contato"
+
+  git switch main
+  # no contato.md, mude a MESMA linha para:  E-mail: ola@comunidade.dev
+  git commit -am "Ajusta contato"
+
+  git merge atualiza-contato
+  # → Auto-merging contato.md
+  # → CONFLICT (content): Merge conflict in contato.md
+  # → Automatic merge failed; fix conflicts and then commit the result.
+  ```
+- **Dica de condução:** avise a turma que ver `CONFLICT` é o **objetivo** aqui, não um
+  fracasso. É exatamente o que queríamos provocar para praticar a resolução no próximo slide.
 - **Quebrando o comando:** `git commit -am \"...\"` junta `add` + `commit` dos arquivos já
   rastreados · `git merge atualiza-contato` tenta trazer a branch e é aí que o conflito surge.
 - **Mensagem-chave:** dá para criar e resolver um conflito sozinha, sem equipe e sem GitHub.
@@ -1078,6 +1408,28 @@ integração.
   `contato.md`, voltar para a `main`, alterar a **mesma** linha, tentar o merge, ler os
   marcadores (identifiquem o que é da `main` e o que é da branch), resolver no VS Code e
   finalizar com commit."
+- **Exemplo dos marcadores (o que a turma vai ver no `contato.md`):**
+  ```text
+  <<<<<<< HEAD
+  E-mail: ola@comunidade.dev          (versão da main — onde você está)
+  =======
+  E-mail: contato@comunidade.dev      (versão que chega da branch atualiza-contato)
+  >>>>>>> atualiza-contato
+  ```
+- **Resolução passo a passo:**
+  ```bash
+  # 1. No VS Code, clique em Accept Current / Accept Incoming / Accept Both,
+  #    ou edite à mão deixando só a linha final desejada (sem os marcadores <<< === >>>)
+
+  git status
+  # → both modified:   contato.md   (ainda em conflito até você preparar)
+
+  git add contato.md
+  git commit -m "Resolve conflito de merge no contato"
+  # → conflito resolvido e integrado
+  ```
+- **Saída de emergência:** se alguém travar, `git merge --abort` desfaz o merge e volta ao
+  estado anterior — nada se perde. Mostre esse comando para dissolver o medo antes da prática.
 - **Mensagem-chave:** pense na melhor solução antes de clicar — nem sempre uma opção pronta
   basta.
 
@@ -1122,6 +1474,31 @@ participar de Code Review, fazer merge e trabalhar em equipe. (Aula prática.)
   **Draft PR**, marcar **Ready for review**, revisar, merge e depois `git switch main` +
   `git pull origin main`. Para fechar, `git log --oneline --graph` para ver toda a história
   do projeto desenhada como uma árvore."
+- **Roteiro completo da demo (o ciclo inteiro em uma passada):**
+  ```bash
+  git switch main && git pull origin main   # sempre partir da main atualizada
+  git switch -c feature-faq
+
+  # edite o faq.md acrescentando uma pergunta/resposta e salve
+  git add faq.md
+  git commit -m "Adiciona pergunta ao FAQ"
+  git push -u origin feature-faq
+
+  # No GitHub: Compare & pull request → Create DRAFT pull request
+  #            depois clique em "Ready for review" → revise → Merge → Confirm merge
+
+  git switch main
+  git pull origin main                      # traz a funcionalidade integrada
+
+  git log --oneline --graph
+  # → *   e5f6a7b Merge pull request #1 from .../feature-faq
+  # → |\
+  # → | * a3f7d8e Adiciona pergunta ao FAQ
+  # → |/
+  # → * 9c1b2a4 Cria manual da comunidade
+  ```
+- **Feche mostrando o `--graph`:** aponte a branch "nascendo" da `main` e voltando no commit
+  de merge. É a mesma navegação da Aula 5, agora com várias linhas do tempo visíveis juntas.
 - **Mensagem-chave:** o fluxo do início ao fim, uma vez, para servir de modelo.
 
 ### Slide 5 · Materiais para praticar `(materiais)` — ~4 min
@@ -1139,6 +1516,27 @@ participar de Code Review, fazer merge e trabalhar em equipe. (Aula prática.)
   (`git fetch` + `git switch`), resolvendo um conflito se aparecer, e enviar um retorno
   (Approve / Request changes); 8) após aprovação, merge; 9) todas atualizam a `main`.
   Estudando sozinha? Repita o fluxo com duas branches e dois PRs, revisando manualmente."
+- **Roteiro de cada participante (cole no quadro para a turma seguir):**
+  ```bash
+  git switch main && git pull origin main   # 1. partir da main atualizada
+  git switch -c faq-horarios                # 2. sua branch (nome do seu arquivo/tarefa)
+  # 3. edite o SEU arquivo .md (sobre.md, faq.md, contato.md, codigo-de-conduta.md)
+  git add .                                 # 4. preparar
+  git commit -m "Atualiza seção de horários no FAQ"
+  git push -u origin faq-horarios           # 5. publicar a branch
+  # 6. GitHub: Draft PR → Ready for review
+  # 7. revisar a colega:
+  git fetch origin
+  git switch <branch-da-colega>             #    ler/testar localmente
+  # 8. após Approve: Merge no GitHub
+  git switch main && git pull origin main   # 9. todas sincronizam a main
+  ```
+- **Divisão de papéis (exemplo para 4 pessoas):** cada uma fica com um arquivo — `sobre.md`,
+  `faq.md`, `contato.md`, `codigo-de-conduta.md` — e todas revisam o PR de pelo menos uma
+  colega. Assim ninguém mexe no mesmo arquivo por acaso, mas todas praticam PR + review.
+- **Conflito proposital (opcional):** peça a duas pessoas para editarem a **mesma linha** de
+  um arquivo comum (ex.: o `README`); no segundo merge o conflito aparece e o grupo resolve
+  junto, aplicando a Aula 15.
 - **Mensagem-chave:** o importante é executar **todas** as etapas.
 
 ### Slide 7 · Checklist final `(checklist)` — ~5 min
