@@ -37,14 +37,9 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           Imagine dez pessoas alterando os mesmos arquivos ao mesmo tempo. É justamente para resolver isso
-          que existem as branches. (Nenhum comando nesta aula — foco no conceito.)
+          que existem as branches: linhas de trabalho paralelas que não interferem umas nas outras. (Nenhum
+          comando nesta aula — foco no conceito.)
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o conceito de branch.</li>
-          <li><span className="obj-num">2</span> Compreender por que equipes usam branches.</li>
-          <li><span className="obj-num">3</span> Identificar a branch principal do projeto.</li>
-          <li><span className="obj-num">4</span> Visualizar funcionalidades desenvolvidas em paralelo.</li>
-        </ul>
       </div>
     ),
   },

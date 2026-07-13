@@ -15,14 +15,9 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           A funcionalidade está no GitHub, mas ainda não faz parte da main. Como ela chega lá? Antes de
-          integrar, alguém precisa revisar. É para isso que existe o Pull Request.
+          integrar, alguém precisa revisar — e é exatamente isso que um Pull Request organiza: um pedido de
+          revisão antes de juntar o código.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o que é um Pull Request (PR).</li>
-          <li><span className="obj-num">2</span> Identificar quando um PR deve ser criado.</li>
-          <li><span className="obj-num">3</span> Abrir um Pull Request no GitHub.</li>
-          <li><span className="obj-num">4</span> Compreender o papel do PR na colaboração.</li>
-        </ul>
       </div>
     ),
   },
@@ -76,6 +71,32 @@ const slides: DeckSlide[] = [
     ),
   },
   {
+    id: 'draft',
+    label: 'Draft PR',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">📝 Rascunho primeiro</span>
+        <h2 className="slide-title">Comece com um Draft Pull Request</h2>
+        <div className="pr-mock" style={{ maxWidth: 560 }}>
+          <div className="pr-head">
+            <span className="pr-badge" style={{ background: '#6b7280' }}>📝 Draft</span>
+            <span className="pr-title">Adiciona seção de projetos</span>
+          </div>
+          <div className="pr-body">Rascunho = trabalho em andamento. Ninguém é chamado para revisar ainda, e você continua commitando à vontade.</div>
+        </div>
+        <div className="pr-branchflow" style={{ justifyContent: 'center' }}>
+          <span className="chip">📝 Draft</span>
+          <span>→</span>
+          <span className="chip base">✅ Ready for review</span>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>Ao terminar, clique em <strong>Ready for review</strong>: o PR vira oficial e aí sim você pede a revisão.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: 'pagina',
     label: 'Página do PR',
     render: () => (
@@ -92,7 +113,7 @@ const slides: DeckSlide[] = [
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>O PR reúne <strong>tudo o que é preciso para revisar</strong> uma alteração — inclusive o que foi adicionado e removido.</span>
+          <span>O PR reúne <strong>tudo o que é preciso para revisar</strong> — o mesmo <span className="mono">+</span>/<span className="mono">-</span> do <span className="mono">git diff</span> (Aula 5), agora direto no navegador.</span>
         </div>
       </div>
     ),

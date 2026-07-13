@@ -14,15 +14,9 @@ const slides: DeckSlide[] = [
           Instalação e <span className="accent">configuração inicial</span> do Git
         </h1>
         <p className="slide-sub">
-          Vamos preparar o computador para usar o Git. É um processo simples e você só precisa fazer isso
-          uma vez.
+          Vamos preparar o computador para usar o Git: instalar, conferir a instalação e configurar seu nome
+          e e-mail. É um processo simples e você só precisa fazer isso uma vez.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Instalar o Git no seu computador.</li>
-          <li><span className="obj-num">2</span> Verificar se a instalação foi concluída corretamente.</li>
-          <li><span className="obj-num">3</span> Configurar seu nome e e-mail.</li>
-          <li><span className="obj-num">4</span> Entender por que essas informações são importantes.</li>
-        </ul>
       </div>
     ),
   },

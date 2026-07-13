@@ -14,15 +14,9 @@ const slides: DeckSlide[] = [
           Fluxo de trabalho com <span className="accent">Feature Branch</span>
         </h1>
         <p className="slide-sub">
-          Quando devo criar uma branch? E o que faço depois? Esta aula responde exatamente isso. (Sem
-          comandos novos — foco no processo.)
+          Quando devo criar uma branch? E o que faço depois? Esta aula responde exatamente isso, ligando
+          todas as etapas do início até o envio para revisão. (Sem comandos novos — foco no processo.)
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o fluxo baseado em feature branches.</li>
-          <li><span className="obj-num">2</span> Conhecer as etapas do início ao envio para revisão.</li>
-          <li><span className="obj-num">3</span> Aplicar o fluxo com os comandos já aprendidos.</li>
-          <li><span className="obj-num">4</span> Compreender por que equipes usam esse modelo.</li>
-        </ul>
       </div>
     ),
   },

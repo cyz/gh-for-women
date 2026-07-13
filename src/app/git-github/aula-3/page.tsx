@@ -14,15 +14,9 @@ const slides: DeckSlide[] = [
           Criando seu primeiro repositório <span className="accent">(git init)</span>
         </h1>
         <p className="slide-sub">
-          Antes do Git, uma pasta é só uma pasta. Depois do Git, ela passa a registrar todo o histórico das
-          alterações.
+          Antes do Git, uma pasta é só uma pasta. Depois do <span className="mono">git init</span>, ela passa
+          a registrar todo o histórico das alterações.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o que é um repositório Git.</li>
-          <li><span className="obj-num">2</span> Criar um repositório local com <span className="mono">git init</span>.</li>
-          <li><span className="obj-num">3</span> Identificar a pasta oculta <span className="mono">.git</span>.</li>
-          <li><span className="obj-num">4</span> Diferenciar uma pasta comum de um projeto versionado.</li>
-        </ul>
       </div>
     ),
   },

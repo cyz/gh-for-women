@@ -754,6 +754,32 @@
   border-radius: 5px;
 }
 
+/* ── Links de download (materiais de prática) ───── */
+.deck-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+  max-width: 760px;
+}
+.deck-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #14141f 0%, #0c0c14 100%);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  color: #cfe0ff;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.deck-download:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.deck-download .dl-ico { font-size: 20px; }
+
 /* ── Responsivo ─────────────────────────────────── */
 @media (max-width: 820px) {
   .deck-slide { padding: 64px 18px 92px; }
@@ -765,4 +791,29 @@
   .stage-flow { flex-direction: column; align-items: stretch; }
   .stage-arrow { flex-direction: row; padding: 4px 0; }
   .stage-arrow > span:last-child { transform: rotate(90deg); }
+}
+
+/* ── Exportação para PDF / impressão ────────────── */
+@media print {
+  @page { margin: 0; }
+  html, body { background: #08080c; margin: 0; padding: 0; }
+  .deck-shell { height: auto; margin-top: 0; overflow: visible; }
+  .deck-stage { height: auto; display: block; overflow: visible; cursor: default; }
+  .deck-back, .deck-nav-prev, .deck-nav-next, .deck-dots, .deck-counter { display: none !important; }
+  .deck-slide {
+    position: relative;
+    inset: auto;
+    opacity: 1 !important;
+    pointer-events: auto;
+    box-sizing: border-box;
+    height: 100vh;
+    min-height: 100vh;
+    padding: 44px 40px;
+    overflow: hidden;
+    break-after: page;
+    page-break-after: always;
+  }
+  .deck-slide:last-child { break-after: auto; page-break-after: auto; }
+  .deck-slide-inner { cursor: default; }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }

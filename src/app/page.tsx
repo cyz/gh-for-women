@@ -34,7 +34,7 @@ const modules: { kicker: string; title: string; sub: string; cls: string; lesson
     lessons: [
       { n: 6, title: 'Criando seu primeiro repositório no GitHub', desc: 'A diferença entre repositório local e remoto, e como criar um.', dur: '~35 min' },
       { n: 7, title: 'Conectando seu projeto ao GitHub (remote e push)', desc: 'Ligar o projeto local ao GitHub e publicar pela primeira vez.', dur: '~35 min' },
-      { n: 8, title: 'Prática guiada: publicando um projeto do zero', desc: 'Todo o fluxo, do git init ao git push, em uma prática completa.', dur: '~50 min' },
+      { n: 8, title: 'Prática guiada: publicando um projeto do zero', desc: 'Publicar um projeto de documentação (só markdown) do git init ao git push. Guia autoguiado para download.', dur: '~50 min' },
     ],
   },
   {
@@ -44,13 +44,13 @@ const modules: { kicker: string; title: string; sub: string; cls: string; lesson
     cls: 'm3',
     lessons: [
       { n: 9, title: 'O que é uma branch e por que ela existe', desc: 'Linhas independentes de desenvolvimento sem afetar a versão principal.', dur: '~30 min' },
-      { n: 10, title: 'Criando e trocando branches', desc: 'Criar, alternar e entender que cada branch tem seu próprio histórico.', dur: '~45 min' },
+      { n: 10, title: 'Criando e trocando branches', desc: 'Criar, alternar, integrar com merge local e entender o histórico de cada branch.', dur: '~45 min' },
       { n: 11, title: 'Fluxo de trabalho com Feature Branch', desc: 'O processo usado por equipes: da branch ao envio para revisão.', dur: '~40 min' },
-      { n: 12, title: 'Pull Request: solicitando a integração', desc: 'Abrir um PR para que sua alteração seja analisada antes do merge.', dur: '~40 min' },
-      { n: 13, title: 'Code Review: revisando alterações em um PR', desc: 'Navegar pelas mudanças e comentar de forma construtiva.', dur: '~45 min' },
-      { n: 14, title: 'Merge: integrando uma funcionalidade', desc: 'Levar o trabalho da branch para a main pelo GitHub.', dur: '~45 min' },
-      { n: 15, title: 'Resolvendo conflitos de merge', desc: 'Entender por que conflitos acontecem e resolvê-los no VS Code.', dur: '~45 min' },
-      { n: 16, title: 'Projeto final: fluxo completo de colaboração', desc: 'Unir tudo em um fluxo de equipe, da branch ao merge.', dur: '~60 min' },
+      { n: 12, title: 'Pull Request: solicitando a integração', desc: 'Abrir um PR, começando por um rascunho (draft), para revisão antes do merge.', dur: '~40 min' },
+      { n: 13, title: 'Code Review: revisando alterações em um PR', desc: 'Revisar as mudanças no GitHub e localmente, resolver conflitos e enviar um retorno.', dur: '~45 min' },
+      { n: 14, title: 'Merge: integrando uma funcionalidade', desc: 'Integrar a branch à main, localmente ou pelo GitHub, e ler o histórico em árvore.', dur: '~45 min' },
+      { n: 15, title: 'Resolvendo conflitos de merge', desc: 'Provocar e resolver um conflito no seu próprio repositório, no VS Code.', dur: '~45 min' },
+      { n: 16, title: 'Projeto final: fluxo completo de colaboração', desc: 'Fluxo completo em grupo com Pull Requests no manual de documentação. Guia para download.', dur: '~60 min' },
     ],
   },
 ];

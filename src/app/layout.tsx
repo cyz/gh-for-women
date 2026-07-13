@@ -3,7 +3,7 @@ import './globals.css';
 import { LanguageProvider } from '@/components/LanguageContext';
 
 export const metadata: Metadata = {
-  title: 'GitHub Copilot Learning Hub',
+  title: 'GitHub for Women',
   description: 'A dedicated enablement space to accelerate your transition to agentic development.',
 };
 

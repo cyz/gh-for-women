@@ -15,14 +15,8 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           A partir de agora você começa a trabalhar como equipes profissionais: criando áreas de trabalho
-          isoladas para cada funcionalidade.
+          isoladas para cada funcionalidade e alternando entre elas com segurança.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Identificar a branch atual do projeto.</li>
-          <li><span className="obj-num">2</span> Criar uma nova branch.</li>
-          <li><span className="obj-num">3</span> Alternar entre diferentes branches.</li>
-          <li><span className="obj-num">4</span> Entender que cada branch tem seu próprio conjunto de alterações.</li>
-        </ul>
       </div>
     ),
   },
@@ -92,9 +86,10 @@ const slides: DeckSlide[] = [
             <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">atalho: criar + trocar</span></div>
             <div className="deck-term-body">
               <span className="cmd">git switch <span className="flag">-c</span> feature-sobre</span>
-              <span className="comment"># cria a branch E já muda para ela — o mais usado no dia a dia</span>
+              <span className="comment"># -c é abreviação de --create (cria a branch E já muda para ela)</span>
             </div>
           </div>
+          <p className="hint">💡 <span className="mono">git switch -</span> volta rapidinho para a última branch onde você estava.</p>
           <p className="hint">💡 Em tutoriais antigos você verá <span className="mono">git checkout</span> — hoje prefira <span className="mono">git switch</span>.</p>
         </div>
         {step < 1 && <p className="hint">Avance para o atalho criar + trocar →</p>}
@@ -121,6 +116,50 @@ const slides: DeckSlide[] = [
         <div className="key-msg">
           <span className="key-icon">🔑</span>
           <span>Cada branch tem <strong>seu próprio histórico e suas próprias alterações</strong>.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'ponteiro',
+    label: 'Branch = ponteiro',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">🎯 Branch = ponteiro</span>
+        <h2 className="slide-title">O que é uma branch, por dentro</h2>
+        <div className="timeline">
+          <div className="tl-node is-start"><div className="tl-dot">1</div><span className="tl-label">commit</span></div>
+          <div className="tl-connector" />
+          <div className="tl-node"><div className="tl-dot">2</div><span className="tl-label">commit</span><span className="tl-sub">⭐ main</span></div>
+          <div className="tl-connector" />
+          <div className="tl-node is-final"><div className="tl-dot">3</div><span className="tl-label">commit</span><span className="tl-sub">🌿 feature · 📍 HEAD</span></div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>Uma branch é só um <strong>marcador que aponta para um commit</strong>. Ao trocar de branch, o <span className="mono">HEAD</span> (Aula 5) se move junto — por isso os arquivos mudam.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'merge-local',
+    label: 'Merge local',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">🔗 Merge local</span>
+        <h2 className="slide-title">Trazendo a branch de volta para a main</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — juntar no seu computador</span></div>
+          <div className="deck-term-body">
+            <span className="comment"># terminei o contato.md na branch feature-contato</span>
+            <span className="cmd">git switch main</span>
+            <span className="cmd">git merge feature-contato</span>
+            <span className="out ok">Fast-forward · contato.md atualizado na main</span>
+          </div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>Você <strong>não precisa do GitHub</strong> para integrar: <span className="mono">git merge</span> junta a branch na <span className="mono">main</span> ali mesmo, no seu repositório.</span>
         </div>
       </div>
     ),

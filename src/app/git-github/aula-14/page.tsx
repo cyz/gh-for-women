@@ -15,14 +15,8 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           Desenvolvemos em uma branch, abrimos o PR e revisamos. Agora chegou a hora de integrar o trabalho à
-          branch principal.
+          branch principal e ver as duas linhas do tempo virarem uma só.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o que é um merge.</li>
-          <li><span className="obj-num">2</span> Integrar uma branch à <span className="mono">main</span> pelo GitHub.</li>
-          <li><span className="obj-num">3</span> Compreender o que acontece após o merge.</li>
-          <li><span className="obj-num">4</span> Aplicar boas práticas antes e depois de integrar.</li>
-        </ul>
       </div>
     ),
   },
@@ -73,6 +67,7 @@ const slides: DeckSlide[] = [
           <span className="key-icon">🎉</span>
           <span>A funcionalidade agora faz parte da <span className="mono">main</span>!</span>
         </div>
+        <p className="hint">💡 Dá para integrar localmente com <span className="mono">git merge</span> (Aula 10). Pelo GitHub é melhor em equipe, porque passa pela revisão do Pull Request.</p>
       </div>
     ),
   },
@@ -114,6 +109,31 @@ const slides: DeckSlide[] = [
           </div>
         </div>
         <p className="slide-sub"><span className="mono">git pull</span> traz para o local o que foi integrado no GitHub.</p>
+      </div>
+    ),
+  },
+  {
+    id: 'graph',
+    label: 'Ver a história',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">🌳 Ver a história</span>
+        <h2 className="slide-title">O merge no histórico</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — histórico em árvore</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git log <span className="flag">--oneline</span> <span className="flag">--graph</span></span>
+            <span className="out">*   e4a1b2c Merge da feature-projetos</span>
+            <span className="out">|\</span>
+            <span className="out">| * 7c3d9f0 Adiciona seção de projetos</span>
+            <span className="out">|/</span>
+            <span className="out">* a3f7d8e Atualiza README</span>
+          </div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>O <span className="mono">--graph</span> desenha o histórico como uma árvore: dá para ver a feature nascer e voltar para a <span className="mono">main</span>.</span>
+        </div>
       </div>
     ),
   },

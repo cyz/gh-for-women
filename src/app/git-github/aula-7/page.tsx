@@ -14,15 +14,10 @@ const slides: DeckSlide[] = [
           Conectando seu projeto ao GitHub <span className="accent">(remote e push)</span>
         </h1>
         <p className="slide-sub">
-          Criamos um repositório no GitHub, mas ele continua vazio. Hoje vamos ligar os dois e publicar o
-          projeto pela primeira vez.
+          Criamos um repositório no GitHub, mas ele continua vazio. Hoje vamos ligar o projeto do computador
+          ao GitHub com <span className="mono">git remote add</span> e publicá-lo pela primeira vez com{' '}
+          <span className="mono">git push</span>.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o que é um repositório remoto.</li>
-          <li><span className="obj-num">2</span> Conectar o repositório local ao GitHub com <span className="mono">git remote add</span>.</li>
-          <li><span className="obj-num">3</span> Publicar o projeto com <span className="mono">git push</span>.</li>
-          <li><span className="obj-num">4</span> Confirmar que os arquivos foram enviados.</li>
-        </ul>
       </div>
     ),
   },
@@ -101,7 +96,9 @@ const slides: DeckSlide[] = [
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — enviar para o GitHub</span></div>
           <div className="deck-term-body">
             <span className="cmd">git push <span className="flag">-u</span> origin main</span>
+            <span className="comment"># -u é abreviação de --set-upstream (define o destino padrão da branch)</span>
             <span className="comment"># push → enviar · origin → qual remoto · main → qual branch</span>
+            <span className="comment"># com o -u, das próximas vezes basta rodar: git push</span>
             <span className="out ok">✔ Atualize o navegador: README.md e todo o projeto aparecem!</span>
           </div>
         </div>

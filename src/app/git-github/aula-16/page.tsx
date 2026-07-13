@@ -14,15 +14,9 @@ const slides: DeckSlide[] = [
           Projeto final: <span className="accent">fluxo completo de colaboração</span>
         </h1>
         <p className="slide-sub">
-          Parabéns por chegar até aqui! Hoje unimos tudo em um projeto colaborativo, como acontece em
-          equipes de desenvolvimento.
+          Parabéns por chegar até aqui! Hoje unimos tudo em um projeto colaborativo, do primeiro commit ao
+          merge, exatamente como acontece em equipes de desenvolvimento.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Aplicar todo o fluxo aprendido no curso.</li>
-          <li><span className="obj-num">2</span> Colaborar usando branches e Pull Requests.</li>
-          <li><span className="obj-num">3</span> Participar de um Code Review e fazer merge.</li>
-          <li><span className="obj-num">4</span> Trabalhar em equipe com Git e GitHub.</li>
-        </ul>
       </div>
     ),
   },
@@ -50,13 +44,13 @@ const slides: DeckSlide[] = [
     render: () => (
       <div className="slide-pad">
         <span className="slide-kicker s-green">🎬 Cenário</span>
-        <h2 className="slide-title">Um site institucional em equipe</h2>
-        <p className="slide-sub">Cada participante fica responsável por uma seção — todos no mesmo repositório.</p>
+        <h2 className="slide-title">Um manual de comunidade em equipe</h2>
+        <p className="slide-sub">Cada participante fica responsável por um arquivo — todas no mesmo repositório.</p>
         <div className="cap-grid" style={{ maxWidth: 820 }}>
-          <div className="cap-card"><div className="cap-ico">ℹ️</div><h4>Sobre</h4><p>Pessoa A</p></div>
-          <div className="cap-card"><div className="cap-ico">📁</div><h4>Projetos</h4><p>Pessoa B</p></div>
-          <div className="cap-card"><div className="cap-ico">✉️</div><h4>Contato</h4><p>Pessoa C</p></div>
-          <div className="cap-card"><div className="cap-ico">🧰</div><h4>Tecnologias</h4><p>Pessoa D</p></div>
+          <div className="cap-card"><div className="cap-ico">ℹ️</div><h4>sobre.md</h4><p>Pessoa A</p></div>
+          <div className="cap-card"><div className="cap-ico">❓</div><h4>faq.md</h4><p>Pessoa B</p></div>
+          <div className="cap-card"><div className="cap-ico">✉️</div><h4>contato.md</h4><p>Pessoa C</p></div>
+          <div className="cap-card"><div className="cap-ico">📜</div><h4>codigo-de-conduta.md</h4><p>Pessoa D</p></div>
         </div>
       </div>
     ),
@@ -72,14 +66,37 @@ const slides: DeckSlide[] = [
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — feature-faq</span></div>
           <div className="deck-term-body">
             <span className="cmd">git switch <span className="flag">-c</span> feature-faq</span>
-            <span className="comment"># edita o README: adiciona a seção FAQ</span>
-            <span className="cmd">git add README.md</span>
-            <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Adiciona seção FAQ&quot;</span></span>
+            <span className="comment"># edita o faq.md: adiciona uma pergunta</span>
+            <span className="cmd">git add faq.md</span>
+            <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Adiciona pergunta ao FAQ&quot;</span></span>
             <span className="cmd">git push <span className="flag">-u</span> origin feature-faq</span>
-            <span className="comment"># abrir PR → revisar → merge</span>
+            <span className="comment"># Draft PR → Ready for review → revisar → merge</span>
             <span className="cmd">git switch main</span>
             <span className="cmd">git pull origin main</span>
+            <span className="comment"># veja a história completa: git log --oneline --graph</span>
           </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'materiais',
+    label: 'Materiais para praticar',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">📦 Materiais para praticar</span>
+        <h2 className="slide-title">Guia de grupo, sem gravação</h2>
+        <p className="slide-sub">
+          Baixe o guia detalhado da prática em grupo (com papéis, Draft PR, revisão local e um conflito
+          proposital) e o projeto-base de documentação.
+        </p>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/guia-aula-16-pr-em-grupo.md" download>
+            <span className="dl-ico">📄</span> Guia · Fluxo completo em grupo
+          </a>
+          <a className="deck-download" href="/downloads/manual-comunidade/README.md" download>
+            <span className="dl-ico">📁</span> Projeto-base · Manual da Comunidade
+          </a>
         </div>
       </div>
     ),
@@ -93,11 +110,11 @@ const slides: DeckSlide[] = [
         <h2 className="slide-title">Cada participante executa</h2>
         <ol className="flow-list">
           <li><span className="flow-n">1</span> <code>git pull</code> na main e criar sua branch</li>
-          <li><span className="flow-n">2</span> Editar o README + <code>commit</code> + <code>push</code></li>
-          <li><span className="flow-n">3</span> Abrir um Pull Request</li>
-          <li><span className="flow-n">4</span> Revisar o PR de um colega (elogio + sugestão)</li>
+          <li><span className="flow-n">2</span> Editar seu arquivo <code>.md</code> + <code>commit</code> + <code>push</code></li>
+          <li><span className="flow-n">3</span> Abrir um <strong>Draft PR</strong> → <strong>Ready for review</strong></li>
+          <li><span className="flow-n">4</span> Revisar o PR de uma colega localmente (elogio + sugestão)</li>
           <li><span className="flow-n">5</span> Após aprovação, fazer o merge</li>
-          <li><span className="flow-n">6</span> Todos atualizam a main com <code>git pull</code></li>
+          <li><span className="flow-n">6</span> Todas atualizam a main com <code>git pull</code></li>
         </ol>
       </div>
     ),

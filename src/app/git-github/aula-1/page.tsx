@@ -16,14 +16,8 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           Antes de qualquer comando, vamos entender a ideia por trás do controle de versões — a base de
-          tudo o que faremos no curso.
+          tudo o que faremos no curso, e por que o Git virou padrão da indústria.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o que é versionamento de código.</li>
-          <li><span className="obj-num">2</span> Reconhecer os problemas de trabalhar sem controle de versão.</li>
-          <li><span className="obj-num">3</span> Compreender por que o Git foi criado.</li>
-          <li><span className="obj-num">4</span> Identificar os principais benefícios do Git em projetos de software.</li>
-        </ul>
         <p className="hint">Use as setas ← → (ou clique na tela) para navegar</p>
       </div>
     ),

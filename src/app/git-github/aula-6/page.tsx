@@ -15,14 +15,9 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           Até agora tudo ficou no computador. E se ele apresentar um problema, ou você precisar compartilhar
-          o projeto? É aqui que entra o GitHub.
+          o projeto? É aqui que entra o GitHub: a nuvem onde vamos hospedar o repositório e, mais adiante,
+          colaborar com outras pessoas.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender a diferença entre repositório local e remoto.</li>
-          <li><span className="obj-num">2</span> Criar uma conta no GitHub.</li>
-          <li><span className="obj-num">3</span> Criar seu primeiro repositório no GitHub.</li>
-          <li><span className="obj-num">4</span> Identificar as principais informações da página do repositório.</li>
-        </ul>
       </div>
     ),
   },
@@ -115,6 +110,27 @@ const slides: DeckSlide[] = [
         <div className="key-msg">
           <span className="key-icon">🔑</span>
           <span>Criar um repositório no GitHub <strong>não envia automaticamente</strong> os arquivos do seu computador.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'tour-repo',
+    label: 'A página do repositório',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">🧭 A página do repositório</span>
+        <h2 className="slide-title">A tela que aparece depois de criar</h2>
+        <div className="pr-mock" style={{ maxWidth: 620 }}>
+          <div className="pr-head"><span className="pr-title">Quick setup — meu-primeiro-projeto</span></div>
+          <div className="pr-body">
+            <p style={{ marginBottom: 10 }}>🔗 <span className="mono" style={{ color: '#93c5fd' }}>https://github.com/voce/meu-primeiro-projeto.git</span></p>
+            <p>É esta URL que vamos usar para conectar o projeto do computador ao GitHub.</p>
+          </div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>O repositório vazio já mostra a <strong>URL</strong> e as instruções para enviar o código — usaremos isso na próxima aula.</span>
         </div>
       </div>
     ),

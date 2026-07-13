@@ -14,14 +14,9 @@ const slides: DeckSlide[] = [
           Prática guiada: <span className="accent">publicando um projeto do zero</span>
         </h1>
         <p className="slide-sub">
-          Sem comandos novos: hoje juntamos tudo o que aprendemos em um único fluxo, do início ao fim.
+          Sem comandos novos: hoje publicamos, do zero ao GitHub, um projeto de <strong>documentação</strong>
+          feito só com arquivos Markdown — o <span className="mono">Manual da Comunidade</span>.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Criar um projeto e inicializar o Git.</li>
-          <li><span className="obj-num">2</span> Registrar alterações com commits.</li>
-          <li><span className="obj-num">3</span> Criar um repositório no GitHub e conectar o local ao remoto.</li>
-          <li><span className="obj-num">4</span> Publicar usando todo o fluxo aprendido.</li>
-        </ul>
       </div>
     ),
   },
@@ -33,7 +28,7 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker">🗺️ Fluxo completo</span>
         <h2 className="slide-title">A ordem que um dev usa no dia a dia</h2>
         <ol className="flow-list">
-          <li><span className="flow-n">1</span> Criar projeto + <code>README.md</code></li>
+          <li><span className="flow-n">1</span> Criar o Manual da Comunidade (<code>README.md</code> + seções)</li>
           <li><span className="flow-n">2</span> <code>git init</code></li>
           <li><span className="flow-n">3</span> <code>git status</code> → <code>git add</code> → <code>git commit</code></li>
           <li><span className="flow-n">4</span> Criar repositório no GitHub</li>
@@ -51,12 +46,12 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-purple">▶️ Demonstração</span>
         <h2 className="slide-title">Do zero ao GitHub</h2>
         <div className="deck-term">
-          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — lista-de-tarefas</span></div>
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — manual-comunidade</span></div>
           <div className="deck-term-body">
-            <span className="comment"># pasta lista-de-tarefas com README.md criado</span>
+            <span className="comment"># pasta manual-comunidade com os arquivos .md criados</span>
             <span className="cmd">git init</span>
-            <span className="cmd">git add README.md</span>
-            <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Cria projeto inicial&quot;</span></span>
+            <span className="cmd">git add .</span>
+            <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Cria manual da comunidade&quot;</span></span>
             <span className="comment"># criar repositório no GitHub e copiar a URL</span>
             <span className="cmd">git remote add origin <span className="str">URL</span></span>
             <span className="cmd">git push <span className="flag">-u</span> origin main</span>
@@ -80,10 +75,37 @@ const slides: DeckSlide[] = [
             <span className="out warn">nothing to commit</span>
             <span className="comment"># esqueceu o git init:</span>
             <span className="out err">fatal: not a git repository</span>
-            <span className="comment"># criou um README no GitHub → cria um histórico diferente</span>
+            <span className="comment"># criou um README no GitHub → dois começos separados</span>
+            <span className="comment"># solução: git pull origin main antes do push</span>
           </div>
         </div>
         <p className="slide-sub">Nenhum deles é grave — o importante é entender o que cada mensagem significa.</p>
+      </div>
+    ),
+  },
+  {
+    id: 'materiais',
+    label: 'Materiais para praticar',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">📦 Materiais para praticar</span>
+        <h2 className="slide-title">Faça no seu ritmo, sem gravação</h2>
+        <p className="slide-sub">
+          Baixe o projeto-base de documentação e o guia passo a passo. Tudo em Markdown, sem código de
+          programação.
+        </p>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/manual-comunidade/README.md" download>
+            <span className="dl-ico">📁</span> Projeto-base · Manual da Comunidade
+          </a>
+          <a className="deck-download" href="/downloads/guia-aula-8-subir-projeto.md" download>
+            <span className="dl-ico">📄</span> Guia passo a passo · Aula 8
+          </a>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>O guia traz cada comando explicado e uma tabela de <strong>erros comuns</strong> para você se desbloquear sozinha.</span>
+        </div>
       </div>
     ),
   },

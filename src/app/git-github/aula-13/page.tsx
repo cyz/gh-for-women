@@ -15,14 +15,8 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           Mesmo pessoas experientes deixam passar detalhes. Ter outra pessoa olhando o código aumenta a
-          qualidade e reduz erros.
+          qualidade, reduz erros e é uma das melhores formas de aprender em equipe.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o propósito de um Code Review.</li>
-          <li><span className="obj-num">2</span> Navegar pelas alterações de um Pull Request.</li>
-          <li><span className="obj-num">3</span> Adicionar comentários em um PR.</li>
-          <li><span className="obj-num">4</span> Compreender como a revisão contribui para a qualidade.</li>
-        </ul>
       </div>
     ),
   },
@@ -68,6 +62,28 @@ const slides: DeckSlide[] = [
     ),
   },
   {
+    id: 'revisar-local',
+    label: 'Revisar localmente',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">💻 Revisar localmente</span>
+        <h2 className="slide-title">Trazendo o PR para a sua máquina</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — revisar de perto</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git fetch origin</span>
+            <span className="comment"># baixa as branches novas do GitHub</span>
+            <span className="cmd">git switch faq-horarios</span>
+            <span className="comment"># entra na branch do PR para ler o texto de perto</span>
+            <span className="cmd">git merge main</span>
+            <span className="out warn"># se a main mudou a mesma linha → conflito (resolvemos como na Aula 15)</span>
+          </div>
+        </div>
+        <p className="hint">💡 Com o GitHub CLI dá para pular etapas: <span className="mono">gh pr checkout &lt;número&gt;</span>.</p>
+      </div>
+    ),
+  },
+  {
     id: 'comentarios',
     label: 'Bons comentários',
     render: () => (
@@ -103,6 +119,25 @@ const slides: DeckSlide[] = [
           <li><span className="check-ico">❔</span> O PR tem título e descrição claros?</li>
         </ul>
         <p className="slide-sub">Arquitetura e desempenho vêm com a experiência — sem pressa.</p>
+      </div>
+    ),
+  },
+  {
+    id: 'enviar-review',
+    label: 'Enviar o retorno',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">📮 Enviar o retorno</span>
+        <h2 className="slide-title">Três formas de responder um PR</h2>
+        <div className="cap-grid" style={{ maxWidth: 820 }}>
+          <div className="cap-card"><div className="cap-ico">💬</div><h4>Comment</h4><p>Observações, sem aprovar nem barrar</p></div>
+          <div className="cap-card"><div className="cap-ico">✅</div><h4>Approve</h4><p>Está pronto para o merge</p></div>
+          <div className="cap-card"><div className="cap-ico">🔧</div><h4>Request changes</h4><p>Peça ajustes antes de integrar</p></div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>No GitHub: <span className="mono">Files changed → Review changes</span>. Comece por um elogio e depois uma sugestão.</span>
+        </div>
       </div>
     ),
   },

@@ -14,15 +14,9 @@ const slides: DeckSlide[] = [
           Resolvendo <span className="accent">conflitos de merge</span>
         </h1>
         <p className="slide-sub">
-          E se duas pessoas alterarem exatamente a mesma parte de um arquivo? O Git não sabe qual manter — e
-          isso gera um conflito.
+          E se duas pessoas alterarem exatamente a mesma parte de um arquivo? O Git não sabe qual manter e
+          pede a sua ajuda — hoje vamos aprender a resolver isso com calma e segurança.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender por que conflitos acontecem.</li>
-          <li><span className="obj-num">2</span> Identificar um conflito de merge.</li>
-          <li><span className="obj-num">3</span> Resolver um conflito simples no VS Code.</li>
-          <li><span className="obj-num">4</span> Concluir a integração após resolver.</li>
-        </ul>
       </div>
     ),
   },
@@ -35,18 +29,47 @@ const slides: DeckSlide[] = [
         <h2 className="slide-title">Duas mudanças no mesmo trecho</h2>
         <div className="vs-split" style={{ maxWidth: 900 }}>
           <div className="vs-panel bad">
-            <h4>👩 Pessoa A</h4>
-            <p className="mono" style={{ color: '#e2b4b4', fontSize: 13 }}>Contato:<br />linkedin.com/cynthiazanoni</p>
+            <h4>🌿 branch atualiza-contato</h4>
+            <p className="mono" style={{ color: '#e2b4b4', fontSize: 13 }}>contato.md<br />LinkedIn: /githubforwomen</p>
           </div>
           <div className="vs-arrow">⚡</div>
           <div className="vs-panel bad">
-            <h4>🧑 Pessoa B</h4>
-            <p className="mono" style={{ color: '#e2b4b4', fontSize: 13 }}>Contato:<br />github.com/cynthiazanoni</p>
+            <h4>⭐ main</h4>
+            <p className="mono" style={{ color: '#e2b4b4', fontSize: 13 }}>contato.md<br />Instagram: @githubforwomen</p>
+          </div>
+        </div>
+        <p className="slide-sub">Você mesma pode provocar isso no seu repositório: edite a <strong>mesma linha</strong> em duas branches diferentes.</p>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span>Um conflito acontece quando o Git <strong>não consegue decidir sozinho</strong> qual alteração manter.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'gerar',
+    label: 'Gerar o conflito',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">🧪 Gerar o conflito (de propósito)</span>
+        <h2 className="slide-title">Uma receita para praticar sozinha</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — no seu próprio repositório</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git switch <span className="flag">-c</span> atualiza-contato</span>
+            <span className="comment"># edite 1 linha do contato.md e salve</span>
+            <span className="cmd">git commit <span className="flag">-am</span> <span className="str">&quot;Atualiza contato&quot;</span></span>
+            <span className="comment"># -am junta -a (--all) e -m (--message): prepara e commita de uma vez</span>
+            <span className="cmd">git switch main</span>
+            <span className="comment"># edite a MESMA linha do contato.md, diferente</span>
+            <span className="cmd">git commit <span className="flag">-am</span> <span className="str">&quot;Ajusta contato&quot;</span></span>
+            <span className="cmd">git merge atualiza-contato</span>
+            <span className="out err">CONFLICT (content): Merge conflict in contato.md</span>
           </div>
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>Um conflito acontece quando o Git <strong>não consegue decidir sozinho</strong> qual alteração manter.</span>
+          <span>Sem equipe e sem GitHub: dá para <strong>criar e resolver</strong> um conflito no seu próprio computador.</span>
         </div>
       </div>
     ),
@@ -60,14 +83,12 @@ const slides: DeckSlide[] = [
         <h2 className="slide-title">Os marcadores de conflito</h2>
         <div className="conflict-block">
           <div><span className="marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span> <span className="lbl-head">(versão atual — main)</span></div>
-          <div>GitHub:</div>
-          <div>github.com/cynthiazanoni</div>
+          <div>Instagram: @githubforwomen</div>
           <div><span className="marker">=======</span></div>
-          <div>LinkedIn:</div>
-          <div>linkedin.com/cynthiazanoni</div>
-          <div><span className="marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-linkedin</span> <span className="lbl-in">(a outra branch)</span></div>
+          <div>LinkedIn: /githubforwomen</div>
+          <div><span className="marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; atualiza-contato</span> <span className="lbl-in">(a outra branch)</span></div>
         </div>
-        <p className="slide-sub">Parece assustador, mas os marcadores só mostram <strong>as duas versões</strong> lado a lado.</p>
+        <p className="slide-sub"><span className="mono">HEAD</span> (lembra da Aula 5?) é a sua versão atual; o outro bloco é a que está chegando. Os marcadores só mostram <strong>as duas versões</strong> lado a lado.</p>
       </div>
     ),
   },
@@ -86,6 +107,7 @@ const slides: DeckSlide[] = [
         <div className="deck-term">
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">finalizar após escolher</span></div>
           <div className="deck-term-body">
+            <span className="comment"># git status mostra os arquivos em conflito a qualquer momento</span>
             <span className="cmd">git add README.md</span>
             <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Resolve conflito de merge&quot;</span></span>
           </div>
@@ -94,6 +116,7 @@ const slides: DeckSlide[] = [
           <span className="key-icon">🔑</span>
           <span>Resolver um conflito é <strong>decidir manualmente</strong> qual versão deve permanecer.</span>
         </div>
+        <p className="hint">💡 Mudou de ideia? <span className="mono">git merge --abort</span> desfaz o merge e volta tudo como estava antes.</p>
       </div>
     ),
   },
@@ -120,7 +143,7 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-orange">🎯 Prática guiada</span>
         <h2 className="slide-title">Faça você mesma</h2>
         <ul className="check-list">
-          <li><span className="check-ico">✅</span> Criar uma branch e alterar uma linha do README.</li>
+          <li><span className="check-ico">✅</span> Criar uma branch e alterar uma linha do <span className="mono">contato.md</span>.</li>
           <li><span className="check-ico">✅</span> Voltar para a <span className="mono">main</span> e alterar a mesma linha.</li>
           <li><span className="check-ico">✅</span> Tentar o merge e ler os marcadores de conflito.</li>
           <li><span className="check-ico">✅</span> Resolver no VS Code e finalizar com um commit.</li>

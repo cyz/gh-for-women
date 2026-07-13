@@ -14,14 +14,10 @@ const slides: DeckSlide[] = [
           Registrando alterações: <span className="accent">status, add e commit</span>
         </h1>
         <p className="slide-sub">
-          O Git não salva alterações automaticamente. Nós decidimos quando criar uma nova versão do projeto.
+          O Git não salva alterações automaticamente. Nós decidimos quando criar uma nova versão do projeto,
+          usando <span className="mono">status</span>, <span className="mono">add</span> e{' '}
+          <span className="mono">commit</span>.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Entender o ciclo básico de versionamento no Git.</li>
-          <li><span className="obj-num">2</span> Verificar o estado do repositório com <span className="mono">git status</span>.</li>
-          <li><span className="obj-num">3</span> Preparar alterações com <span className="mono">git add</span>.</li>
-          <li><span className="obj-num">4</span> Registrar uma nova versão com <span className="mono">git commit</span>.</li>
-        </ul>
       </div>
     ),
   },
@@ -119,6 +115,7 @@ const slides: DeckSlide[] = [
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">criar o commit</span></div>
           <div className="deck-term-body">
             <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Adiciona descrição inicial ao projeto&quot;</span></span>
+            <span className="comment"># -m é abreviação de --message (a mensagem do commit vem logo em seguida)</span>
             <span className="cmd">git status</span>
             <span className="out ok">nothing to commit, working tree clean</span>
           </div>

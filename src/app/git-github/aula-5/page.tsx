@@ -11,18 +11,13 @@ const slides: DeckSlide[] = [
       <div className="slide-pad">
         <span className="slide-kicker">🕒 Aula 5 · Fundamentos</span>
         <h1 className="slide-title">
-          Histórico e <span className="accent">boas práticas de commit</span>
+          Histórico e <span className="accent">navegação entre commits</span>
         </h1>
         <p className="slide-sub">
-          O histórico é como uma linha do tempo da evolução do projeto — e mensagens claras fazem toda a
-          diferença.
+          O histórico é a linha do tempo da evolução do projeto. Hoje vamos consultá-lo com{' '}
+          <span className="mono">git log</span>, abrir um commit por dentro, comparar versões e até visitar
+          um ponto do passado — tudo com segurança, sem perder nada.
         </p>
-        <ul className="obj-list">
-          <li><span className="obj-num">1</span> Consultar o histórico com <span className="mono">git log</span>.</li>
-          <li><span className="obj-num">2</span> Interpretar as principais informações de um commit.</li>
-          <li><span className="obj-num">3</span> Entender a importância de mensagens claras.</li>
-          <li><span className="obj-num">4</span> Aplicar boas práticas ao criar commits.</li>
-        </ul>
       </div>
     ),
   },
@@ -90,6 +85,114 @@ const slides: DeckSlide[] = [
           <span className="key-icon">🔑</span>
           <span><span className="mono">git log --oneline</span> mostra hash reduzido + mensagem: perfeito para consultas rápidas.</span>
         </div>
+      </div>
+    ),
+  },
+  {
+    id: 'git-show',
+    label: 'git show',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">🔎 git show</span>
+        <h2 className="slide-title">O que mudou em um commit específico</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — inspecionar um commit</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git show <span className="warn">a3f7d8e</span></span>
+            <span className="out">Author: Ana Silva &lt;ana@email.com&gt;</span>
+            <span className="out">    Atualiza README com descrição do projeto</span>
+            <span className="out ok">+ Este projeto guarda meus estudos de Git.</span>
+            <span className="out err">- Projeto de estudos.</span>
+          </div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span><span className="mono">git show &lt;hash&gt;</span> abre um commit específico e mostra <strong>exatamente o que mudou</strong> nele.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'git-diff',
+    label: 'git diff',
+    steps: 1,
+    render: (step) => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">🔀 git diff</span>
+        <h2 className="slide-title">Comparando versões</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — o que ainda não commitei</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git diff</span>
+            <span className="out ok">+ ## Contato</span>
+            <span className="comment"># mostra o que mudou desde o último commit (ainda sem git add)</span>
+          </div>
+        </div>
+        <div className={`reveal ${step >= 1 ? 'show' : ''}`} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <div className="deck-term">
+            <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">comparar dois commits</span></div>
+            <div className="deck-term-body">
+              <span className="cmd">git diff <span className="warn">9d41b5c</span> <span className="warn">a3f7d8e</span></span>
+              <span className="comment"># mostra a diferença entre dois pontos do histórico</span>
+            </div>
+          </div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span><span className="mono">git diff</span> responde: <strong>o que mudou de uma versão para outra?</strong></span>
+        </div>
+        {step < 1 && <p className="hint">Avance para comparar dois commits →</p>}
+      </div>
+    ),
+  },
+  {
+    id: 'head',
+    label: 'HEAD',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">📍 HEAD</span>
+        <h2 className="slide-title">&ldquo;Você está aqui&rdquo; no histórico</h2>
+        <div className="timeline">
+          <div className="tl-node is-start"><div className="tl-dot">1</div><span className="tl-label">Cria README</span><span className="tl-sub">9d41b5c</span></div>
+          <div className="tl-connector" />
+          <div className="tl-node"><div className="tl-dot">2</div><span className="tl-label">Adiciona descrição</span><span className="tl-sub">a3f7d8e</span></div>
+          <div className="tl-connector" />
+          <div className="tl-node is-final"><div className="tl-dot">3</div><span className="tl-label">Atualiza título</span><span className="tl-sub">📍 HEAD</span></div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🔑</span>
+          <span><span className="mono">HEAD</span> é o marcador que aponta para o commit onde você está <strong>agora</strong> — normalmente o mais recente.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'voltar-commit',
+    label: 'Visitar o passado',
+    steps: 1,
+    render: (step) => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">🕰️ Visitar o passado</span>
+        <h2 className="slide-title">Voltar a um commit antigo (e retornar)</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — visitar um commit</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git checkout <span className="warn">9d41b5c</span></span>
+            <span className="out warn">You are in &apos;detached HEAD&apos; state...</span>
+            <span className="comment"># não é erro! você só está &quot;visitando&quot; um commit antigo</span>
+          </div>
+        </div>
+        <div className={`reveal ${step >= 1 ? 'show' : ''}`} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+          <div className="deck-term">
+            <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">voltar para o presente</span></div>
+            <div className="deck-term-body">
+              <span className="cmd">git switch main</span>
+              <span className="out ok"># HEAD volta para o commit mais recente</span>
+            </div>
+          </div>
+          <p className="hint">💡 &ldquo;Detached HEAD&rdquo; só significa que o HEAD não está preso a uma branch. Nada foi perdido.</p>
+        </div>
+        {step < 1 && <p className="hint">Avance para voltar ao presente →</p>}
       </div>
     ),
   },
