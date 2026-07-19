@@ -98,7 +98,7 @@ const slides: DeckSlide[] = [
           <a className="deck-download" href="/downloads/manual-comunidade/README.md" download>
             <span className="dl-ico">📁</span> Projeto-base · Manual da Comunidade
           </a>
-          <a className="deck-download" href="/downloads/guia-aula-8-subir-projeto.md" download>
+          <a className="deck-download" href="/downloads/guia-aula-11-subir-projeto.md" download>
             <span className="dl-ico">📄</span> Guia passo a passo · Aula 8
           </a>
         </div>

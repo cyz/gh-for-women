@@ -1,4 +1,4 @@
-# 🔧 Guia prático (Aula 16) — Fluxo completo com Pull Request em grupo
+# 🔧 Guia prático (Aula 21) — Fluxo completo com Pull Request em grupo
 
 Este guia é **autoguiado** e pensado para um **grupo** (3 a 5 pessoas) colaborando no mesmo
 repositório de documentação. Sozinha? Faça o mesmo fluxo criando duas branches e revisando
@@ -7,7 +7,7 @@ o seu próprio Pull Request.
 > 📦 **Projeto-base:** `manual-comunidade/` (só arquivos Markdown). Uma pessoa cria o
 > repositório no GitHub e adiciona as demais como **colaboradoras** (Settings → Collaborators).
 
-**Tempo estimado:** 60 min · **Pré-requisitos:** aulas 8 a 15.
+**Tempo estimado:** 60 min · **Pré-requisitos:** aulas 11 a 20.
 
 ---
 
@@ -25,7 +25,7 @@ Todas assumem os três papéis em rodadas diferentes.
 
 ## Parte 1 — Preparar o repositório (mantenedora)
 
-1. Publique o `manual-comunidade` no GitHub (veja o guia da Aula 8).
+1. Publique o `manual-comunidade` no GitHub (veja o guia da Aula 11).
 2. **Settings → Collaborators** e convide cada colega pelo usuário do GitHub.
 3. Todas clonam o projeto:
 

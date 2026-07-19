@@ -1,4 +1,4 @@
-# 🔧 Guia prático (Aula 8) — Subir seu primeiro projeto
+# 🔧 Guia prático (Aula 11) — Subir seu primeiro projeto
 
 Este guia é **autoguiado**: siga no seu ritmo, sem precisar de uma aula gravada. Ao final,
 você terá publicado no GitHub um projeto de documentação feito só com arquivos Markdown.
@@ -16,7 +16,7 @@ você terá publicado no GitHub um projeto de documentação feito só com arqui
 - Conectar local e remoto com `git remote add`
 - Publicar com `git push`
 
-**Tempo estimado:** 40–50 min · **Pré-requisitos:** Git instalado e configurado (aulas 2 a 5).
+**Tempo estimado:** 40–50 min · **Pré-requisitos:** Git instalado e configurado (aulas 2 a 6).
 
 ---
 

@@ -91,7 +91,7 @@ const slides: DeckSlide[] = [
           proposital) e o projeto-base de documentação.
         </p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/guia-aula-16-pr-em-grupo.md" download>
+          <a className="deck-download" href="/downloads/guia-aula-21-pr-em-grupo.md" download>
             <span className="dl-ico">📄</span> Guia · Fluxo completo em grupo
           </a>
           <a className="deck-download" href="/downloads/manual-comunidade/README.md" download>
