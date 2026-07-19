@@ -49,7 +49,7 @@ const modules: { kicker: string; title: string; sub: string; cls: string; lesson
     lessons: [
       { n: 13, title: 'O que é uma branch e por que ela existe', desc: 'Linhas independentes de desenvolvimento sem afetar a versão principal.', dur: '~30 min' },
       { n: 14, title: 'Criando e trocando branches', desc: 'Criar, alternar, integrar com merge local e entender o histórico de cada branch.', dur: '~45 min' },
-      { n: 15, title: 'Fluxo de trabalho com Feature Branch', desc: 'O processo usado por equipes: da branch ao envio para revisão.', dur: '~40 min' },
+      { n: 15, title: 'Fluxo de trabalho com Feature Branch', desc: 'Modernizando a página About: da branch ao envio para revisão, uma funcionalidade por vez.', dur: '~40 min' },
       { n: 16, title: 'Pull Request: solicitando a integração', desc: 'Abrir um PR, começando por um rascunho (draft), para revisão antes do merge.', dur: '~40 min' },
       { n: 17, title: 'Code Review: revisando alterações em um PR', desc: 'Revisar as mudanças no GitHub e localmente, resolver conflitos e enviar um retorno.', dur: '~45 min' },
       { n: 18, title: 'Merge: integrando uma funcionalidade', desc: 'Integrar a branch à main, localmente ou pelo GitHub, e ler o histórico em árvore.', dur: '~45 min' },

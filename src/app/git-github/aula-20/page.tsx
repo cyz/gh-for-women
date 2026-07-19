@@ -15,43 +15,26 @@ const slides: DeckSlide[] = [
         </h1>
         <p className="slide-sub">
           Até agora colaboramos em repositórios onde temos acesso de escrita. Mas como contribuir com um
-          projeto de outra pessoa ou de uma comunidade open source? Com um <strong>fork</strong>.
+          projeto de outra pessoa ou de uma comunidade open source? Com um <strong>fork</strong> — que você
+          já viu na demonstração e vamos colocar em prática agora.
         </p>
       </div>
     ),
   },
   {
-    id: 'problema',
-    label: 'O problema do acesso',
+    id: 'relembrando-fork',
+    label: 'Relembrando: o fork',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-orange">🔒 O problema do acesso</span>
-        <h2 className="slide-title">Você não pode dar push em qualquer repositório</h2>
-        <p className="slide-sub">
-          Em projetos públicos, qualquer pessoa pode ver o código, mas só quem tem permissão consegue enviar
-          alterações direto. O fork resolve isso sem precisar de acesso de escrita.
-        </p>
-        <div className="key-msg">
-          <span className="key-icon">🔑</span>
-          <span>O modelo de <strong>fork</strong> é como milhares de pessoas contribuem com projetos open source todos os dias.</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'o-que-e-fork',
-    label: 'O que é um fork',
-    render: () => (
-      <div className="slide-pad">
-        <span className="slide-kicker s-green">🍴 O que é um fork</span>
+        <span className="slide-kicker s-green">🍴 Relembrando: o fork</span>
         <h2 className="slide-title">Sua cópia pessoal do repositório</h2>
         <p className="slide-sub">
-          Ao clicar em <strong>Fork</strong> no GitHub, você cria uma cópia completa do repositório na sua
-          própria conta. Nela você tem total liberdade para experimentar.
+          Como você já viu na demonstração, o <strong>fork</strong> cria uma cópia completa do repositório
+          na sua conta — útil quando você não tem acesso de escrita ao original.
         </p>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>O fork fica em <span className="mono">github.com/voce/projeto</span>; o original é chamado de <strong>upstream</strong>.</span>
+          <span>O fork fica em <span className="mono">github.com/voce/projeto</span>; o original é o <strong>upstream</strong>.</span>
         </div>
       </div>
     ),
