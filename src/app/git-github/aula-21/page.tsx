@@ -146,7 +146,7 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker">🧭 Próximos passos</span>
         <h2 className="slide-title">Para continuar evoluindo</h2>
         <div className="file-chaos" style={{ maxWidth: 900 }}>
-          {['.gitignore', 'GitHub Issues', 'GitHub Projects', 'GitHub Actions', 'Releases & Tags', 'Forks', 'Codespaces', 'GitHub Copilot', 'Rebase', 'GitFlow'].map((t) => (
+          {['GitHub Projects', 'GitHub Actions', 'Releases & Tags', 'Codespaces', 'GitHub Copilot', 'Rebase', 'GitFlow'].map((t) => (
             <div key={t} className="file-chip" style={{ minWidth: 130 }}><span className="file-ico">⭐</span><span className="file-name" style={{ color: '#93c5fd' }}>{t}</span></div>
           ))}
         </div>

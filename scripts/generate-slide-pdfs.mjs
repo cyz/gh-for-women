@@ -1,4 +1,4 @@
-// Gera um PDF dos slides de cada aula (aula-1 … aula-16) em public/downloads/slides/.
+// Gera um PDF dos slides de cada aula (aula-1 … aula-21) em public/downloads/slides/.
 // Usa o Chromium já baixado pelo Playwright (não baixa navegador novo).
 //
 // Uso: com o dev server rodando (npm run dev), execute:
@@ -20,7 +20,7 @@ const CANDIDATES = [
 
 const BASE = process.env.BASE_URL || 'http://localhost:3000';
 const OUT = path.join(ROOT, 'public/downloads/slides');
-const TOTAL = 16;
+const TOTAL = 21;
 
 async function firstExisting(paths) {
   for (const p of paths) {
