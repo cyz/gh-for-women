@@ -1,6 +1,6 @@
 # Roteiro de falas — Git & GitHub
 
-Speaker notes por slide para as 16 aulas do curso, alinhados aos slides do projeto
+Speaker notes por slide para as 21 aulas do curso, alinhados aos slides do projeto
 (`src/app/git-github/aula-N/page.tsx`).
 
 ## Como usar este documento
@@ -379,7 +379,71 @@ preparar com `git add` e registrar uma versão com `git commit`.
 
 ---
 
-# Aula 5 — Histórico e navegação entre commits
+# Aula 5 — O que não versionar: o .gitignore
+
+**Objetivo da aula:** entender por que alguns arquivos não devem entrar no histórico,
+criar um `.gitignore`, conhecer sua sintaxe e o efeito no `git status`.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Objetivo:** apresentar o tema e conectar com o ciclo add/commit já visto.
+- **Fala sugerida:** "Na aula passada aprendemos a registrar alterações. Agora vamos ao
+  contrário: dizer ao Git o que ele deve ignorar por completo."
+- **Mensagem-chave:** nem todo arquivo pertence ao histórico.
+
+### Slide 2 · Por que ignorar arquivos `(problema)` — ~3 min
+- **Objetivo:** mostrar os três tipos mais comuns de arquivo a ignorar.
+- **Fala sugerida:** "Existem arquivos que nunca devem ir para o GitHub: senhas em arquivos
+  `.env`, dependências como `node_modules`, e arquivos do sistema como `.DS_Store`."
+- **Mensagem-chave:** versionar só o que é parte real do projeto.
+
+### Slide 3 · O que é o .gitignore `(o-que-e)` — ~2 min
+- **Objetivo:** definir o arquivo.
+- **Fala sugerida:** "O `.gitignore` é um arquivo de texto na raiz do projeto com uma lista
+  do que ignorar. O Git lê sozinho, sem comando especial."
+- **Mensagem-chave:** um arquivo simples resolve.
+
+### Slide 4 · Sintaxe básica `(sintaxe)` — ~3 min
+- **Objetivo:** ensinar as três formas de regra.
+- **Fala sugerida:** "Cada linha é uma regra: um nome exato, uma pasta com barra no fim,
+  ou um padrão com asterisco. Linhas com `#` são comentários."
+- **Mensagem-chave:** nome, pasta (`/`) ou padrão (`*`).
+
+### Slide 5 · O efeito no git status `(status)` · 1 revelação — ~3 min
+- **Objetivo:** ver antes/depois no status.
+- **Fala sugerida:** "Sem o `.gitignore`, tudo aparece como untracked."
+- **[clique]** "Depois de criar o `.gitignore`, os itens ignorados somem do status — sobra
+  só o que interessa."
+- **Mensagem-chave:** o status fica limpo.
+
+### Slide 6 · Arquivo já versionado `(ja-rastreado)` — ~3 min
+- **Objetivo:** alertar sobre o caso do arquivo já commitado.
+- **Fala sugerida:** "Se o arquivo já entrou no histórico, o `.gitignore` sozinho não basta.
+  Use `git rm --cached` para parar de rastreá-lo, mantendo o arquivo no computador."
+- **Mensagem-chave:** melhor criar o `.gitignore` no começo.
+
+### Slide 7 · Você não precisa começar do zero `(templates)` — ~2 min
+- **Objetivo:** apresentar modelos prontos.
+- **Fala sugerida:** "Use o gitignore.io ou o repositório github/gitignore. O próprio GitHub
+  oferece um modelo ao criar o repositório."
+- **Mensagem-chave:** reutilize modelos por tecnologia.
+
+### Slide 8 · Prática guiada `(pratica)` — ~3 min
+- **Objetivo:** criar um `.gitignore` na prática.
+- **Fala sugerida:** "Crie um `.gitignore`, adicione `node_modules/` e `.DS_Store`, rode
+  `git status` e confirme que sumiram. Depois faça o commit incluindo o próprio arquivo."
+- **Mensagem-chave:** commit incluindo o `.gitignore`.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Objetivo:** fechar e criar ponte com a próxima aula.
+- **Fala sugerida:** "Com o `.gitignore`, o histórico guarda só o que importa. Na próxima
+  aula, vamos consultar esse histórico com o `git log`."
+- 💡 **Você sabia?** Vazar um `.env` com senhas é um dos erros mais comuns de quem começa
+  — um `.gitignore` bem feito é a primeira defesa.
+- **Mensagem-chave:** próximo passo — o histórico com `git log`.
+
+---
+
+# Aula 6 — Histórico e navegação entre commits
 
 **Objetivo da aula:** consultar o histórico com `git log`, inspecionar e comparar commits
 (`git show`, `git diff`), entender o que é o `HEAD`, visitar um commit antigo com segurança e
@@ -498,7 +562,7 @@ aplicar boas práticas de mensagem.
   ```
 - **Exemplo para fixar o `diff`:** antes de commitar, edite mais uma linha e rode `git diff`
   para a turma ver o `+`/`-` do que ainda **não** foi commitado — e conecte: é o mesmo `+`/`-`
-  que aparecerá nos Pull Requests (Aula 12).
+  que aparecerá nos Pull Requests (Aula 16).
 - **Tranquilize a turma:** o aviso `detached HEAD` assusta, mas nada se perde; `git switch
   main` sempre traz de volta. Faça a ida e a volta duas vezes para dissolver o medo.
 - **Mensagem-chave:** o histórico é ferramenta de **comunicação** entre pessoas, não só um
@@ -514,7 +578,61 @@ aplicar boas práticas de mensagem.
 
 ---
 
-# Aula 6 — Criando seu primeiro repositório no GitHub
+# Aula 7 — Desfazer e corrigir erros
+
+**Objetivo da aula:** desfazer alterações não salvas, tirar arquivos do staging, corrigir
+o último commit e reverter um commit publicado, com segurança.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Errar faz parte. A boa notícia é que o Git foi feito para voltar
+  atrás com segurança."
+- **Mensagem-chave:** dá para desfazer quase tudo.
+
+### Slide 2 · Quatro situações comuns `(mapa)` — ~3 min
+- **Fala sugerida:** "Cada erro tem sua solução: editei e me arrependi, preparei o arquivo
+  errado, mensagem errada, ou commit já enviado."
+- **Mensagem-chave:** identifique a situação antes de agir.
+
+### Slide 3 · git restore `(restore)` — ~3 min
+- **Fala sugerida:** "`git restore arquivo` devolve o arquivo ao último commit. Cuidado:
+  descarta a alteração de vez."
+- **Mensagem-chave:** use com certeza.
+
+### Slide 4 · git restore --staged `(restore-staged)` — ~3 min
+- **Fala sugerida:** "Adicionou por engano? `git restore --staged` tira da preparação sem
+  apagar o que você escreveu."
+- **Mensagem-chave:** desfaz o `add`, mantém o trabalho.
+
+### Slide 5 · git commit --amend `(amend)` — ~3 min
+- **Fala sugerida:** "Errou a mensagem do último commit? `git commit --amend` reescreve.
+  Só faça isso antes de enviar ao GitHub."
+- **Mensagem-chave:** amend só antes do push.
+
+### Slide 6 · git revert `(revert)` — ~3 min
+- **Fala sugerida:** "Para desfazer um commit já publicado, `git revert` cria um novo commit
+  que desfaz o anterior, sem apagar o histórico. Ideal em equipe."
+- **Mensagem-chave:** revert preserva a história.
+
+### Slide 7 · E o git reset? `(restore-vs-reset)` — ~2 min
+- **Fala sugerida:** "Você vai ouvir falar de `git reset`. Ele reescreve o histórico e, com
+  `--hard`, apaga de verdade. No começo, prefira `restore` e `revert`."
+- **Mensagem-chave:** deixe o `reset --hard` para depois.
+
+### Slide 8 · Prática guiada `(pratica)` — ~3 min
+- **Fala sugerida:** "Treine as quatro situações no seu repositório: restaurar, tirar do
+  staging, corrigir a mensagem e reverter um commit."
+- **Mensagem-chave:** pratique cada comando.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Saber desfazer dá confiança para experimentar. Na próxima aula, damos
+  o salto para a nuvem: o GitHub."
+- 💡 **Você sabia?** O Git raramente perde informação — a maioria dos erros pode ser
+  desfeita.
+- **Mensagem-chave:** próximo passo — conhecer o GitHub.
+
+---
+
+# Aula 8 — Criando seu primeiro repositório no GitHub
 
 **Objetivo da aula:** diferenciar repositório local de remoto, criar conta e repositório no
 GitHub e reconhecer a página de um repositório.
@@ -577,7 +695,7 @@ GitHub e reconhecer a página de um repositório.
   vamos usá-lo na próxima aula".
 - **Por que sem README:** explique com um exemplo — se marcar *Add a README*, o GitHub cria
   um commit inicial lá; como já temos um commit local, os dois históricos começam separados e
-  o `push` reclama. Prevenir agora evita a dor de cabeça da Aula 8.
+  o `push` reclama. Prevenir agora evita a dor de cabeça da Aula 11.
 - **Mensagem-chave:** é normal o repositório aparecer vazio agora.
 
 ### Slide 8 · Encerramento `(encerramento)` — ~1 min
@@ -590,7 +708,7 @@ GitHub e reconhecer a página de um repositório.
 
 ---
 
-# Aula 7 — Conectando seu projeto ao GitHub (`git remote` e `git push`)
+# Aula 9 — Conectando seu projeto ao GitHub (`git remote` e `git push`)
 
 **Objetivo da aula:** entender repositório remoto, conectar o local com `git remote add`,
 publicar com `git push` e confirmar o envio.
@@ -675,7 +793,63 @@ publicar com `git push` e confirmar o envio.
 
 ---
 
-# Aula 8 — Prática guiada: publicando um projeto do zero
+# Aula 10 — Clonando um repositório existente
+
+**Objetivo da aula:** baixar um repositório existente do GitHub com `git clone`, entender
+a diferença para `git init` e confirmar que o `origin` já vem configurado.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Até agora criamos projetos do zero. Agora vamos baixar um projeto que
+  já existe no GitHub."
+- **Mensagem-chave:** clonar é copiar um repositório existente.
+
+### Slide 2 · init ou clone? `(init-vs-clone)` — ~2 min
+- **Fala sugerida:** "`git init` começa um projeto novo; `git clone` copia um que já existe,
+  com todo o histórico."
+- **Mensagem-chave:** dois pontos de partida.
+
+### Slide 3 · git clone `(clone)` — ~3 min
+- **Fala sugerida:** "`git clone URL` cria a pasta, baixa os arquivos e traz o histórico
+  inteiro."
+- **Mensagem-chave:** um comando, uma cópia completa.
+
+### Slide 4 · O origin já vem pronto `(origin-auto)` — ~3 min
+- **Fala sugerida:** "Diferente da aula de push, aqui não precisamos do `git remote add`.
+  O `clone` já configura o `origin`."
+- **Mensagem-chave:** origin automático.
+
+### Slide 5 · HTTPS ou SSH `(https-ssh)` — ~2 min
+- **Fala sugerida:** "O mesmo repositório tem duas URLs: HTTPS (mais simples) e SSH (com
+  chaves). A autenticação é a mesma da aula de push."
+- **Mensagem-chave:** escolha no botão Code.
+
+### Slide 6 · Depois de clonar `(fluxo)` — ~2 min
+- **Fala sugerida:** "Depois do clone, é o ciclo de sempre: editar, add, commit e push.
+  Como o origin existe, o push já sabe para onde ir."
+- **Mensagem-chave:** o fluxo continua igual.
+
+### Slide 7 · Materiais para praticar `(materiais)` — ~1 min
+- **Objetivo:** apresentar o guia para download.
+- **Fala sugerida:** "Baixe o guia da Aula 10 para clonar, alterar e enviar de volta no seu
+  ritmo."
+- **Downloads:** `/downloads/guia-aula-10-clonar.md`.
+- **Mensagem-chave:** guia autoguiado disponível.
+
+### Slide 8 · Prática guiada `(pratica)` — ~3 min
+- **Fala sugerida:** "Copie a URL pelo botão Code, clone, confira o histórico e o remoto,
+  e envie uma alteração."
+- **Mensagem-chave:** clone e explore.
+
+### Slide 9 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Clonar é o primeiro passo para colaborar. Na próxima aula, uma prática
+  guiada publicando um projeto do zero."
+- 💡 **Você sabia?** Todo projeto open source do GitHub pode ser clonado — é assim que se
+  estuda o código de ferramentas como o VS Code.
+- **Mensagem-chave:** próximo passo — prática guiada de publicação.
+
+---
+
+# Aula 11 — Prática guiada: publicando um projeto do zero
 
 **Objetivo da aula:** consolidar todo o fluxo (criar projeto → `init` → commits → repo no
 GitHub → conectar → publicar) publicando um **projeto de documentação** (só markdown), o
@@ -730,7 +904,7 @@ Manual da Comunidade. Sem comandos novos. Aula sem gravação: apoie-se no guia 
   # 7. Atualizar o navegador → os 5 arquivos aparecem no GitHub
   ```
 - **Dica de ritmo:** anuncie cada bloco ("criar → inicializar → commitar → conectar →
-  publicar") antes de digitá-lo, para a turma reconhecer que é o mesmo fluxo das Aulas 3 a 7,
+  publicar") antes de digitá-lo, para a turma reconhecer que é o mesmo fluxo das Aulas 3 a 9,
   agora emendado sem pausas.
 - **Mensagem-chave:** o fluxo do início ao fim, na ordem real de uso.
 
@@ -760,7 +934,7 @@ Manual da Comunidade. Sem comandos novos. Aula sem gravação: apoie-se no guia 
   **projeto-base** (Manual da Comunidade, com os arquivos markdown prontos) e um **guia passo
   a passo** com cada comando explicado e uma tabela de erros comuns. Baixe, abra no VS Code e
   siga no seu ritmo."
-- **Downloads:** `/downloads/manual-comunidade/` e `/downloads/guia-aula-8-subir-projeto.md`.
+- **Downloads:** `/downloads/manual-comunidade/` e `/downloads/guia-aula-11-subir-projeto.md`.
 - **Mensagem-chave:** você consegue publicar sozinha seguindo o guia.
 
 ### Slide 6 · Checklist final `(checklist)` — ~3 min
@@ -779,7 +953,56 @@ Manual da Comunidade. Sem comandos novos. Aula sem gravação: apoie-se no guia 
 
 ---
 
-# Aula 9 — O que é uma branch e por que ela existe
+# Aula 12 — Issues: organizando o trabalho
+
+**Objetivo da aula:** usar Issues para registrar tarefas, bugs e ideias, organizá-las com
+labels e responsáveis, e ligá-las ao código com `Closes #N`.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Antes de programar, é bom saber o que precisa ser feito. As Issues são
+  o lugar para registrar isso."
+- **Mensagem-chave:** planejar antes de codar.
+
+### Slide 2 · O que é uma Issue `(o-que-e)` — ~3 min
+- **Fala sugerida:** "Uma Issue registra um bug, uma melhoria ou uma dúvida/tarefa. É uma
+  conversa registrada sobre algo a fazer."
+- **Mensagem-chave:** um registro por assunto.
+
+### Slide 3 · Criando uma Issue `(criar)` — ~3 min
+- **Fala sugerida:** "Na aba Issues → New issue, escreva um título claro, descreva o contexto
+  e submeta. A Issue ganha um número, como #12."
+- **Mensagem-chave:** título claro + descrição.
+
+### Slide 4 · Organizando as Issues `(organizar)` — ~2 min
+- **Fala sugerida:** "Labels classificam (bug, enhancement); assignees definem quem cuida;
+  milestones agrupam por entrega."
+- **Mensagem-chave:** o que é a tarefa e quem cuida.
+
+### Slide 5 · Ligando Issues ao código `(vincular)` — ~3 min
+- **Fala sugerida:** "Escrever `#12` cria um link; `Closes #12` na mensagem fecha a Issue
+  automaticamente quando o Pull Request é integrado."
+- **Mensagem-chave:** `Closes #N` fecha no merge.
+
+### Slide 6 · Issues antes das branches `(planejamento)` — ~2 min
+- **Fala sugerida:** "O fluxo organizado: abrir a Issue, criar a branch, abrir o PR com
+  `Closes #N`, e o merge fecha a Issue."
+- **Mensagem-chave:** planejar em passos.
+
+### Slide 7 · Prática guiada `(pratica)` — ~3 min
+- **Fala sugerida:** "Abra uma Issue no seu repositório, aplique uma label e atribua a você
+  mesma."
+- **Mensagem-chave:** sua primeira Issue.
+
+### Slide 8 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Com Issues, todo mundo sabe o que fazer e o que está em andamento. Na
+  próxima aula, começamos a colaborar de verdade com branches."
+- 💡 **Você sabia?** Muita gente começa a contribuir com open source resolvendo uma Issue
+  marcada como `good first issue`.
+- **Mensagem-chave:** próximo passo — branches.
+
+---
+
+# Aula 13 — O que é uma branch e por que ela existe
 
 **Objetivo da aula:** entender o conceito de branch, por que equipes as usam, identificar a
 branch principal e visualizar desenvolvimento em paralelo. (Sem criar branches.)
@@ -801,7 +1024,7 @@ branch principal e visualizar desenvolvimento em paralelo. (Sem criar branches.)
   testar ideias, adicionar funcionalidades e corrigir bugs sem alterar a versão principal.
   Analogia: em vez de mexer no documento original, você cria uma cópia, faz as mudanças e,
   quando estiver pronta, substitui o original."
-- **Ponte com a Aula 5:** cada branch é uma linha do tempo própria, com seu próprio `HEAD`.
+- **Ponte com a Aula 6:** cada branch é uma linha do tempo própria, com seu próprio `HEAD`.
   Na próxima aula veremos que, por dentro, a branch é só um marcador que aponta para um commit.
 - **Mensagem-chave:** branch = linha de trabalho isolada.
 
@@ -841,7 +1064,7 @@ branch principal e visualizar desenvolvimento em paralelo. (Sem criar branches.)
 
 ---
 
-# Aula 10 — Criando e trocando branches
+# Aula 14 — Criando e trocando branches
 
 **Objetivo da aula:** identificar a branch atual, criar uma branch, alternar entre elas e
 entender que cada branch tem seu próprio conjunto de alterações.
@@ -887,7 +1110,7 @@ entender que cada branch tem seu próprio conjunto de alterações.
 
 ### Slide 6 · Branch = ponteiro `(ponteiro)` — ~5 min
 - **Fala sugerida:** "Por que a seção some e volta? Porque uma branch, por dentro, é só um
-  **marcador que aponta para um commit**. Ligando com a Aula 5: quando você troca de branch,
+  **marcador que aponta para um commit**. Ligando com a Aula 6: quando você troca de branch,
   o `HEAD` (o 'você está aqui') se move para o commit daquela branch — e o Git recria os
   arquivos exatamente como estavam ali. Nada some de verdade: cada linha do tempo continua
   guardada."
@@ -951,7 +1174,7 @@ entender que cada branch tem seu próprio conjunto de alterações.
 
 ---
 
-# Aula 11 — Fluxo de trabalho com Feature Branch
+# Aula 15 — Fluxo de trabalho com Feature Branch
 
 **Objetivo da aula:** entender o fluxo baseado em feature branches, suas etapas e por que
 equipes o adotam. (Sem comandos novos.)
@@ -1048,7 +1271,7 @@ equipes o adotam. (Sem comandos novos.)
 
 ---
 
-# Aula 12 — Pull Request: solicitando a integração de uma funcionalidade
+# Aula 16 — Pull Request: solicitando a integração de uma funcionalidade
 
 **Objetivo da aula:** entender o que é um PR, quando criá-lo, abrir um PR no GitHub e
 compreender seu papel na colaboração. (Sem merge.)
@@ -1086,7 +1309,7 @@ compreender seu papel na colaboração. (Sem merge.)
 - **Fala sugerida:** "A página tem *Conversation* (discussão), *Commits* (todos os commits
   da branch) e *Files changed* (o GitHub destaca o que foi adicionado e removido). É
   exatamente essa tela que outras pessoas usam para revisar código."
-- **Ponte com a Aula 5:** aquele `+`/`-` em verde e vermelho é o mesmo do `git diff` — a
+- **Ponte com a Aula 6:** aquele `+`/`-` em verde e vermelho é o mesmo do `git diff` — a
   diferença é que aqui ele aparece no navegador, pronto para comentar.
 - **Mensagem-chave:** o PR reúne tudo o que é preciso para revisar uma alteração.
 
@@ -1124,7 +1347,7 @@ compreender seu papel na colaboração. (Sem merge.)
      ```
   5. **Create pull request** (ou *Create draft* — slide 4).
 - **Explore as abas:** *Conversation* (a discussão), *Commits* (o commit da branch) e
-  *Files changed* (o `+`/`-` em verde/vermelho — o mesmo `git diff` da Aula 5, agora no
+  *Files changed* (o `+`/`-` em verde/vermelho — o mesmo `git diff` da Aula 6, agora no
   navegador). **Não cliquem em Merge.**
 - **Mensagem-chave:** o PR permanece aberto até alguém aprovar e fazer o merge.
 
@@ -1138,7 +1361,7 @@ compreender seu papel na colaboração. (Sem merge.)
 
 ---
 
-# Aula 13 — Code Review: revisando alterações em um Pull Request
+# Aula 17 — Code Review: revisando alterações em um Pull Request
 
 **Objetivo da aula:** entender o propósito do Code Review, navegar pelas alterações (no
 GitHub e localmente), comentar, resolver um eventual conflito e enviar um retorno. (Sem merge
@@ -1160,7 +1383,7 @@ na main.)
 ### Slide 3 · A tela de revisão `(tela)` — ~8 min
 - **Fala sugerida:** "A aba *Files changed* é a mais usada por quem revisa: o GitHub destaca
   as linhas adicionadas e removidas, deixando claríssimo o que mudou. É o mesmo `git diff`
-  da Aula 5, agora visual. Dica: a aba *Commits* deixa revisar commit por commit, útil em PRs
+  da Aula 6, agora visual. Dica: a aba *Commits* deixa revisar commit por commit, útil em PRs
   maiores."
 - **Mensagem-chave:** *Files changed* mostra exatamente o que mudou.
 
@@ -1169,7 +1392,7 @@ na main.)
   máquina ajuda a entender de verdade. `git fetch origin` baixa as branches novas e
   `git switch faq-horarios` entra na branch do PR para você ler o texto de perto. Se quiser
   garantir que a branch continua funcionando junto com a `main`, rode `git merge main` — e,
-  se as duas mexeram na mesma linha, aparece um conflito (que resolvemos como na Aula 15)."
+  se as duas mexeram na mesma linha, aparece um conflito (que resolvemos como na Aula 19)."
 - **Passo a passo da revisão local:**
   ```bash
   git fetch origin
@@ -1244,7 +1467,7 @@ na main.)
 
 ---
 
-# Aula 14 — Merge: integrando uma funcionalidade ao projeto
+# Aula 18 — Merge: integrando uma funcionalidade ao projeto
 
 **Objetivo da aula:** entender o merge, integrar uma branch à `main` pelo GitHub, entender
 o que acontece depois e aplicar boas práticas.
@@ -1266,7 +1489,7 @@ o que acontece depois e aplicar boas práticas.
   concluir a funcionalidade, commits, push, PR e revisão. No PR, o GitHub mostra *Able to
   merge* (sem conflitos). Clique em *Merge pull request* e depois *Confirm merge*. Pronto:
   a funcionalidade agora faz parte da `main`. Momento importante — vale a pausa."
-- **Local × GitHub:** lembre que dá para integrar localmente com `git merge` (Aula 10). Pelo
+- **Local × GitHub:** lembre que dá para integrar localmente com `git merge` (Aula 14). Pelo
   GitHub é melhor em equipe, porque a mudança passa antes pela revisão do Pull Request.
 - **Mensagem-chave:** faça o merge apenas **após** a revisão.
 
@@ -1290,7 +1513,7 @@ o que acontece depois e aplicar boas práticas.
 - **Fala sugerida:** "Depois de integrar, vale olhar o histórico com
   `git log --oneline --graph`. O `--graph` desenha as branches como uma árvore de linhas e
   bolinhas: dá para ver a `feature` nascer da `main`, ganhar commits e voltar num commit de
-  merge. É a mesma navegação da Aula 5, agora enxergando várias linhas do tempo juntas."
+  merge. É a mesma navegação da Aula 6, agora enxergando várias linhas do tempo juntas."
 - **Quebrando o comando:** `git` · `log` (histórico) · `--oneline` (uma linha por commit) ·
   `--graph` (desenha o formato de árvore das branches ao lado).
 - **Mensagem-chave:** `--graph` mostra visualmente como as branches se encontram.
@@ -1332,7 +1555,7 @@ o que acontece depois e aplicar boas práticas.
 
 ---
 
-# Aula 15 — Resolvendo conflitos de merge
+# Aula 19 — Resolvendo conflitos de merge
 
 **Objetivo da aula:** entender por que conflitos acontecem, **provocá-los de propósito no
 próprio repositório**, identificá-los, resolver um conflito simples no VS Code e concluir a
@@ -1384,7 +1607,7 @@ integração.
 - **Fala sugerida:** "No VS Code o conflito aparece com marcadores: `<<<<<<< HEAD` (versão
   atual, a `main`), `=======` (separador) e `>>>>>>> atualiza-contato` (versão da outra
   branch). Parece estranho no começo, mas são só as duas versões lado a lado."
-- **Ponte com a Aula 5:** lembra o `HEAD`? Ele reaparece aqui: `<<<<<<< HEAD` é a **sua**
+- **Ponte com a Aula 6:** lembra o `HEAD`? Ele reaparece aqui: `<<<<<<< HEAD` é a **sua**
   versão atual (onde você está); o bloco de baixo é a versão que está **chegando** da outra
   branch.
 - **Mensagem-chave:** os marcadores mostram as duas versões que precisam ser conciliadas.
@@ -1443,7 +1666,67 @@ integração.
 
 ---
 
-# Aula 16 — Projeto final: fluxo completo de colaboração com Git e GitHub
+# Aula 20 — Fork e Pull Request: contribuindo em projetos de terceiros
+
+**Objetivo da aula:** contribuir com um repositório sem acesso de escrita usando fork,
+`upstream` e Pull Request a partir do fork.
+
+### Slide 1 · Capa `(capa)` — ~2 min
+- **Fala sugerida:** "Como contribuir com um projeto de outra pessoa ou de uma comunidade
+  open source? Com um fork."
+- **Mensagem-chave:** fork abre as portas do open source.
+
+### Slide 2 · O problema do acesso `(problema)` — ~2 min
+- **Fala sugerida:** "Em projetos públicos, qualquer um vê o código, mas só quem tem
+  permissão envia direto. O fork resolve isso."
+- **Mensagem-chave:** sem acesso de escrita, use fork.
+
+### Slide 3 · O que é um fork `(o-que-e-fork)` — ~2 min
+- **Fala sugerida:** "O botão Fork cria uma cópia completa do repositório na sua conta, onde
+  você tem total liberdade."
+- **Mensagem-chave:** o original é o `upstream`.
+
+### Slide 4 · O fluxo com fork `(fluxo)` — ~3 min
+- **Fala sugerida:** "Seis passos: fork, clone do seu fork, branch, commit, push no fork, e
+  PR do fork para o original."
+- **Mensagem-chave:** o PR sai do seu fork.
+
+### Slide 5 · origin e upstream `(upstream)` — ~3 min
+- **Fala sugerida:** "`origin` é o seu fork; adicione o original como `upstream` com
+  `git remote add upstream`."
+- **Mensagem-chave:** dois remotos, seu e o original.
+
+### Slide 6 · Mantendo o fork atualizado `(atualizar)` — ~3 min
+- **Fala sugerida:** "O original continua evoluindo. `git fetch upstream` + `git merge
+  upstream/main` mantém seu fork em dia."
+- **Mensagem-chave:** atualize pelo upstream.
+
+### Slide 7 · Fork ou acesso direto? `(comparacao)` — ~2 min
+- **Fala sugerida:** "Equipe com acesso usa branches no mesmo repositório; projetos de
+  terceiros usam fork. O Pull Request é o coração dos dois."
+- **Mensagem-chave:** muda só de onde vem a branch.
+
+### Slide 8 · Materiais para praticar `(materiais)` — ~1 min
+- **Fala sugerida:** "Baixe o guia da Aula 20 com o fluxo completo de fork até o Pull
+  Request."
+- **Downloads:** `/downloads/guia-aula-20-fork-pr.md`.
+- **Mensagem-chave:** guia autoguiado disponível.
+
+### Slide 9 · Prática guiada `(pratica)` — ~3 min
+- **Fala sugerida:** "Faça fork de um repositório de exemplo, clone o seu fork, crie uma
+  branch, envie e abra um PR para o original."
+- **Mensagem-chave:** sua primeira contribuição.
+
+### Slide 10 · Encerramento `(encerramento)` — ~1 min
+- **Fala sugerida:** "Com fork e PR você contribui com quase qualquer projeto público. Na
+  próxima aula, o projeto final em equipe."
+- 💡 **Você sabia?** Muita gente conquista a primeira vaga mostrando contribuições open
+  source feitas por fork.
+- **Mensagem-chave:** próximo passo — projeto final.
+
+---
+
+# Aula 21 — Projeto final: fluxo completo de colaboração com Git e GitHub
 
 **Objetivo da aula:** aplicar todo o fluxo aprendido, colaborar com branches e PRs,
 participar de Code Review, fazer merge e trabalhar em equipe. (Aula prática.)
@@ -1498,14 +1781,14 @@ participar de Code Review, fazer merge e trabalhar em equipe. (Aula prática.)
   # → * 9c1b2a4 Cria manual da comunidade
   ```
 - **Feche mostrando o `--graph`:** aponte a branch "nascendo" da `main` e voltando no commit
-  de merge. É a mesma navegação da Aula 5, agora com várias linhas do tempo visíveis juntas.
+  de merge. É a mesma navegação da Aula 6, agora com várias linhas do tempo visíveis juntas.
 - **Mensagem-chave:** o fluxo do início ao fim, uma vez, para servir de modelo.
 
 ### Slide 5 · Materiais para praticar `(materiais)` — ~4 min
 - **Fala sugerida:** "Como a prática em grupo é autoguiada, deixamos um **guia detalhado**
   para download, com os papéis (mantenedora, autora, revisora), o passo a passo do Draft PR,
   a revisão local e um **conflito proposital** para resolver. Junto vai o projeto-base."
-- **Downloads:** `/downloads/guia-aula-16-pr-em-grupo.md` e `/downloads/manual-comunidade/`.
+- **Downloads:** `/downloads/guia-aula-21-pr-em-grupo.md` e `/downloads/manual-comunidade/`.
 - **Mensagem-chave:** o grupo consegue executar o fluxo completo seguindo o guia.
 
 ### Slide 6 · Prática em grupo `(pratica-grupo)` — ~30 min
@@ -1536,7 +1819,7 @@ participar de Code Review, fazer merge e trabalhar em equipe. (Aula prática.)
   colega. Assim ninguém mexe no mesmo arquivo por acaso, mas todas praticam PR + review.
 - **Conflito proposital (opcional):** peça a duas pessoas para editarem a **mesma linha** de
   um arquivo comum (ex.: o `README`); no segundo merge o conflito aparece e o grupo resolve
-  junto, aplicando a Aula 15.
+  junto, aplicando a Aula 19.
 - **Mensagem-chave:** o importante é executar **todas** as etapas.
 
 ### Slide 7 · Checklist final `(checklist)` — ~5 min
