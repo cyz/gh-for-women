@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🔍 Aula 13 · Colaboração</span>
+        <span className="slide-kicker s-purple">🔍 Aula 17 · Colaboração</span>
         <h1 className="slide-title">
           Code Review: <span className="accent">revisando alterações</span> em um PR
         </h1>
@@ -76,7 +76,7 @@ const slides: DeckSlide[] = [
             <span className="cmd">git switch faq-horarios</span>
             <span className="comment"># entra na branch do PR para ler o texto de perto</span>
             <span className="cmd">git merge main</span>
-            <span className="out warn"># se a main mudou a mesma linha → conflito (resolvemos como na Aula 15)</span>
+            <span className="out warn"># se a main mudou a mesma linha → conflito (resolvemos como na Aula 19)</span>
           </div>
         </div>
         <p className="hint">💡 Com o GitHub CLI dá para pular etapas: <span className="mono">gh pr checkout &lt;número&gt;</span>.</p>
@@ -204,5 +204,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaTreze() {
-  return <SlideDeck slides={slides} kicker="Aula 13" />;
+  return <SlideDeck slides={slides} kicker="Aula 17" />;
 }

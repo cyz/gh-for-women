@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-green">🔗 Aula 7 · GitHub</span>
+        <span className="slide-kicker s-green">🔗 Aula 9 · GitHub</span>
         <h1 className="slide-title">
           Conectando seu projeto ao GitHub <span className="accent">(remote e push)</span>
         </h1>
@@ -164,7 +164,7 @@ const slides: DeckSlide[] = [
         </div>
         <div className="key-msg" style={{ borderLeftColor: '#4ade80', background: 'linear-gradient(90deg, rgba(16,124,16,0.16), rgba(16,124,16,0.04))', borderColor: 'rgba(74,222,128,0.28)' }}>
           <span className="key-icon">➡️</span>
-          <span>Próxima aula: uma prática guiada publicando um projeto do zero.</span>
+          <span>Próxima aula: <strong>clonar</strong> um repositório existente do GitHub.</span>
         </div>
       </div>
     ),
@@ -172,5 +172,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaSete() {
-  return <SlideDeck slides={slides} kicker="Aula 7" />;
+  return <SlideDeck slides={slides} kicker="Aula 9" />;
 }

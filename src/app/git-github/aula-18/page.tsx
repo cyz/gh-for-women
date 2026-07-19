@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🔗 Aula 14 · Colaboração</span>
+        <span className="slide-kicker s-purple">🔗 Aula 18 · Colaboração</span>
         <h1 className="slide-title">
           Merge: <span className="accent">integrando uma funcionalidade</span> ao projeto
         </h1>
@@ -67,7 +67,7 @@ const slides: DeckSlide[] = [
           <span className="key-icon">🎉</span>
           <span>A funcionalidade agora faz parte da <span className="mono">main</span>!</span>
         </div>
-        <p className="hint">💡 Dá para integrar localmente com <span className="mono">git merge</span> (Aula 10). Pelo GitHub é melhor em equipe, porque passa pela revisão do Pull Request.</p>
+        <p className="hint">💡 Dá para integrar localmente com <span className="mono">git merge</span> (Aula 14). Pelo GitHub é melhor em equipe, porque passa pela revisão do Pull Request.</p>
       </div>
     ),
   },
@@ -198,5 +198,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaCatorze() {
-  return <SlideDeck slides={slides} kicker="Aula 14" />;
+  return <SlideDeck slides={slides} kicker="Aula 18" />;
 }

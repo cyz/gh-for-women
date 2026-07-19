@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🔀 Aula 12 · Colaboração</span>
+        <span className="slide-kicker s-purple">🔀 Aula 16 · Colaboração</span>
         <h1 className="slide-title">
           Pull Request: <span className="accent">solicitando a integração</span>
         </h1>
@@ -113,7 +113,7 @@ const slides: DeckSlide[] = [
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>O PR reúne <strong>tudo o que é preciso para revisar</strong> — o mesmo <span className="mono">+</span>/<span className="mono">-</span> do <span className="mono">git diff</span> (Aula 5), agora direto no navegador.</span>
+          <span>O PR reúne <strong>tudo o que é preciso para revisar</strong> — o mesmo <span className="mono">+</span>/<span className="mono">-</span> do <span className="mono">git diff</span> (Aula 6), agora direto no navegador.</span>
         </div>
       </div>
     ),
@@ -199,5 +199,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaDoze() {
-  return <SlideDeck slides={slides} kicker="Aula 12" />;
+  return <SlideDeck slides={slides} kicker="Aula 16" />;
 }

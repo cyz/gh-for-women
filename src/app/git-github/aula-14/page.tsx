@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🔀 Aula 10 · Colaboração</span>
+        <span className="slide-kicker s-purple">🔀 Aula 14 · Colaboração</span>
         <h1 className="slide-title">
           Criando e <span className="accent">trocando branches</span>
         </h1>
@@ -136,7 +136,7 @@ const slides: DeckSlide[] = [
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>Uma branch é só um <strong>marcador que aponta para um commit</strong>. Ao trocar de branch, o <span className="mono">HEAD</span> (Aula 5) se move junto — por isso os arquivos mudam.</span>
+          <span>Uma branch é só um <strong>marcador que aponta para um commit</strong>. Ao trocar de branch, o <span className="mono">HEAD</span> (Aula 6) se move junto — por isso os arquivos mudam.</span>
         </div>
       </div>
     ),
@@ -227,5 +227,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaDez() {
-  return <SlideDeck slides={slides} kicker="Aula 10" />;
+  return <SlideDeck slides={slides} kicker="Aula 14" />;
 }

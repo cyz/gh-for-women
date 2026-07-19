@@ -216,7 +216,7 @@ const slides: DeckSlide[] = [
         </div>
         <div className="key-msg" style={{ borderLeftColor: '#4ade80', background: 'linear-gradient(90deg, rgba(16,124,16,0.16), rgba(16,124,16,0.04))', borderColor: 'rgba(74,222,128,0.28)' }}>
           <span className="key-icon">➡️</span>
-          <span>Próxima aula: consultar o <strong>histórico</strong> e boas práticas de commit com <span className="mono">git log</span>.</span>
+          <span>Próxima aula: aprender o que <strong>não</strong> versionar usando o <span className="mono">.gitignore</span>.</span>
         </div>
       </div>
     ),

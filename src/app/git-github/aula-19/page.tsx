@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">⚡ Aula 15 · Colaboração</span>
+        <span className="slide-kicker s-purple">⚡ Aula 19 · Colaboração</span>
         <h1 className="slide-title">
           Resolvendo <span className="accent">conflitos de merge</span>
         </h1>
@@ -88,7 +88,7 @@ const slides: DeckSlide[] = [
           <div>LinkedIn: /githubforwomen</div>
           <div><span className="marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; atualiza-contato</span> <span className="lbl-in">(a outra branch)</span></div>
         </div>
-        <p className="slide-sub"><span className="mono">HEAD</span> (lembra da Aula 5?) é a sua versão atual; o outro bloco é a que está chegando. Os marcadores só mostram <strong>as duas versões</strong> lado a lado.</p>
+        <p className="slide-sub"><span className="mono">HEAD</span> (lembra da Aula 6?) é a sua versão atual; o outro bloco é a que está chegando. Os marcadores só mostram <strong>as duas versões</strong> lado a lado.</p>
       </div>
     ),
   },
@@ -175,7 +175,7 @@ const slides: DeckSlide[] = [
         </div>
         <div className="key-msg" style={{ borderLeftColor: '#c084fc', background: 'linear-gradient(90deg, rgba(92,45,145,0.2), rgba(92,45,145,0.05))', borderColor: 'rgba(192,132,252,0.3)' }}>
           <span className="key-icon">➡️</span>
-          <span>Próxima aula: o <strong>projeto final</strong> — o fluxo completo de colaboração em equipe.</span>
+          <span>Próxima aula: <strong>fork e Pull Request</strong> — contribuindo em projetos de terceiros.</span>
         </div>
       </div>
     ),
@@ -183,5 +183,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaQuinze() {
-  return <SlideDeck slides={slides} kicker="Aula 15" />;
+  return <SlideDeck slides={slides} kicker="Aula 19" />;
 }

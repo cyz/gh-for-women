@@ -9,7 +9,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🏆 Aula 16 · Projeto final</span>
+        <span className="slide-kicker s-purple">🏆 Aula 21 · Projeto final</span>
         <h1 className="slide-title">
           Projeto final: <span className="accent">fluxo completo de colaboração</span>
         </h1>
@@ -186,5 +186,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaDezesseis() {
-  return <SlideDeck slides={slides} kicker="Aula 16" />;
+  return <SlideDeck slides={slides} kicker="Aula 21" />;
 }

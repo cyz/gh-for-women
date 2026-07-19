@@ -31,7 +31,7 @@ const slides: DeckSlide[] = [
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🌿 Aula 9 · Colaboração</span>
+        <span className="slide-kicker s-purple">🌿 Aula 13 · Colaboração</span>
         <h1 className="slide-title">
           O que é uma <span className="accent">branch</span> e por que ela existe
         </h1>
@@ -164,5 +164,5 @@ const slides: DeckSlide[] = [
 ];
 
 export default function AulaNove() {
-  return <SlideDeck slides={slides} kicker="Aula 9" />;
+  return <SlideDeck slides={slides} kicker="Aula 13" />;
 }
