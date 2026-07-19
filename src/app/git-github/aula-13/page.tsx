@@ -3,141 +3,119 @@
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
 import '../deck.css';
 
+function BranchDiagram() {
+  return (
+    <svg viewBox="0 0 560 190" width="100%" style={{ maxWidth: 560 }} role="img" aria-label="Diagrama de branch">
+      {/* main line */}
+      <line x1="40" y1="60" x2="520" y2="60" stroke="#60a5fa" strokeWidth="4" />
+      {/* feature branch */}
+      <path d="M200 60 C 240 60, 240 140, 280 140 L 440 140" fill="none" stroke="#c084fc" strokeWidth="4" />
+      <path d="M440 140 C 480 140, 480 60, 520 60" fill="none" stroke="#c084fc" strokeWidth="4" strokeDasharray="6 6" />
+      {/* main nodes */}
+      {[40, 120, 200, 520].map((x) => (
+        <circle key={`m${x}`} cx={x} cy="60" r="9" fill="#1d4ed8" stroke="#60a5fa" strokeWidth="2" />
+      ))}
+      {/* feature nodes */}
+      {[280, 360, 440].map((x) => (
+        <circle key={`f${x}`} cx={x} cy="140" r="9" fill="#7c3aed" stroke="#c084fc" strokeWidth="2" />
+      ))}
+      <text x="40" y="40" fill="#93c5fd" fontSize="14" fontFamily="Inter">main</text>
+      <text x="280" y="172" fill="#d8b4fe" fontSize="14" fontFamily="Inter">feature-login</text>
+    </svg>
+  );
+}
+
 const slides: DeckSlide[] = [
   {
     id: 'capa',
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🔍 Aula 13 · Colaboração</span>
+        <span className="slide-kicker s-purple">🌿 Aula 9 · Colaboração</span>
         <h1 className="slide-title">
-          Code Review: <span className="accent">revisando alterações</span> em um PR
+          O que é uma <span className="accent">branch</span> e por que ela existe
         </h1>
         <p className="slide-sub">
-          Mesmo pessoas experientes deixam passar detalhes. Ter outra pessoa olhando o código aumenta a
-          qualidade, reduz erros e é uma das melhores formas de aprender em equipe.
+          Imagine dez pessoas alterando os mesmos arquivos ao mesmo tempo. É justamente para resolver isso
+          que existem as branches: linhas de trabalho paralelas que não interferem umas nas outras. (Nenhum
+          comando nesta aula — foco no conceito.)
         </p>
       </div>
     ),
   },
   {
-    id: 'o-que-e',
-    label: 'O que é Code Review',
+    id: 'problema',
+    label: 'O problema',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🤝 O que é Code Review</span>
-        <h2 className="slide-title">Colaboração, não julgamento</h2>
+        <span className="slide-kicker">💥 O problema</span>
+        <h2 className="slide-title">Todo mundo mexendo na mesma versão</h2>
+        <p className="slide-sub">Maria começa uma funcionalidade, João começa outra, Pedro corrige um bug — tudo na mesma branch. O que pode acontecer?</p>
         <div className="where-grid" style={{ maxWidth: 720 }}>
-          <div className="where-item"><span className="where-ico">✅</span><span>A alteração resolve o problema?</span></div>
-          <div className="where-item"><span className="where-ico">👓</span><span>O código está claro?</span></div>
-          <div className="where-item"><span className="where-ico">📐</span><span>Segue o padrão do projeto?</span></div>
+          <div className="where-item"><span className="where-ico">🧩</span><span>Alterações incompletas</span></div>
+          <div className="where-item"><span className="where-ico">🐛</span><span>Bugs inesperados</span></div>
+          <div className="where-item"><span className="where-ico">😵</span><span>Difícil revisar</span></div>
+          <div className="where-item"><span className="where-ico">⚠️</span><span>Maior risco</span></div>
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>O foco é <strong>melhorar o código e compartilhar conhecimento</strong> — como revisar um artigo antes de publicar.</span>
+          <span>Branches permitem desenvolver <strong>sem afetar a versão principal</strong> do projeto.</span>
         </div>
       </div>
     ),
   },
   {
-    id: 'tela',
-    label: 'A tela de revisão',
+    id: 'o-que-e',
+    label: 'O que é uma branch',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-green">📂 Files changed</span>
-        <h2 className="slide-title">A tela que revisores mais usam</h2>
-        <div className="pr-mock">
-          <div className="pr-head"><span className="pr-title">📂 Files changed · README.md</span></div>
-          <div style={{ padding: '14px 20px' }}>
-            <span className="diff-line diff-add">+ ## Contato</span>
-            <span className="diff-line diff-add">+ Entre em contato pelo LinkedIn.</span>
-            <span className="diff-line diff-rem">- (versão anterior)</span>
-          </div>
-          <div className="pr-body" style={{ borderTop: '1px dashed #20202e' }}>
-            💬 <em>&ldquo;Gostei da ideia! Que tal detalhar um pouco mais esta seção?&rdquo;</em>
-          </div>
+        <span className="slide-kicker s-purple">🌿 O que é uma branch</span>
+        <h2 className="slide-title">Uma linha independente de desenvolvimento</h2>
+        <BranchDiagram />
+        <div className="branch-legend">
+          <span><span className="swatch" style={{ background: '#60a5fa' }} /> main — versão estável</span>
+          <span><span className="swatch" style={{ background: '#c084fc' }} /> feature — trabalho em andamento</span>
         </div>
-        <p className="slide-sub">O GitHub destaca exatamente o que foi <span style={{ color: '#4ade80' }}>adicionado</span> e <span style={{ color: '#f87171' }}>removido</span>.</p>
+        <p className="slide-sub">
+          É como testar mudanças em uma <strong>cópia</strong> do documento: quando fica pronta, substitui a
+          versão principal.
+        </p>
       </div>
     ),
   },
   {
-    id: 'revisar-local',
-    label: 'Revisar localmente',
+    id: 'main',
+    label: 'A branch main',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-green">💻 Revisar localmente</span>
-        <h2 className="slide-title">Trazendo o PR para a sua máquina</h2>
-        <div className="deck-term">
-          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — revisar de perto</span></div>
-          <div className="deck-term-body">
-            <span className="cmd">git fetch origin</span>
-            <span className="comment"># baixa as branches novas do GitHub</span>
-            <span className="cmd">git switch faq-horarios</span>
-            <span className="comment"># entra na branch do PR para ler o texto de perto</span>
-            <span className="cmd">git merge main</span>
-            <span className="out warn"># se a main mudou a mesma linha → conflito (resolvemos como na Aula 15)</span>
-          </div>
+        <span className="slide-kicker s-purple">⭐ A branch main</span>
+        <h2 className="slide-title">A versão estável do projeto</h2>
+        <div className="stage-flow" style={{ maxWidth: 520 }}>
+          <div className="stage-box is-final"><div className="st-ico">⭐</div><h4>main</h4><p>Site publicado / versão estável</p></div>
         </div>
-        <p className="hint">💡 Com o GitHub CLI dá para pular etapas: <span className="mono">gh pr checkout &lt;número&gt;</span>.</p>
+        <p className="slide-sub">
+          Quando criamos um repositório, já existe uma branch principal — normalmente chamada
+          <span className="mono"> main</span>. Novas funcionalidades <strong>não</strong> são desenvolvidas
+          diretamente nela.
+        </p>
       </div>
     ),
   },
   {
-    id: 'comentarios',
-    label: 'Bons comentários',
+    id: 'equipes',
+    label: 'Como equipes usam',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">✍️ Bons comentários</span>
-        <h2 className="slide-title">Específico ajuda, genérico não</h2>
-        <div className="vs-split">
-          <div className="vs-panel bad">
-            <h4>❌ Pouco útil</h4>
-            <p style={{ color: '#e2b4b4', fontSize: 14, lineHeight: 1.8 }}>&ldquo;Está errado.&rdquo;<br />&ldquo;Não gostei.&rdquo;</p>
-          </div>
-          <div className="vs-arrow">➜</div>
-          <div className="vs-panel good">
-            <h4>✅ Construtivo</h4>
-            <p style={{ color: '#a7e3b0', fontSize: 13.5, lineHeight: 1.7 }}>&ldquo;Podemos usar um título mais específico para facilitar a leitura?&rdquo;<br />&ldquo;Talvez reorganizar esta seção ajude na leitura.&rdquo;</p>
-          </div>
-        </div>
-        <p className="slide-sub">Nem todo comentário aponta problema — também podemos <strong>reconhecer boas soluções</strong>. 🎉</p>
-      </div>
-    ),
-  },
-  {
-    id: 'o-que-revisar',
-    label: 'O que revisar',
-    render: () => (
-      <div className="slide-pad">
-        <span className="slide-kicker s-green">🧐 O que revisar</span>
-        <h2 className="slide-title">Para iniciantes, mantenha simples</h2>
-        <ul className="check-list ask">
-          <li><span className="check-ico">❔</span> A alteração resolve o problema?</li>
-          <li><span className="check-ico">❔</span> Está fácil de entender?</li>
-          <li><span className="check-ico">❔</span> A mensagem do commit faz sentido?</li>
-          <li><span className="check-ico">❔</span> O PR tem título e descrição claros?</li>
-        </ul>
-        <p className="slide-sub">Arquitetura e desempenho vêm com a experiência — sem pressa.</p>
-      </div>
-    ),
-  },
-  {
-    id: 'enviar-review',
-    label: 'Enviar o retorno',
-    render: () => (
-      <div className="slide-pad">
-        <span className="slide-kicker s-purple">📮 Enviar o retorno</span>
-        <h2 className="slide-title">Três formas de responder um PR</h2>
+        <span className="slide-kicker s-purple">👥 Como equipes usam</span>
+        <h2 className="slide-title">Uma branch por funcionalidade</h2>
         <div className="cap-grid" style={{ maxWidth: 820 }}>
-          <div className="cap-card"><div className="cap-ico">💬</div><h4>Comment</h4><p>Observações, sem aprovar nem barrar</p></div>
-          <div className="cap-card"><div className="cap-ico">✅</div><h4>Approve</h4><p>Está pronto para o merge</p></div>
-          <div className="cap-card"><div className="cap-ico">🔧</div><h4>Request changes</h4><p>Peça ajustes antes de integrar</p></div>
+          <div className="cap-card"><div className="cap-ico">⭐</div><h4>main</h4><p>Versão estável</p></div>
+          <div className="cap-card"><div className="cap-ico">🔑</div><h4>login</h4><p>Nova funcionalidade</p></div>
+          <div className="cap-card"><div className="cap-ico">📝</div><h4>cadastro</h4><p>Nova funcionalidade</p></div>
+          <div className="cap-card"><div className="cap-ico">✉️</div><h4>contato</h4><p>Nova funcionalidade</p></div>
+          <div className="cap-card"><div className="cap-ico">🐛</div><h4>correção-menu</h4><p>Correção de bug</p></div>
         </div>
-        <div className="key-msg">
-          <span className="key-icon">🔑</span>
-          <span>No GitHub: <span className="mono">Files changed → Review changes</span>. Comece por um elogio e depois uma sugestão.</span>
-        </div>
+        <p className="slide-sub">Quando cada funcionalidade fica pronta, ela retorna para a <span className="mono">main</span>.</p>
       </div>
     ),
   },
@@ -147,28 +125,12 @@ const slides: DeckSlide[] = [
     render: () => (
       <div className="slide-pad">
         <span className="slide-kicker s-orange">✨ Boas práticas</span>
-        <h2 className="slide-title">Revisão respeitosa</h2>
+        <h2 className="slide-title">Trabalhando com branches</h2>
         <div className="tips-grid">
-          <div className="tip-card"><div className="tip-ico">🙌</div><h4>Comece pelo positivo</h4><p>Destaque algo bom antes de sugerir melhorias.</p></div>
-          <div className="tip-card"><div className="tip-ico">💡</div><h4>Explique o motivo</h4><p>Uma sugestão não significa que o código está &ldquo;errado&rdquo;.</p></div>
-          <div className="tip-card"><div className="tip-ico">👥</div><h4>Revise o código</h4><p>...e não a pessoa. A revisão é uma conversa técnica.</p></div>
+          <div className="tip-card"><div className="tip-ico">🚫</div><h4>Nunca dev direto na main</h4><p>Mantenha a versão principal sempre estável.</p></div>
+          <div className="tip-card"><div className="tip-ico">1️⃣</div><h4>Uma funcionalidade, uma branch</h4><p>Facilita a revisão e reduz o risco de erros.</p></div>
+          <div className="tip-card"><div className="tip-ico">🏷️</div><h4>Nomes descritivos</h4><p><span className="mono">feature-login</span>, <span className="mono">fix-menu</span>…</p></div>
         </div>
-      </div>
-    ),
-  },
-  {
-    id: 'pratica',
-    label: 'Prática guiada',
-    render: () => (
-      <div className="slide-pad">
-        <span className="slide-kicker s-orange">🎯 Prática guiada</span>
-        <h2 className="slide-title">Faça você mesma</h2>
-        <ul className="check-list">
-          <li><span className="check-ico">✅</span> Abrir a aba <span className="mono">Files changed</span> de um PR.</li>
-          <li><span className="check-ico">✅</span> Adicionar pelo menos <strong>um comentário positivo</strong>.</li>
-          <li><span className="check-ico">✅</span> Adicionar <strong>uma sugestão de melhoria</strong>.</li>
-          <li><span className="check-ico">✅</span> Responder a um comentário (transformar em conversa).</li>
-        </ul>
       </div>
     ),
   },
@@ -178,31 +140,29 @@ const slides: DeckSlide[] = [
     render: () => (
       <div className="slide-pad">
         <span className="slide-kicker">🏁 Encerramento</span>
-        <h2 className="slide-title">Uma oportunidade de aprender</h2>
+        <h2 className="slide-title">Times trabalham em paralelo</h2>
         <p className="slide-sub">
-          Code Review não é para apontar erros, mas para aprender, compartilhar conhecimento e melhorar a
-          qualidade do projeto.
+          Branches permitem que várias pessoas trabalhem no mesmo projeto sem interferir umas nas outras.
         </p>
         <div className="did-you-know">
           <span className="dyk-icon">💡</span>
           <div>
             <h3>Você sabia?</h3>
             <p>
-              Em muitas equipes, o Code Review é uma das principais formas de aprendizado entre pessoas
-              desenvolvedoras. Profissionais mais experientes revisam PRs de colegas e explicam decisões
-              técnicas — e todo o time evolui junto.
+              Em projetos open source com milhares de colaboradores, como o VS Code, o desenvolvimento
+              acontece em centenas de branches ao mesmo tempo — mantendo a branch principal sempre estável.
             </p>
           </div>
         </div>
         <div className="key-msg" style={{ borderLeftColor: '#c084fc', background: 'linear-gradient(90deg, rgba(92,45,145,0.2), rgba(92,45,145,0.05))', borderColor: 'rgba(192,132,252,0.3)' }}>
           <span className="key-icon">➡️</span>
-          <span>Próxima aula: concluir o fluxo com o <strong>merge</strong> da funcionalidade.</span>
+          <span>Próxima aula: criar e trocar de branches na prática.</span>
         </div>
       </div>
     ),
   },
 ];
 
-export default function AulaTreze() {
-  return <SlideDeck slides={slides} kicker="Aula 13" />;
+export default function AulaNove() {
+  return <SlideDeck slides={slides} kicker="Aula 9" />;
 }

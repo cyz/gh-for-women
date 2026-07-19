@@ -3,134 +3,141 @@
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
 import '../deck.css';
 
-function BranchDiagram() {
-  return (
-    <svg viewBox="0 0 560 190" width="100%" style={{ maxWidth: 560 }} role="img" aria-label="Diagrama de branch">
-      {/* main line */}
-      <line x1="40" y1="60" x2="520" y2="60" stroke="#60a5fa" strokeWidth="4" />
-      {/* feature branch */}
-      <path d="M200 60 C 240 60, 240 140, 280 140 L 440 140" fill="none" stroke="#c084fc" strokeWidth="4" />
-      <path d="M440 140 C 480 140, 480 60, 520 60" fill="none" stroke="#c084fc" strokeWidth="4" strokeDasharray="6 6" />
-      {/* main nodes */}
-      {[40, 120, 200, 520].map((x) => (
-        <circle key={`m${x}`} cx={x} cy="60" r="9" fill="#1d4ed8" stroke="#60a5fa" strokeWidth="2" />
-      ))}
-      {/* feature nodes */}
-      {[280, 360, 440].map((x) => (
-        <circle key={`f${x}`} cx={x} cy="140" r="9" fill="#7c3aed" stroke="#c084fc" strokeWidth="2" />
-      ))}
-      <text x="40" y="40" fill="#93c5fd" fontSize="14" fontFamily="Inter">main</text>
-      <text x="280" y="172" fill="#d8b4fe" fontSize="14" fontFamily="Inter">feature-login</text>
-    </svg>
-  );
-}
-
 const slides: DeckSlide[] = [
   {
     id: 'capa',
     label: 'Capa',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🌿 Aula 9 · Colaboração</span>
+        <span className="slide-kicker s-green">🔗 Aula 7 · GitHub</span>
         <h1 className="slide-title">
-          O que é uma <span className="accent">branch</span> e por que ela existe
+          Conectando seu projeto ao GitHub <span className="accent">(remote e push)</span>
         </h1>
         <p className="slide-sub">
-          Imagine dez pessoas alterando os mesmos arquivos ao mesmo tempo. É justamente para resolver isso
-          que existem as branches: linhas de trabalho paralelas que não interferem umas nas outras. (Nenhum
-          comando nesta aula — foco no conceito.)
+          Criamos um repositório no GitHub, mas ele continua vazio. Hoje vamos ligar o projeto do computador
+          ao GitHub com <span className="mono">git remote add</span> e publicá-lo pela primeira vez com{' '}
+          <span className="mono">git push</span>.
         </p>
       </div>
     ),
   },
   {
-    id: 'problema',
-    label: 'O problema',
+    id: 'remoto',
+    label: 'Repositório remoto',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker">💥 O problema</span>
-        <h2 className="slide-title">Todo mundo mexendo na mesma versão</h2>
-        <p className="slide-sub">Maria começa uma funcionalidade, João começa outra, Pedro corrige um bug — tudo na mesma branch. O que pode acontecer?</p>
+        <span className="slide-kicker s-green">🌐 Repositório remoto</span>
+        <h2 className="slide-title">Uma cópia do projeto na nuvem</h2>
+        <div className="stage-flow" style={{ maxWidth: 720 }}>
+          <div className="stage-box"><div className="st-ico">💻</div><h4>Computador</h4><p>Repositório local</p></div>
+          <div className="stage-arrow"><span style={{ color: '#64748b' }}>⇅</span></div>
+          <div className="stage-box"><div className="st-ico">☁️</div><h4>GitHub</h4><p>Repositório remoto</p></div>
+        </div>
+        <p className="slide-sub">Ainda falta dizer ao Git <strong>onde</strong> esse repositório remoto está.</p>
+      </div>
+    ),
+  },
+  {
+    id: 'remote-add',
+    label: 'git remote add',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">📍 git remote add</span>
+        <h2 className="slide-title">Registrando o endereço</h2>
+        <p className="slide-sub">No GitHub, clique em <strong>Code</strong> e copie a URL HTTPS. De volta ao VS Code:</p>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — conectar remoto</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git remote add origin <span className="str">https://github.com/ana/meu-primeiro-projeto.git</span></span>
+          </div>
+        </div>
         <div className="where-grid" style={{ maxWidth: 720 }}>
-          <div className="where-item"><span className="where-ico">🧩</span><span>Alterações incompletas</span></div>
-          <div className="where-item"><span className="where-ico">🐛</span><span>Bugs inesperados</span></div>
-          <div className="where-item"><span className="where-ico">😵</span><span>Difícil revisar</span></div>
-          <div className="where-item"><span className="where-ico">⚠️</span><span>Maior risco</span></div>
+          <div className="where-item"><span className="where-ico">🔧</span><span><span className="mono">remote</span> — gerenciar repositórios remotos</span></div>
+          <div className="where-item"><span className="where-ico">➕</span><span><span className="mono">add</span> — adicionar um remoto</span></div>
+          <div className="where-item"><span className="where-ico">🏷️</span><span><span className="mono">origin</span> — apelido padrão do remoto</span></div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'remote-v',
+    label: 'git remote -v',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">🔎 git remote -v</span>
+        <h2 className="slide-title">Antes e depois de conectar</h2>
+        <div className="vs-split" style={{ maxWidth: 900 }}>
+          <div className="vs-panel bad">
+            <h4>Antes</h4>
+            <p className="mono" style={{ color: '#e2b4b4', fontSize: 13 }}>git remote -v</p>
+            <p style={{ color: '#9aa3b8', fontSize: 13 }}>(nenhum remoto configurado)</p>
+          </div>
+          <div className="vs-arrow">➜</div>
+          <div className="vs-panel good">
+            <h4>Depois</h4>
+            <p className="mono" style={{ color: '#a7e3b0', fontSize: 12.5, lineHeight: 1.8 }}>origin  https://github.com/... (fetch)<br />origin  https://github.com/... (push)</p>
+          </div>
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
-          <span>Branches permitem desenvolver <strong>sem afetar a versão principal</strong> do projeto.</span>
+          <span><span className="mono">git remote add</span> apenas <strong>registra o endereço</strong> — ainda não enviamos nada.</span>
         </div>
       </div>
     ),
   },
   {
-    id: 'o-que-e',
-    label: 'O que é uma branch',
+    id: 'push',
+    label: 'git push',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">🌿 O que é uma branch</span>
-        <h2 className="slide-title">Uma linha independente de desenvolvimento</h2>
-        <BranchDiagram />
-        <div className="branch-legend">
-          <span><span className="swatch" style={{ background: '#60a5fa' }} /> main — versão estável</span>
-          <span><span className="swatch" style={{ background: '#c084fc' }} /> feature — trabalho em andamento</span>
+        <span className="slide-kicker">🚀 git push</span>
+        <h2 className="slide-title">Publicando o projeto</h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — enviar para o GitHub</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git push <span className="flag">-u</span> origin main</span>
+            <span className="comment"># -u é abreviação de --set-upstream (define o destino padrão da branch)</span>
+            <span className="comment"># push → enviar · origin → qual remoto · main → qual branch</span>
+            <span className="comment"># com o -u, das próximas vezes basta rodar: git push</span>
+            <span className="out ok">✔ Atualize o navegador: README.md e todo o projeto aparecem!</span>
+          </div>
         </div>
-        <p className="slide-sub">
-          É como testar mudanças em uma <strong>cópia</strong> do documento: quando fica pronta, substitui a
-          versão principal.
-        </p>
+        <div className="key-msg">
+          <span className="key-icon">🎉</span>
+          <span>Agora seu projeto também está salvo no <strong>GitHub</strong>. Um ótimo momento para comemorar!</span>
+        </div>
       </div>
     ),
   },
   {
-    id: 'main',
-    label: 'A branch main',
+    id: 'dois-lugares',
+    label: 'Dois lugares',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">⭐ A branch main</span>
-        <h2 className="slide-title">A versão estável do projeto</h2>
-        <div className="stage-flow" style={{ maxWidth: 520 }}>
-          <div className="stage-box is-final"><div className="st-ico">⭐</div><h4>main</h4><p>Site publicado / versão estável</p></div>
+        <span className="slide-kicker s-green">🛟 Segurança</span>
+        <h2 className="slide-title">O projeto existe em dois lugares</h2>
+        <div className="stage-flow" style={{ maxWidth: 720 }}>
+          <div className="stage-box is-final"><div className="st-ico">💻</div><h4>Local</h4><p>No seu computador</p></div>
+          <div className="stage-arrow"><span style={{ color: '#4ade80' }}>⇅</span></div>
+          <div className="stage-box is-final"><div className="st-ico">☁️</div><h4>Remoto</h4><p>No GitHub</p></div>
         </div>
-        <p className="slide-sub">
-          Quando criamos um repositório, já existe uma branch principal — normalmente chamada
-          <span className="mono"> main</span>. Novas funcionalidades <strong>não</strong> são desenvolvidas
-          diretamente nela.
-        </p>
+        <p className="slide-sub">&ldquo;Se meu computador quebrar hoje, o projeto continua existindo?&rdquo; &nbsp;→&nbsp; <strong style={{ color: '#4ade80' }}>Sim!</strong> Há uma cópia no GitHub.</p>
       </div>
     ),
   },
   {
-    id: 'equipes',
-    label: 'Como equipes usam',
+    id: 'pratica',
+    label: 'Prática guiada',
     render: () => (
       <div className="slide-pad">
-        <span className="slide-kicker s-purple">👥 Como equipes usam</span>
-        <h2 className="slide-title">Uma branch por funcionalidade</h2>
-        <div className="cap-grid" style={{ maxWidth: 820 }}>
-          <div className="cap-card"><div className="cap-ico">⭐</div><h4>main</h4><p>Versão estável</p></div>
-          <div className="cap-card"><div className="cap-ico">🔑</div><h4>login</h4><p>Nova funcionalidade</p></div>
-          <div className="cap-card"><div className="cap-ico">📝</div><h4>cadastro</h4><p>Nova funcionalidade</p></div>
-          <div className="cap-card"><div className="cap-ico">✉️</div><h4>contato</h4><p>Nova funcionalidade</p></div>
-          <div className="cap-card"><div className="cap-ico">🐛</div><h4>correção-menu</h4><p>Correção de bug</p></div>
-        </div>
-        <p className="slide-sub">Quando cada funcionalidade fica pronta, ela retorna para a <span className="mono">main</span>.</p>
-      </div>
-    ),
-  },
-  {
-    id: 'boas-praticas',
-    label: 'Boas práticas',
-    render: () => (
-      <div className="slide-pad">
-        <span className="slide-kicker s-orange">✨ Boas práticas</span>
-        <h2 className="slide-title">Trabalhando com branches</h2>
-        <div className="tips-grid">
-          <div className="tip-card"><div className="tip-ico">🚫</div><h4>Nunca dev direto na main</h4><p>Mantenha a versão principal sempre estável.</p></div>
-          <div className="tip-card"><div className="tip-ico">1️⃣</div><h4>Uma funcionalidade, uma branch</h4><p>Facilita a revisão e reduz o risco de erros.</p></div>
-          <div className="tip-card"><div className="tip-ico">🏷️</div><h4>Nomes descritivos</h4><p><span className="mono">feature-login</span>, <span className="mono">fix-menu</span>…</p></div>
-        </div>
+        <span className="slide-kicker s-orange">🎯 Prática guiada</span>
+        <h2 className="slide-title">Faça você mesma</h2>
+        <ul className="check-list">
+          <li><span className="check-ico">✅</span> Copiar a URL do repositório no GitHub.</li>
+          <li><span className="check-ico">✅</span> <span className="mono">git remote add origin URL</span> e conferir com <span className="mono">git remote -v</span>.</li>
+          <li><span className="check-ico">✅</span> <span className="mono">git push -u origin main</span>.</li>
+          <li><span className="check-ico">✅</span> Atualizar o navegador e ver os arquivos publicados.</li>
+        </ul>
       </div>
     ),
   },
@@ -140,29 +147,30 @@ const slides: DeckSlide[] = [
     render: () => (
       <div className="slide-pad">
         <span className="slide-kicker">🏁 Encerramento</span>
-        <h2 className="slide-title">Times trabalham em paralelo</h2>
+        <h2 className="slide-title">Projeto publicado!</h2>
         <p className="slide-sub">
-          Branches permitem que várias pessoas trabalhem no mesmo projeto sem interferir umas nas outras.
+          Agora ele existe tanto no seu computador quanto na nuvem, podendo ser acessado e compartilhado.
         </p>
         <div className="did-you-know">
           <span className="dyk-icon">💡</span>
           <div>
             <h3>Você sabia?</h3>
             <p>
-              Em projetos open source com milhares de colaboradores, como o VS Code, o desenvolvimento
-              acontece em centenas de branches ao mesmo tempo — mantendo a branch principal sempre estável.
+              O primeiro <span className="mono">git push</span> costuma ser um marco para quem aprende
+              programação. A partir daí você já pode compartilhar projetos, criar um portfólio público e
+              contribuir com projetos colaborativos.
             </p>
           </div>
         </div>
-        <div className="key-msg" style={{ borderLeftColor: '#c084fc', background: 'linear-gradient(90deg, rgba(92,45,145,0.2), rgba(92,45,145,0.05))', borderColor: 'rgba(192,132,252,0.3)' }}>
+        <div className="key-msg" style={{ borderLeftColor: '#4ade80', background: 'linear-gradient(90deg, rgba(16,124,16,0.16), rgba(16,124,16,0.04))', borderColor: 'rgba(74,222,128,0.28)' }}>
           <span className="key-icon">➡️</span>
-          <span>Próxima aula: criar e trocar de branches na prática.</span>
+          <span>Próxima aula: uma prática guiada publicando um projeto do zero.</span>
         </div>
       </div>
     ),
   },
 ];
 
-export default function AulaNove() {
-  return <SlideDeck slides={slides} kicker="Aula 9" />;
+export default function AulaSete() {
+  return <SlideDeck slides={slides} kicker="Aula 7" />;
 }
