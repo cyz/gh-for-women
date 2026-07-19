@@ -99,7 +99,7 @@ const slides: DeckSlide[] = [
             <span className="dl-ico">📁</span> Projeto-base · Manual da Comunidade
           </a>
           <a className="deck-download" href="/downloads/guia-aula-11-subir-projeto.md" download>
-            <span className="dl-ico">📄</span> Guia passo a passo · Aula 8
+            <span className="dl-ico">📄</span> Guia passo a passo · Aula 11
           </a>
         </div>
         <div className="key-msg">
