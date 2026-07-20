@@ -5,6 +5,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/components/LanguageContext';
+import { guides } from '@/data/guides';
 import './git-github/lessons.css';
 
 interface Lesson {
@@ -12,13 +13,6 @@ interface Lesson {
   title: string;
   desc: string;
   dur: string;
-}
-
-interface DownloadResource {
-  title: string;
-  desc: string;
-  relatedLessons: string;
-  href: string;
 }
 
 const modules: { kicker: string; title: string; sub: string; cls: string; lessons: Lesson[] }[] = [
@@ -69,69 +63,6 @@ const modules: { kicker: string; title: string; sub: string; cls: string; lesson
   },
 ];
 
-const downloadResources: DownloadResource[] = [
-  {
-    title: 'Guia prático de Markdown',
-    desc: 'Referência de sintaxe e boas práticas para criar documentação clara no GitHub.',
-    relatedLessons: 'Aula 11',
-    href: '/downloads/guia-markdown.md',
-  },
-  {
-    title: 'Git cheat sheet',
-    desc: 'Referência rápida dos principais comandos usados ao longo do curso.',
-    relatedLessons: 'Aulas 7, 11, 19 e 21',
-    href: '/downloads/git-cheat-sheet.md',
-  },
-  {
-    title: 'Guia de licenças para repositórios',
-    desc: 'Critérios para escolher e aplicar uma licença ao seu projeto.',
-    relatedLessons: 'Aulas 8 e 11',
-    href: '/downloads/guia-licencas-repositorios.md',
-  },
-  {
-    title: 'Clonar um repositório',
-    desc: 'Roteiro autoguiado para clonar, explorar, alterar e enviar um projeto.',
-    relatedLessons: 'Aula 10',
-    href: '/downloads/guia-aula-10-clonar.md',
-  },
-  {
-    title: 'Publicar seu primeiro projeto',
-    desc: 'Prática completa para publicar um projeto do git init ao git push.',
-    relatedLessons: 'Aula 11',
-    href: '/downloads/guia-aula-11-subir-projeto.md',
-  },
-  {
-    title: 'Convenções para branches',
-    desc: 'Padrões de nomes para criar branches claras e consistentes.',
-    relatedLessons: 'Aula 13',
-    href: '/downloads/convencoes-branches.md',
-  },
-  {
-    title: 'Guia de Code Review',
-    desc: 'Checklist prático para preparar, revisar e responder a um Pull Request.',
-    relatedLessons: 'Aulas 17 e 21',
-    href: '/downloads/guia-code-review.md',
-  },
-  {
-    title: 'Estratégias de merge',
-    desc: 'Comparação entre merge commit, squash and merge e rebase and merge.',
-    relatedLessons: 'Aula 18',
-    href: '/downloads/estrategias-merge.md',
-  },
-  {
-    title: 'Fork e Pull Request',
-    desc: 'Guia autoguiado para contribuir em projetos sem acesso de escrita.',
-    relatedLessons: 'Aula 20',
-    href: '/downloads/guia-aula-20-fork-pr.md',
-  },
-  {
-    title: 'Pull Request em grupo',
-    desc: 'Projeto final para praticar Issues, branches, revisão e integração em equipe.',
-    relatedLessons: 'Aula 21',
-    href: '/downloads/guia-aula-21-pr-em-grupo.md',
-  },
-];
-
 function normalizeSearchText(value: string) {
   return value
     .normalize('NFD')
@@ -161,10 +92,10 @@ export default function Home() {
     .filter((mod) => mod.lessons.length > 0);
 
   const filteredResources = normalizedQuery
-    ? downloadResources.filter((resource) =>
+    ? guides.filter((resource) =>
         normalizeSearchText(`${resource.title} ${resource.desc} ${resource.relatedLessons}`).includes(normalizedQuery),
       )
-    : downloadResources;
+    : guides;
 
   const lessonCount = filteredModules.reduce((total, mod) => total + mod.lessons.length, 0);
   const resultCount = lessonCount + filteredResources.length;
@@ -253,19 +184,27 @@ export default function Home() {
             </div>
             <div className="lessons-grid">
               {filteredResources.map((resource) => (
-                <a
+                <article
                   className="lesson-card resource-card"
-                  href={resource.href}
-                  download
-                  key={resource.href}
+                  key={resource.slug}
                 >
-                  <span className="lesson-badge" aria-hidden="true">↓</span>
+                  <span className="lesson-badge" aria-hidden="true">◆</span>
                   <div className="lesson-info">
                     <h3>{resource.title}</h3>
                     <p>{resource.desc}</p>
-                    <span className="lesson-dur">{resource.relatedLessons} · Baixar arquivo</span>
+                    <span className="lesson-dur">{resource.relatedLessons}</span>
+                    <div className="resource-actions">
+                      <Link href={`/guias/${resource.slug}`} className="resource-action primary">
+                        <span aria-hidden="true">◉</span>
+                        {isEnglish ? 'View' : 'Visualizar'}
+                      </Link>
+                      <a className="resource-action" href={`/downloads/${resource.fileName}`} download>
+                        <span aria-hidden="true">↓</span>
+                        {isEnglish ? 'Download' : 'Baixar'}
+                      </a>
+                    </div>
                   </div>
-                </a>
+                </article>
               ))}
             </div>
           </section>

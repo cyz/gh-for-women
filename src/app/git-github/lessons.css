@@ -204,6 +204,46 @@
 
 .resource-card .lesson-badge { background: var(--orange); }
 .resource-card .lesson-dur { color: var(--orange); }
+.resource-card .lesson-info { flex: 1; min-width: 0; }
+
+.resource-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.resource-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--gray-40);
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 0.78em;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resource-action:hover { background: var(--gray-20); }
+.resource-action.primary {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: var(--card);
+}
+.resource-action.primary:hover {
+  border-color: var(--blue-dark);
+  background: var(--blue-dark);
+}
+.resource-action:focus-visible {
+  outline: 3px solid var(--blue-light);
+  outline-offset: 2px;
+}
 
 @media (max-width: 700px) {
   .search-panel { margin-top: 32px; }
