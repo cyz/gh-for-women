@@ -63,13 +63,13 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-green">▶️ Demonstração</span>
         <h2 className="slide-title">O fluxo esperado</h2>
         <div className="deck-term">
-          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — feature-faq</span></div>
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — docs/atualiza-faq</span></div>
           <div className="deck-term-body">
-            <span className="cmd">git switch <span className="flag">-c</span> feature-faq</span>
+            <span className="cmd">git switch <span className="flag">-c</span> docs/atualiza-faq</span>
             <span className="comment"># edita o faq.md: adiciona uma pergunta</span>
             <span className="cmd">git add faq.md</span>
             <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Adiciona pergunta ao FAQ&quot;</span></span>
-            <span className="cmd">git push <span className="flag">-u</span> origin feature-faq</span>
+            <span className="cmd">git push <span className="flag">-u</span> origin docs/atualiza-faq</span>
             <span className="comment"># Draft PR → Ready for review → revisar → merge</span>
             <span className="cmd">git switch main</span>
             <span className="cmd">git pull origin main</span>
@@ -94,8 +94,11 @@ const slides: DeckSlide[] = [
           <a className="deck-download" href="/downloads/guia-aula-21-pr-em-grupo.md" download>
             <span className="dl-ico">📄</span> Guia · Fluxo completo em grupo
           </a>
-          <a className="deck-download" href="/downloads/manual-comunidade/README.md" download>
-            <span className="dl-ico">📁</span> Projeto-base · Manual da Comunidade
+          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+            <span className="dl-ico">⌨️</span> Git cheat sheet
+          </a>
+          <a className="deck-download" href="/downloads/guia-code-review.md" download>
+            <span className="dl-ico">🔍</span> Guia de Code Review
           </a>
         </div>
       </div>
@@ -116,6 +119,66 @@ const slides: DeckSlide[] = [
           <li><span className="flow-n">5</span> Após aprovação, fazer o merge</li>
           <li><span className="flow-n">6</span> Todas atualizam a main com <code>git pull</code></li>
         </ol>
+      </div>
+    ),
+  },
+  {
+    id: 'roteiro-90-minutos',
+    label: 'Roteiro de 90 minutos',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">
+          <span className="trans-pt">⏱️ Roteiro de 90 minutos</span>
+          <span className="trans-en">⏱️ 90-minute plan</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Papéis em paralelo, evidências por fase</span>
+          <span className="trans-en">Parallel roles, evidence in every phase</span>
+        </h2>
+        <ol className="flow-list trans-pt">
+          <li><span className="flow-n">10</span> Setup, acessos e distribuição</li>
+          <li><span className="flow-n">20</span> Issue, branch e dois commits</li>
+          <li><span className="flow-n">10</span> Draft PR e auto-revisão</li>
+          <li><span className="flow-n">20</span> Revisão cruzada em anel</li>
+          <li><span className="flow-n">15</span> Ajustes e conflito controlado</li>
+          <li><span className="flow-n">15</span> Merge, sincronização e retrospectiva</li>
+        </ol>
+        <ol className="flow-list trans-en">
+          <li><span className="flow-n">10</span> Setup, access, and assignment</li>
+          <li><span className="flow-n">20</span> Issue, branch, and two commits</li>
+          <li><span className="flow-n">10</span> Draft PR and self-review</li>
+          <li><span className="flow-n">20</span> Ring-based cross-review</li>
+          <li><span className="flow-n">15</span> Revisions and controlled conflict</li>
+          <li><span className="flow-n">15</span> Merge, sync, and retrospective</li>
+        </ol>
+      </div>
+    ),
+  },
+  {
+    id: 'evidencias',
+    label: 'Evidências de conclusão',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">📋 Evidências de conclusão</span>
+          <span className="trans-en">📋 Completion evidence</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Não basta clicar até chegar ao merge</span>
+          <span className="trans-en">Reaching the merge button is not enough</span>
+        </h2>
+        <ul className="check-list trans-pt">
+          <li><span className="check-ico">✅</span> Issue com critérios de aceite e branch conforme a convenção.</li>
+          <li><span className="check-ico">✅</span> Dois commits coerentes e PR com <span className="mono">Closes #N</span>.</li>
+          <li><span className="check-ico">✅</span> Comentário específico, decisão formal e resposta ao feedback.</li>
+          <li><span className="check-ico">✅</span> Merge commit, branch removida e <span className="mono">main</span> sincronizada.</li>
+        </ul>
+        <ul className="check-list trans-en">
+          <li><span className="check-ico">✅</span> Issue with acceptance criteria and a convention-compliant branch.</li>
+          <li><span className="check-ico">✅</span> Two coherent commits and a PR with <span className="mono">Closes #N</span>.</li>
+          <li><span className="check-ico">✅</span> Specific comment, formal decision, and response to feedback.</li>
+          <li><span className="check-ico">✅</span> Merge commit, deleted branch, and synchronized <span className="mono">main</span>.</li>
+        </ul>
       </div>
     ),
   },

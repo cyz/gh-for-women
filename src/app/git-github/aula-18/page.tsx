@@ -81,13 +81,79 @@ const slides: DeckSlide[] = [
         <div className="pr-mock" style={{ maxWidth: 560 }}>
           <div className="pr-head">
             <span className="pr-badge merged">🟣 Merged</span>
-            <span className="pr-title">feature-projetos</span>
+            <span className="pr-title">feat/projetos</span>
           </div>
           <div className="pr-body">A branch continua existindo, mas normalmente não será mais usada. O GitHub oferece o botão <strong>Delete branch</strong>.</div>
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
           <span>Apagar a branch <strong>não apaga a funcionalidade</strong> — ela já foi incorporada ao histórico da main.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'metodos-merge',
+    label: 'Métodos de merge',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-purple">
+          <span className="trans-pt">🌳 Métodos de merge</span>
+          <span className="trans-en">🌳 Merge methods</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Três formas, históricos diferentes</span>
+          <span className="trans-en">Three methods, different histories</span>
+        </h2>
+        <div className="cap-grid" style={{ maxWidth: 860 }}>
+          <div className="cap-card"><div className="cap-ico">🔀</div><h4>Merge commit</h4><p className="trans-pt">Mantém os commits e registra o ponto de integração.</p><p className="trans-en">Keeps commits and records the integration point.</p></div>
+          <div className="cap-card"><div className="cap-ico">📦</div><h4>Squash and merge</h4><p className="trans-pt">Combina o PR em um único commit na main.</p><p className="trans-en">Combines the PR into one commit on main.</p></div>
+          <div className="cap-card"><div className="cap-ico">📏</div><h4>Rebase and merge</h4><p className="trans-pt">Recria os commits em linha, sem commit de merge.</p><p className="trans-en">Recreates commits in a line, without a merge commit.</p></div>
+        </div>
+        <div className="key-msg">
+          <span className="key-icon">🎓</span>
+          <span className="trans-pt">No projeto final usamos <strong>merge commit</strong> para visualizar a branch no grafo. É uma escolha didática, não uma regra universal.</span>
+          <span className="trans-en">The final project uses a <strong>merge commit</strong> so the branch remains visible in the graph. This is a teaching choice, not a universal rule.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'pronto-para-merge',
+    label: 'Pronto para merge',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">✅ Antes de integrar</span>
+          <span className="trans-en">✅ Before merging</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">“Sem conflito” não significa “aprovado”</span>
+          <span className="trans-en">“No conflicts” does not mean “approved”</span>
+        </h2>
+        <ul className="check-list trans-pt">
+          <li><span className="check-ico">✅</span> O PR saiu do modo Draft.</li>
+          <li><span className="check-ico">✅</span> Critérios de aceite e verificações passaram.</li>
+          <li><span className="check-ico">✅</span> Feedback bloqueante foi atendido e aprovado.</li>
+          <li><span className="check-ico">✅</span> O método de merge segue a política do repositório.</li>
+        </ul>
+        <ul className="check-list trans-en">
+          <li><span className="check-ico">✅</span> The PR is no longer a draft.</li>
+          <li><span className="check-ico">✅</span> Acceptance criteria and checks passed.</li>
+          <li><span className="check-ico">✅</span> Blocking feedback was addressed and approved.</li>
+          <li><span className="check-ico">✅</span> The merge method follows repository policy.</li>
+        </ul>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/estrategias-merge.md" download>
+            <span className="dl-ico">📄</span>
+            <span className="trans-pt">Comparativo de estratégias</span>
+            <span className="trans-en">Merge strategies guide (Portuguese)</span>
+          </a>
+          <a className="deck-download" href="https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges" target="_blank" rel="noreferrer">
+            <span className="dl-ico">↗</span>
+            <span className="trans-pt">Documentação oficial</span>
+            <span className="trans-en">Official documentation</span>
+          </a>
         </div>
       </div>
     ),
@@ -123,7 +189,7 @@ const slides: DeckSlide[] = [
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — histórico em árvore</span></div>
           <div className="deck-term-body">
             <span className="cmd">git log <span className="flag">--oneline</span> <span className="flag">--graph</span></span>
-            <span className="out">*   e4a1b2c Merge da feature-projetos</span>
+            <span className="out">*   e4a1b2c Merge da feat/projetos</span>
             <span className="out">|\</span>
             <span className="out">| * 7c3d9f0 Adiciona seção de projetos</span>
             <span className="out">|/</span>

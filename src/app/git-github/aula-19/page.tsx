@@ -116,7 +116,7 @@ const slides: DeckSlide[] = [
           <span className="key-icon">🔑</span>
           <span>Resolver um conflito é <strong>decidir manualmente</strong> qual versão deve permanecer.</span>
         </div>
-        <p className="hint">💡 Mudou de ideia? <span className="mono">git merge --abort</span> desfaz o merge e volta tudo como estava antes.</p>
+        <p className="hint">💡 Não escolha Current, Incoming ou Both sem ler as duas versões. O resultado correto pode exigir edição manual. Mudou de ideia? <span className="mono">git merge --abort</span> cancela o merge.</p>
       </div>
     ),
   },
@@ -148,6 +148,44 @@ const slides: DeckSlide[] = [
           <li><span className="check-ico">✅</span> Tentar o merge e ler os marcadores de conflito.</li>
           <li><span className="check-ico">✅</span> Resolver no VS Code e finalizar com um commit.</li>
         </ul>
+      </div>
+    ),
+  },
+  {
+    id: 'verificar-conflito',
+    label: 'Verificar a resolução',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">🔎 Verificar a resolução</span>
+          <span className="trans-en">🔎 Verify the resolution</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Sem marcadores e com o conteúdo correto</span>
+          <span className="trans-en">No markers and the intended content</span>
+        </h2>
+        <div className="deck-term">
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — verificação final</span></div>
+          <div className="deck-term-body">
+            <span className="cmd">git status</span>
+            <span className="comment"># não deve haver conflito pendente</span>
+            <span className="cmd">git diff --check</span>
+            <span className="comment"># ajuda a detectar marcadores e espaços problemáticos</span>
+            <span className="cmd">git log <span className="flag">--oneline</span> <span className="flag">--graph</span> <span className="flag">--all</span></span>
+          </div>
+        </div>
+        <p className="slide-sub trans-pt">Abra o arquivo e teste o resultado. Git consegue confirmar que o conflito terminou, mas não sabe se a decisão de conteúdo foi correta.</p>
+        <p className="slide-sub trans-en">Open the file and test the result. Git can confirm that the conflict ended, but it cannot determine whether the content decision was correct.</p>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+            <span className="dl-ico">⌨️</span> Git cheat sheet
+          </a>
+          <a className="deck-download" href="https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts" target="_blank" rel="noreferrer">
+            <span className="dl-ico">↗</span>
+            <span className="trans-pt">Documentação oficial</span>
+            <span className="trans-en">Official documentation</span>
+          </a>
+        </div>
       </div>
     ),
   },

@@ -52,10 +52,10 @@ const slides: DeckSlide[] = [
         <div className="deck-term">
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — criar uma branch</span></div>
           <div className="deck-term-body">
-            <span className="cmd">git branch feature-contato</span>
+            <span className="cmd">git branch feat/contato</span>
             <span className="cmd">git branch</span>
             <span className="out ok">* main</span>
-            <span className="out">  feature-contato</span>
+            <span className="out">  feat/contato</span>
             <span className="comment"># ela foi criada, mas ainda estamos na main</span>
           </div>
         </div>
@@ -77,15 +77,15 @@ const slides: DeckSlide[] = [
         <div className="deck-term">
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — mudar de branch</span></div>
           <div className="deck-term-body">
-            <span className="cmd">git switch feature-contato</span>
-            <span className="out ok">Switched to branch &apos;feature-contato&apos;</span>
+            <span className="cmd">git switch feat/contato</span>
+            <span className="out ok">Switched to branch &apos;feat/contato&apos;</span>
           </div>
         </div>
         <div className={`reveal ${step >= 1 ? 'show' : ''}`} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
           <div className="deck-term">
             <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">atalho: criar + trocar</span></div>
             <div className="deck-term-body">
-              <span className="cmd">git switch <span className="flag">-c</span> feature-sobre</span>
+              <span className="cmd">git switch <span className="flag">-c</span> docs/atualiza-sobre</span>
               <span className="comment"># -c é abreviação de --create (cria a branch E já muda para ela)</span>
             </div>
           </div>
@@ -106,10 +106,10 @@ const slides: DeckSlide[] = [
         <div className="deck-term">
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">demonstração</span></div>
           <div className="deck-term-body">
-            <span className="comment"># na feature-contato: adiciona a seção Contato e faz commit</span>
+            <span className="comment"># na feat/contato: adiciona a seção Contato e faz commit</span>
             <span className="cmd">git switch main</span>
             <span className="out warn"># abra o README → a seção Contato desapareceu!</span>
-            <span className="cmd">git switch feature-contato</span>
+            <span className="cmd">git switch feat/contato</span>
             <span className="out ok"># abra o README → a seção Contato reapareceu!</span>
           </div>
         </div>
@@ -151,9 +151,9 @@ const slides: DeckSlide[] = [
         <div className="deck-term">
           <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — juntar no seu computador</span></div>
           <div className="deck-term-body">
-            <span className="comment"># terminei o contato.md na branch feature-contato</span>
+            <span className="comment"># terminei o contato.md na branch feat/contato</span>
             <span className="cmd">git switch main</span>
-            <span className="cmd">git merge feature-contato</span>
+            <span className="cmd">git merge feat/contato</span>
             <span className="out ok">Fast-forward · contato.md atualizado na main</span>
           </div>
         </div>
@@ -172,7 +172,7 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-orange">✨ Boas práticas</span>
         <h2 className="slide-title">Organizando suas branches</h2>
         <div className="tips-grid">
-          <div className="tip-card"><div className="tip-ico">🏷️</div><h4>Nomes descritivos</h4><p><span className="mono">feature-login</span> em vez de <span className="mono">teste</span> ou <span className="mono">branch1</span>.</p></div>
+          <div className="tip-card"><div className="tip-ico">🏷️</div><h4>Nomes descritivos</h4><p><span className="mono">feat/login</span> em vez de <span className="mono">teste</span> ou <span className="mono">branch1</span>.</p></div>
           <div className="tip-card"><div className="tip-ico">1️⃣</div><h4>Uma branch por funcionalidade</h4><p>Evite misturar várias coisas na mesma branch.</p></div>
           <div className="tip-card"><div className="tip-ico">🔎</div><h4>Verifique onde você está</h4><p>Antes de trabalhar, rode <span className="mono">git branch</span>.</p></div>
         </div>
@@ -187,10 +187,10 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-orange">🎯 Prática guiada</span>
         <h2 className="slide-title">Faça você mesma</h2>
         <ul className="check-list">
-          <li><span className="check-ico">✅</span> Criar <span className="mono">feature-sobre</span> e trocar para ela.</li>
+          <li><span className="check-ico">✅</span> Criar <span className="mono">docs/atualiza-sobre</span> e trocar para ela.</li>
           <li><span className="check-ico">✅</span> Adicionar uma seção ao README e fazer um commit.</li>
           <li><span className="check-ico">✅</span> Voltar para a <span className="mono">main</span> e ver a alteração sumir.</li>
-          <li><span className="check-ico">✅</span> Voltar para <span className="mono">feature-sobre</span> e ver a alteração voltar.</li>
+          <li><span className="check-ico">✅</span> Voltar para <span className="mono">docs/atualiza-sobre</span> e ver a alteração voltar.</li>
         </ul>
       </div>
     ),

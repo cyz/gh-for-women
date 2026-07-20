@@ -33,13 +33,13 @@ const slides: DeckSlide[] = [
           branch independente:
         </p>
         <div className="where-grid" style={{ maxWidth: 820 }}>
-          <div className="where-item"><span className="where-ico">📄</span><span><span className="mono">feature-pagina-base</span> · página enxuta + seção Articles</span></div>
-          <div className="where-item"><span className="where-ico">🎨</span><span><span className="mono">feature-identidade-visual</span> · favicon e logo em SVG</span></div>
-          <div className="where-item"><span className="where-ico">🗂️</span><span><span className="mono">feature-organizar-assets</span> · scripts e imagens em pastas</span></div>
-          <div className="where-item"><span className="where-ico">📱</span><span><span className="mono">feature-header-responsivo</span> · header e menu em telas pequenas</span></div>
-          <div className="where-item"><span className="where-ico">🌐</span><span><span className="mono">feature-seletor-idioma</span> · troca entre PT e EN</span></div>
-          <div className="where-item"><span className="where-ico">🪄</span><span><span className="mono">feature-scroll-suave</span> · rolagem suave nas âncoras</span></div>
-          <div className="where-item"><span className="where-ico">♿</span><span><span className="mono">feature-acessibilidade</span> · respeitar prefers-reduced-motion</span></div>
+          <div className="where-item"><span className="where-ico">📄</span><span><span className="mono">feat/pagina-base</span> · página enxuta + seção Articles</span></div>
+          <div className="where-item"><span className="where-ico">🎨</span><span><span className="mono">feat/identidade-visual</span> · favicon e logo em SVG</span></div>
+          <div className="where-item"><span className="where-ico">🗂️</span><span><span className="mono">chore/organiza-assets</span> · scripts e imagens em pastas</span></div>
+          <div className="where-item"><span className="where-ico">📱</span><span><span className="mono">feat/header-responsivo</span> · header e menu em telas pequenas</span></div>
+          <div className="where-item"><span className="where-ico">🌐</span><span><span className="mono">feat/seletor-idioma</span> · troca entre PT e EN</span></div>
+          <div className="where-item"><span className="where-ico">🪄</span><span><span className="mono">feat/scroll-suave</span> · rolagem suave nas âncoras</span></div>
+          <div className="where-item"><span className="where-ico">♿</span><span><span className="mono">feat/acessibilidade</span> · respeitar prefers-reduced-motion</span></div>
         </div>
         <div className="key-msg">
           <span className="key-icon">🔑</span>
@@ -56,7 +56,7 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-purple">🗺️ O fluxo Feature Branch</span>
         <h2 className="slide-title">Do início ao merge</h2>
         <ol className="flow-list">
-          <li><span className="flow-n">1</span> Criar branch <code>feature-...</code></li>
+          <li><span className="flow-n">1</span> Criar branch <code>feat/...</code></li>
           <li><span className="flow-n">2</span> Desenvolver + <code>commit</code></li>
           <li><span className="flow-n">3</span> <code>push</code> para o GitHub</li>
           <li><span className="flow-n">4</span> Abrir <strong>Pull Request</strong></li>
@@ -78,13 +78,13 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-green">▶️ Demonstração</span>
         <h2 className="slide-title">Até o envio da branch</h2>
         <div className="deck-term">
-          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — feature-seletor-idioma</span></div>
+          <div className="deck-term-bar"><span className="d r" /><span className="d y" /><span className="d g" /><span className="title">bash — feat/seletor-idioma</span></div>
           <div className="deck-term-body">
-            <span className="cmd">git switch <span className="flag">-c</span> feature-seletor-idioma</span>
+            <span className="cmd">git switch <span className="flag">-c</span> feat/seletor-idioma</span>
             <span className="comment"># adiciona o seletor de idioma no header (PT/EN)</span>
             <span className="cmd">git add index.html assets/js/i18n.js</span>
             <span className="cmd">git commit <span className="flag">-m</span> <span className="str">&quot;Adiciona seletor de idioma PT/EN&quot;</span></span>
-            <span className="cmd">git push <span className="flag">-u</span> origin feature-seletor-idioma</span>
+            <span className="cmd">git push <span className="flag">-u</span> origin feat/seletor-idioma</span>
             <span className="comment"># pare aqui: ainda NÃO abrimos o Pull Request</span>
           </div>
         </div>
@@ -100,7 +100,7 @@ const slides: DeckSlide[] = [
         <h2 className="slide-title">O GitHub percebe a nova branch</h2>
         <div className="pr-mock" style={{ maxWidth: 560 }}>
           <div className="pr-head">
-            <span className="pr-badge review">🌿 feature-seletor-idioma</span>
+            <span className="pr-badge review">🌿 feat/seletor-idioma</span>
             <span className="pr-title">Compare &amp; pull request</span>
           </div>
           <div className="pr-body">A funcionalidade já está disponível no GitHub, mas ainda não entrou na <span className="mono">main</span>.</div>
@@ -148,9 +148,9 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-orange">🎯 Prática guiada</span>
         <h2 className="slide-title">Faça você mesma</h2>
         <ul className="check-list">
-          <li><span className="check-ico">✅</span> Criar <span className="mono">feature-scroll-suave</span>.</li>
+          <li><span className="check-ico">✅</span> Criar <span className="mono">feat/scroll-suave</span>.</li>
           <li><span className="check-ico">✅</span> Adicionar <span className="mono">scroll-behavior: smooth</span> ao CSS e commitar.</li>
-          <li><span className="check-ico">✅</span> <span className="mono">git push -u origin feature-scroll-suave</span>.</li>
+          <li><span className="check-ico">✅</span> <span className="mono">git push -u origin feat/scroll-suave</span>.</li>
           <li><span className="check-ico">✅</span> Confirmar no GitHub que a branch apareceu (sem criar PR).</li>
         </ul>
       </div>

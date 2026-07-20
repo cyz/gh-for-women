@@ -177,6 +177,39 @@ const slides: DeckSlide[] = [
     ),
   },
   {
+    id: 'consulta-rapida',
+    label: 'Consulta rápida',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">📚 Consulta rápida</span>
+          <span className="trans-en">📚 Quick reference</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Entenda o estado antes do comando</span>
+          <span className="trans-en">Understand the state before the command</span>
+        </h2>
+        <div className="stage-flow" style={{ maxWidth: 760 }}>
+          <div className="stage-box"><div className="st-ico">✏️</div><h4>Working tree</h4><p><span className="mono">git restore</span></p></div>
+          <div className="stage-box"><div className="st-ico">📦</div><h4>Staging</h4><p><span className="mono">git restore --staged</span></p></div>
+          <div className="stage-box"><div className="st-ico">🕘</div><h4>History</h4><p><span className="mono">git revert</span></p></div>
+        </div>
+        <p className="slide-sub trans-pt">A cheat sheet organiza os comandos por intenção, efeito, verificação e risco. Ela é uma referência, não uma lista para executar de cima a baixo.</p>
+        <p className="slide-sub trans-en">The cheat sheet organizes commands by intent, effect, verification, and risk. It is a reference, not a script to run from top to bottom.</p>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+            <span className="dl-ico">⌨️</span> Git cheat sheet
+          </a>
+          <a className="deck-download" href="https://git-scm.com/docs/git-revert/pt_BR" target="_blank" rel="noreferrer">
+            <span className="dl-ico">↗</span>
+            <span className="trans-pt">Referência oficial do Git</span>
+            <span className="trans-en">Official Git reference</span>
+          </a>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: 'encerramento',
     label: 'Encerramento',
     render: () => (

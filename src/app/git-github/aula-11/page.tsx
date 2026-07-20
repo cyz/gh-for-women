@@ -62,6 +62,31 @@ const slides: DeckSlide[] = [
     ),
   },
   {
+    id: 'criterios-projeto',
+    label: 'Critérios do projeto',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">📋 Antes do primeiro commit</span>
+          <span className="trans-en">📋 Before the first commit</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Cinco arquivos, cada um com uma função</span>
+          <span className="trans-en">Five files, each with a purpose</span>
+        </h2>
+        <div className="cap-grid" style={{ maxWidth: 860 }}>
+          <div className="cap-card"><div className="cap-ico">🏠</div><h4>README.md</h4><p className="trans-pt">Propósito e links para as seções.</p><p className="trans-en">Purpose and links to every section.</p></div>
+          <div className="cap-card"><div className="cap-ico">ℹ️</div><h4>sobre.md</h4><p className="trans-pt">Público, propósito e valores.</p><p className="trans-en">Audience, purpose, and values.</p></div>
+          <div className="cap-card"><div className="cap-ico">❓</div><h4>faq.md</h4><p className="trans-pt">Três perguntas respondidas.</p><p className="trans-en">Three answered questions.</p></div>
+          <div className="cap-card"><div className="cap-ico">✉️</div><h4>contato.md</h4><p className="trans-pt">Dois canais fictícios.</p><p className="trans-en">Two fictional contact channels.</p></div>
+          <div className="cap-card"><div className="cap-ico">📜</div><h4>codigo-de-conduta.md</h4><p className="trans-pt">Condutas e canal de reporte.</p><p className="trans-en">Expected conduct and reporting path.</p></div>
+        </div>
+        <p className="slide-sub trans-pt">Abra o preview do Markdown e teste todos os links antes de versionar.</p>
+        <p className="slide-sub trans-en">Open the Markdown preview and test every link before committing.</p>
+      </div>
+    ),
+  },
+  {
     id: 'erros',
     label: 'Erros comuns',
     render: () => (
@@ -91,15 +116,18 @@ const slides: DeckSlide[] = [
         <span className="slide-kicker s-green">📦 Materiais para praticar</span>
         <h2 className="slide-title">Faça no seu ritmo, sem gravação</h2>
         <p className="slide-sub">
-          Baixe o projeto-base de documentação e o guia passo a passo. Tudo em Markdown, sem código de
-          programação.
+          O guia detalha a criação dos arquivos, os critérios de conteúdo, a licença e um clone de teste.
+          Use também a referência rápida de comandos.
         </p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/manual-comunidade/README.md" download>
-            <span className="dl-ico">📁</span> Projeto-base · Manual da Comunidade
-          </a>
           <a className="deck-download" href="/downloads/guia-aula-11-subir-projeto.md" download>
             <span className="dl-ico">📄</span> Guia passo a passo · Aula 11
+          </a>
+          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+            <span className="dl-ico">⌨️</span> Git cheat sheet
+          </a>
+          <a className="deck-download" href="/downloads/guia-licencas-repositorios.md" download>
+            <span className="dl-ico">⚖️</span> Guia de licenças
           </a>
         </div>
         <div className="key-msg">
@@ -118,9 +146,11 @@ const slides: DeckSlide[] = [
         <h2 className="slide-title">Checklist final</h2>
         <ul className="check-list">
           <li><span className="check-ico">✅</span> Projeto criado e <span className="mono">git init</span> executado.</li>
-          <li><span className="check-ico">✅</span> Primeiro commit registrado.</li>
+          <li><span className="check-ico">✅</span> Cinco arquivos e links validados no preview.</li>
+          <li><span className="check-ico">✅</span> Pelo menos dois commits coerentes registrados.</li>
           <li><span className="check-ico">✅</span> Repositório criado no GitHub.</li>
           <li><span className="check-ico">✅</span> Projeto publicado com <span className="mono">git push</span>.</li>
+          <li><span className="check-ico">✅</span> Decisão de licença explicada e clone de teste verificado.</li>
         </ul>
       </div>
     ),

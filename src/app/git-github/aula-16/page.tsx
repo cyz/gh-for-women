@@ -34,7 +34,7 @@ const slides: DeckSlide[] = [
           para o professor revisar antes de aprovar.
         </p>
         <div className="pr-branchflow" style={{ justifyContent: 'center' }}>
-          <span className="chip">feature-login</span>
+          <span className="chip">feat/login</span>
           <span>→</span>
           <span className="chip">Pull Request</span>
           <span>→</span>
@@ -62,7 +62,7 @@ const slides: DeckSlide[] = [
           <div className="pr-branchflow">
             <span>base:</span><span className="chip base">main</span>
             <span>←</span>
-            <span>compare:</span><span className="chip">feature-projetos</span>
+            <span>compare:</span><span className="chip">feat/projetos</span>
           </div>
           <div className="pr-body">Inclui uma nova seção no README apresentando os projetos do curso.</div>
         </div>

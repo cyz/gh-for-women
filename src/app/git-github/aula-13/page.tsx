@@ -20,7 +20,7 @@ function BranchDiagram() {
         <circle key={`f${x}`} cx={x} cy="140" r="9" fill="#7c3aed" stroke="#c084fc" strokeWidth="2" />
       ))}
       <text x="40" y="40" fill="#93c5fd" fontSize="14" fontFamily="Inter">main</text>
-      <text x="280" y="172" fill="#d8b4fe" fontSize="14" fontFamily="Inter">feature-login</text>
+      <text x="280" y="172" fill="#d8b4fe" fontSize="14" fontFamily="Inter">feat/login</text>
     </svg>
   );
 }
@@ -129,7 +129,38 @@ const slides: DeckSlide[] = [
         <div className="tips-grid">
           <div className="tip-card"><div className="tip-ico">🚫</div><h4>Nunca dev direto na main</h4><p>Mantenha a versão principal sempre estável.</p></div>
           <div className="tip-card"><div className="tip-ico">1️⃣</div><h4>Uma funcionalidade, uma branch</h4><p>Facilita a revisão e reduz o risco de erros.</p></div>
-          <div className="tip-card"><div className="tip-ico">🏷️</div><h4>Nomes descritivos</h4><p><span className="mono">feature-login</span>, <span className="mono">fix-menu</span>…</p></div>
+          <div className="tip-card"><div className="tip-ico">🏷️</div><h4>Nomes descritivos</h4><p><span className="mono">feat/login</span>, <span className="mono">fix/menu-mobile</span>…</p></div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'convencao-nomes',
+    label: 'Convenção de nomes',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">🏷️ Convenção do curso</span>
+          <span className="trans-en">🏷️ Course convention</span>
+        </span>
+        <h2 className="slide-title"><code>tipo/descricao-curta</code></h2>
+        <div className="cap-grid" style={{ maxWidth: 820 }}>
+          <div className="cap-card"><div className="cap-ico">✨</div><h4>feat/</h4><p><span className="mono">feat/adiciona-busca</span></p></div>
+          <div className="cap-card"><div className="cap-ico">🐛</div><h4>fix/</h4><p><span className="mono">fix/corrige-link</span></p></div>
+          <div className="cap-card"><div className="cap-ico">📚</div><h4>docs/</h4><p><span className="mono">docs/atualiza-faq</span></p></div>
+          <div className="cap-card"><div className="cap-ico">🧹</div><h4>chore/</h4><p><span className="mono">chore/atualiza-gitignore</span></p></div>
+        </div>
+        <p className="slide-sub trans-pt">GitHub não impõe um padrão universal. Esta é a convenção adotada nos exercícios; em outros projetos, siga o <span className="mono">CONTRIBUTING.md</span>.</p>
+        <p className="slide-sub trans-en">GitHub does not enforce a universal standard. This is the convention used in the exercises; in other projects, follow <span className="mono">CONTRIBUTING.md</span>.</p>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/convencoes-branches.md" download>
+            <span className="dl-ico">📄</span>
+            <span className="trans-pt">Exemplos de nomes de branch</span>
+            <span className="trans-en">Branch naming examples (Portuguese)</span>
+          </a>
+          <a className="deck-download" href="https://docs.github.com/pt/get-started/using-github/github-flow" target="_blank" rel="noreferrer">
+            <span className="dl-ico">↗</span> GitHub Flow
+          </a>
         </div>
       </div>
     ),

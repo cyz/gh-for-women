@@ -73,13 +73,13 @@ const slides: DeckSlide[] = [
           <div className="deck-term-body">
             <span className="cmd">git fetch origin</span>
             <span className="comment"># baixa as branches novas do GitHub</span>
-            <span className="cmd">git switch faq-horarios</span>
+            <span className="cmd">git switch docs/atualiza-faq</span>
             <span className="comment"># entra na branch do PR para ler o texto de perto</span>
-            <span className="cmd">git merge main</span>
-            <span className="out warn"># se a main mudou a mesma linha → conflito (resolvemos como na Aula 19)</span>
+            <span className="cmd">git diff origin/main...HEAD</span>
+            <span className="comment"># compara com a main remota sem alterar a branch</span>
           </div>
         </div>
-        <p className="hint">💡 Com o GitHub CLI dá para pular etapas: <span className="mono">gh pr checkout &lt;número&gt;</span>.</p>
+        <p className="hint">💡 Com o GitHub CLI dá para baixar a branch pelo PR: <span className="mono">gh pr checkout &lt;número&gt;</span>. Durante a revisão, não faça commits ou merges na branch de outra pessoa sem combinar.</p>
       </div>
     ),
   },
@@ -137,6 +137,46 @@ const slides: DeckSlide[] = [
         <div className="key-msg">
           <span className="key-icon">🔑</span>
           <span>No GitHub: <span className="mono">Files changed → Review changes</span>. Comece por um elogio e depois uma sugestão.</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'rubrica-review',
+    label: 'Rubrica de revisão',
+    render: () => (
+      <div className="slide-pad">
+        <span className="slide-kicker s-green">
+          <span className="trans-pt">📋 Rubrica de revisão</span>
+          <span className="trans-en">📋 Review rubric</span>
+        </span>
+        <h2 className="slide-title">
+          <span className="trans-pt">Evidência antes da decisão</span>
+          <span className="trans-en">Evidence before the decision</span>
+        </h2>
+        <ul className="check-list ask trans-pt">
+          <li><span className="check-ico">❔</span> Atende à Issue e aos critérios de aceite?</li>
+          <li><span className="check-ico">❔</span> O escopo está focado e sem arquivos acidentais?</li>
+          <li><span className="check-ico">❔</span> Texto, código, links e testes estão corretos?</li>
+          <li><span className="check-ico">❔</span> O PR explica como a mudança foi verificada?</li>
+        </ul>
+        <ul className="check-list ask trans-en">
+          <li><span className="check-ico">❔</span> Does it meet the Issue and acceptance criteria?</li>
+          <li><span className="check-ico">❔</span> Is the scope focused and free of accidental files?</li>
+          <li><span className="check-ico">❔</span> Are the text, code, links, and tests correct?</li>
+          <li><span className="check-ico">❔</span> Does the PR explain how the change was verified?</li>
+        </ul>
+        <div className="deck-downloads">
+          <a className="deck-download" href="/downloads/guia-code-review.md" download>
+            <span className="dl-ico">📄</span>
+            <span className="trans-pt">Guia e checklist de Code Review</span>
+            <span className="trans-en">Code Review guide (Portuguese)</span>
+          </a>
+          <a className="deck-download" href="https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews" target="_blank" rel="noreferrer">
+            <span className="dl-ico">↗</span>
+            <span className="trans-pt">Documentação oficial</span>
+            <span className="trans-en">Official documentation</span>
+          </a>
         </div>
       </div>
     ),
