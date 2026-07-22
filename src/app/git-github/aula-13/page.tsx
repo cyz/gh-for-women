@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 function BranchDiagram() {
@@ -153,7 +154,7 @@ const slides: DeckSlide[] = [
         <p className="slide-sub trans-pt">GitHub não impõe um padrão universal. Esta é a convenção adotada nos exercícios; em outros projetos, siga o <span className="mono">CONTRIBUTING.md</span>.</p>
         <p className="slide-sub trans-en">GitHub does not enforce a universal standard. This is the convention used in the exercises; in other projects, follow <span className="mono">CONTRIBUTING.md</span>.</p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/convencoes-branches.md" download>
+          <a className="deck-download" href={asset('/downloads/convencoes-branches.md')} download>
             <span className="dl-ico">📄</span>
             <span className="trans-pt">Exemplos de nomes de branch</span>
             <span className="trans-en">Branch naming examples (Portuguese)</span>

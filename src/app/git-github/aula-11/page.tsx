@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -120,16 +121,16 @@ const slides: DeckSlide[] = [
           Use também a referência rápida de comandos.
         </p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/guia-aula-11-subir-projeto.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-aula-11-subir-projeto.md')} download>
             <span className="dl-ico">📄</span> Guia passo a passo · Aula 11
           </a>
-          <a className="deck-download" href="/downloads/guia-markdown.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-markdown.md')} download>
             <span className="dl-ico">✍️</span> Guia prático de Markdown
           </a>
-          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+          <a className="deck-download" href={asset('/downloads/git-cheat-sheet.md')} download>
             <span className="dl-ico">⌨️</span> Git cheat sheet
           </a>
-          <a className="deck-download" href="/downloads/guia-licencas-repositorios.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-licencas-repositorios.md')} download>
             <span className="dl-ico">⚖️</span> Guia de licenças
           </a>
         </div>

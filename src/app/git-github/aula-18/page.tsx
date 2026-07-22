@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -144,7 +145,7 @@ const slides: DeckSlide[] = [
           <li><span className="check-ico">✅</span> The merge method follows repository policy.</li>
         </ul>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/estrategias-merge.md" download>
+          <a className="deck-download" href={asset('/downloads/estrategias-merge.md')} download>
             <span className="dl-ico">📄</span>
             <span className="trans-pt">Comparativo de estratégias</span>
             <span className="trans-en">Merge strategies guide (Portuguese)</span>

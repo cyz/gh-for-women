@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -91,13 +92,13 @@ const slides: DeckSlide[] = [
           proposital) e o projeto-base de documentação.
         </p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/guia-aula-21-pr-em-grupo.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-aula-21-pr-em-grupo.md')} download>
             <span className="dl-ico">📄</span> Guia · Fluxo completo em grupo
           </a>
-          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+          <a className="deck-download" href={asset('/downloads/git-cheat-sheet.md')} download>
             <span className="dl-ico">⌨️</span> Git cheat sheet
           </a>
-          <a className="deck-download" href="/downloads/guia-code-review.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-code-review.md')} download>
             <span className="dl-ico">🔍</span> Guia de Code Review
           </a>
         </div>

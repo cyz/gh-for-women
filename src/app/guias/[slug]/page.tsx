@@ -7,6 +7,7 @@ import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Footer from '@/components/Footer';
 import SiteNav from '@/components/SiteNav';
+import { asset } from '@/lib/basePath';
 import { getGuide, getGuideSlugFromHref, guides } from '@/data/guides';
 import './guide.css';
 
@@ -68,7 +69,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             <span className="trans-pt">Voltar para a página principal</span>
             <span className="trans-en">Back to the home page</span>
           </Link>
-          <a className="guide-download" href={`/downloads/${guide.fileName}`} download>
+          <a className="guide-download" href={asset(`/downloads/${guide.fileName}`)} download>
             <span aria-hidden="true">↓</span>
             <span className="trans-pt">Baixar Markdown</span>
             <span className="trans-en">Download Markdown</span>

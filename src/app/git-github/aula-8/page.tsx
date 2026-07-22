@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -215,7 +216,7 @@ const slides: DeckSlide[] = [
           <li><span className="flow-n">4</span> Add <code>LICENSE</code> locally in its own commit.</li>
         </ol>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/guia-licencas-repositorios.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-licencas-repositorios.md')} download>
             <span className="dl-ico">📄</span>
             <span className="trans-pt">Guia de licenças</span>
             <span className="trans-en">License guide (Portuguese)</span>

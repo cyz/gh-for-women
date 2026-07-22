@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -149,7 +150,7 @@ const slides: DeckSlide[] = [
           Baixe o guia autoguiado para clonar um repositório, fazer uma alteração e enviar de volta.
         </p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/guia-aula-10-clonar.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-aula-10-clonar.md')} download>
             <span className="dl-ico">📄</span> Guia passo a passo · Aula 10
           </a>
         </div>

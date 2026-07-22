@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -167,7 +168,7 @@ const slides: DeckSlide[] = [
           <li><span className="check-ico">❔</span> Does the PR explain how the change was verified?</li>
         </ul>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/guia-code-review.md" download>
+          <a className="deck-download" href={asset('/downloads/guia-code-review.md')} download>
             <span className="dl-ico">📄</span>
             <span className="trans-pt">Guia e checklist de Code Review</span>
             <span className="trans-en">Code Review guide (Portuguese)</span>

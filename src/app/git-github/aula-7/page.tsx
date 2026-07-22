@@ -1,6 +1,7 @@
 'use client';
 
 import SlideDeck, { DeckSlide } from '@/components/SlideDeck';
+import { asset } from '@/lib/basePath';
 import '../deck.css';
 
 const slides: DeckSlide[] = [
@@ -197,7 +198,7 @@ const slides: DeckSlide[] = [
         <p className="slide-sub trans-pt">A cheat sheet organiza os comandos por intenção, efeito, verificação e risco. Ela é uma referência, não uma lista para executar de cima a baixo.</p>
         <p className="slide-sub trans-en">The cheat sheet organizes commands by intent, effect, verification, and risk. It is a reference, not a script to run from top to bottom.</p>
         <div className="deck-downloads">
-          <a className="deck-download" href="/downloads/git-cheat-sheet.md" download>
+          <a className="deck-download" href={asset('/downloads/git-cheat-sheet.md')} download>
             <span className="dl-ico">⌨️</span> Git cheat sheet
           </a>
           <a className="deck-download" href="https://git-scm.com/docs/git-revert/pt_BR" target="_blank" rel="noreferrer">
