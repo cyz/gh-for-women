@@ -48,10 +48,11 @@ const slides: DeckSlide[] = [
         <h2 className="slide-title">Um manual de comunidade em equipe</h2>
         <p className="slide-sub">Cada participante fica responsável por um arquivo — todas no mesmo repositório.</p>
         <div className="cap-grid" style={{ maxWidth: 820 }}>
-          <div className="cap-card"><div className="cap-ico">ℹ️</div><h4>sobre.md</h4><p>Pessoa A</p></div>
-          <div className="cap-card"><div className="cap-ico">❓</div><h4>faq.md</h4><p>Pessoa B</p></div>
-          <div className="cap-card"><div className="cap-ico">✉️</div><h4>contato.md</h4><p>Pessoa C</p></div>
-          <div className="cap-card"><div className="cap-ico">📜</div><h4>codigo-de-conduta.md</h4><p>Pessoa D</p></div>
+          <div className="cap-card"><div className="cap-ico">🏠</div><h4>README.md</h4><p>Pessoa A</p></div>
+          <div className="cap-card"><div className="cap-ico">ℹ️</div><h4>sobre.md</h4><p>Pessoa B</p></div>
+          <div className="cap-card"><div className="cap-ico">❓</div><h4>faq.md</h4><p>Pessoa C</p></div>
+          <div className="cap-card"><div className="cap-ico">✉️</div><h4>contato.md</h4><p>Pessoa D</p></div>
+          <div className="cap-card"><div className="cap-ico">📜</div><h4>codigo-de-conduta.md</h4><p>Pessoa E</p></div>
         </div>
       </div>
     ),
