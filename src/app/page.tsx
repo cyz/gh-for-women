@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import Footer from '@/components/Footer';
-import { useLanguage } from '@/components/LanguageContext';
-import { guides } from '@/data/guides';
+import { asset } from '@/lib/basePath';
 import './git-github/lessons.css';
 
 interface Lesson {
@@ -13,6 +11,13 @@ interface Lesson {
   title: string;
   desc: string;
   dur: string;
+}
+
+interface DownloadResource {
+  title: string;
+  desc: string;
+  relatedLessons: string;
+  href: string;
 }
 
 const modules: { kicker: string; title: string; sub: string; cls: string; lessons: Lesson[] }[] = [
@@ -63,45 +68,70 @@ const modules: { kicker: string; title: string; sub: string; cls: string; lesson
   },
 ];
 
-function normalizeSearchText(value: string) {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
-}
+const downloadResources: DownloadResource[] = [
+  {
+    title: 'Guia prático de Markdown',
+    desc: 'Referência de sintaxe e boas práticas para criar documentação clara no GitHub.',
+    relatedLessons: 'Aula 11',
+    href: '/downloads/guia-markdown.md',
+  },
+  {
+    title: 'Git cheat sheet',
+    desc: 'Referência rápida dos principais comandos usados ao longo do curso.',
+    relatedLessons: 'Aulas 7, 11, 19 e 21',
+    href: '/downloads/git-cheat-sheet.md',
+  },
+  {
+    title: 'Guia de licenças para repositórios',
+    desc: 'Critérios para escolher e aplicar uma licença ao seu projeto.',
+    relatedLessons: 'Aulas 8 e 11',
+    href: '/downloads/guia-licencas-repositorios.md',
+  },
+  {
+    title: 'Clonar um repositório',
+    desc: 'Roteiro autoguiado para clonar, explorar, alterar e enviar um projeto.',
+    relatedLessons: 'Aula 10',
+    href: '/downloads/guia-aula-10-clonar.md',
+  },
+  {
+    title: 'Publicar seu primeiro projeto',
+    desc: 'Prática completa para publicar um projeto do git init ao git push.',
+    relatedLessons: 'Aula 11',
+    href: '/downloads/guia-aula-11-subir-projeto.md',
+  },
+  {
+    title: 'Convenções para branches',
+    desc: 'Padrões de nomes para criar branches claras e consistentes.',
+    relatedLessons: 'Aula 13',
+    href: '/downloads/convencoes-branches.md',
+  },
+  {
+    title: 'Guia de Code Review',
+    desc: 'Checklist prático para preparar, revisar e responder a um Pull Request.',
+    relatedLessons: 'Aulas 17 e 21',
+    href: '/downloads/guia-code-review.md',
+  },
+  {
+    title: 'Estratégias de merge',
+    desc: 'Comparação entre merge commit, squash and merge e rebase and merge.',
+    relatedLessons: 'Aula 18',
+    href: '/downloads/estrategias-merge.md',
+  },
+  {
+    title: 'Fork e Pull Request',
+    desc: 'Guia autoguiado para contribuir em projetos sem acesso de escrita.',
+    relatedLessons: 'Aula 20',
+    href: '/downloads/guia-aula-20-fork-pr.md',
+  },
+  {
+    title: 'Pull Request em grupo',
+    desc: 'Projeto final para praticar Issues, branches, revisão e integração em equipe.',
+    relatedLessons: 'Aula 21',
+    href: '/downloads/guia-aula-21-pr-em-grupo.md',
+  },
+];
 
 export default function Home() {
-  const { language } = useLanguage();
-  const [query, setQuery] = useState('');
-  const normalizedQuery = normalizeSearchText(query);
-
-  const filteredModules = modules
-    .map((mod) => {
-      if (!normalizedQuery) return mod;
-
-      const moduleMatches = normalizeSearchText(`${mod.kicker} ${mod.title} ${mod.sub}`).includes(normalizedQuery);
-      const lessons = moduleMatches
-        ? mod.lessons
-        : mod.lessons.filter((lesson) =>
-            normalizeSearchText(`${lesson.n} aula ${lesson.title} ${lesson.desc}`).includes(normalizedQuery),
-          );
-
-      return { ...mod, lessons };
-    })
-    .filter((mod) => mod.lessons.length > 0);
-
-  const filteredResources = normalizedQuery
-    ? guides.filter((resource) =>
-        normalizeSearchText(`${resource.title} ${resource.desc} ${resource.relatedLessons}`).includes(normalizedQuery),
-      )
-    : guides;
-
-  const lessonCount = filteredModules.reduce((total, mod) => total + mod.lessons.length, 0);
-  const resultCount = lessonCount + filteredResources.length;
-  const hasResults = resultCount > 0;
-  const isEnglish = language === 'en';
-
   return (
     <>
       <SiteNav />
@@ -114,46 +144,7 @@ export default function Home() {
       </header>
 
       <div className="lessons-wrap">
-        <form
-          className="search-panel"
-          role="search"
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <label className="search-label" htmlFor="course-search">
-            {isEnglish ? 'Search course content' : 'Pesquisar no conteúdo do curso'}
-          </label>
-          <div className="search-control">
-            <span className="search-icon" aria-hidden="true">⌕</span>
-            <input
-              id="course-search"
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder={isEnglish ? 'Search lessons and materials' : 'Pesquise aulas e materiais'}
-              autoComplete="off"
-            />
-            {query && (
-              <button
-                className="search-clear"
-                type="button"
-                onClick={() => setQuery('')}
-                aria-label={isEnglish ? 'Clear search' : 'Limpar pesquisa'}
-                title={isEnglish ? 'Clear search' : 'Limpar pesquisa'}
-              >
-                ×
-              </button>
-            )}
-          </div>
-          <p className="search-summary" aria-live="polite" aria-atomic="true">
-            {normalizedQuery && (
-              isEnglish
-                ? `${resultCount} ${resultCount === 1 ? 'result' : 'results'} found`
-                : `${resultCount} ${resultCount === 1 ? 'resultado encontrado' : 'resultados encontrados'}`
-            )}
-          </p>
-        </form>
-
-        {filteredModules.map((mod) => (
+        {modules.map((mod) => (
           <section className="module-block" key={mod.kicker}>
             <div className="module-head">
               <span className={`module-kicker ${mod.cls}`}>{mod.kicker}</span>
@@ -175,54 +166,30 @@ export default function Home() {
           </section>
         ))}
 
-        {filteredResources.length > 0 && (
-          <section className="module-block" aria-labelledby="downloads-title">
-            <div className="module-head">
-              <span className="module-kicker m4">Materiais</span>
-              <h2 id="downloads-title">Materiais para download</h2>
-              <span className="module-sub">Guias e referências para praticar</span>
-            </div>
-            <div className="lessons-grid">
-              {filteredResources.map((resource) => (
-                <article
-                  className="lesson-card resource-card"
-                  key={resource.slug}
-                >
-                  <span className="lesson-badge" aria-hidden="true">◆</span>
-                  <div className="lesson-info">
-                    <h3>{resource.title}</h3>
-                    <p>{resource.desc}</p>
-                    <span className="lesson-dur">{resource.relatedLessons}</span>
-                    <div className="resource-actions">
-                      <Link href={`/guias/${resource.slug}`} className="resource-action primary">
-                        <span aria-hidden="true">◉</span>
-                        {isEnglish ? 'View' : 'Visualizar'}
-                      </Link>
-                      <a className="resource-action" href={`/downloads/${resource.fileName}`} download>
-                        <span aria-hidden="true">↓</span>
-                        {isEnglish ? 'Download' : 'Baixar'}
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {normalizedQuery && !hasResults && (
-          <section className="search-empty" aria-live="polite">
-            <h2>{isEnglish ? 'No results found' : 'Nenhum resultado encontrado'}</h2>
-            <p>
-              {isEnglish
-                ? `We could not find lessons or materials for “${query.trim()}”.`
-                : `Não encontramos aulas ou materiais para “${query.trim()}”.`}
-            </p>
-            <button type="button" onClick={() => setQuery('')}>
-              {isEnglish ? 'Clear search' : 'Limpar pesquisa'}
-            </button>
-          </section>
-        )}
+        <section className="module-block" aria-labelledby="downloads-title">
+          <div className="module-head">
+            <span className="module-kicker m4">Materiais</span>
+            <h2 id="downloads-title">Materiais para download</h2>
+            <span className="module-sub">Guias e referências para praticar</span>
+          </div>
+          <div className="lessons-grid">
+            {downloadResources.map((resource) => (
+              <a
+                className="lesson-card resource-card"
+                href={asset(resource.href)}
+                download
+                key={resource.href}
+              >
+                <span className="lesson-badge" aria-hidden="true">↓</span>
+                <div className="lesson-info">
+                  <h3>{resource.title}</h3>
+                  <p>{resource.desc}</p>
+                  <span className="lesson-dur">{resource.relatedLessons} · Baixar arquivo</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
       </div>
 
       <Footer />
