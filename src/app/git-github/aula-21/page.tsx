@@ -87,7 +87,7 @@ const slides: DeckSlide[] = [
     render: () => (
       <div className="slide-pad">
         <span className="slide-kicker s-green">📦 Materiais para praticar</span>
-        <h2 className="slide-title">Guia de grupo, sem gravação</h2>
+        <h2 className="slide-title">Guia da prática em grupo</h2>
         <p className="slide-sub">
           Baixe o guia detalhado da prática em grupo (com papéis, Draft PR, revisão local e um conflito
           proposital) e o projeto-base de documentação.

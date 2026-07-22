@@ -115,7 +115,7 @@ const slides: DeckSlide[] = [
     render: () => (
       <div className="slide-pad">
         <span className="slide-kicker s-green">📦 Materiais para praticar</span>
-        <h2 className="slide-title">Faça no seu ritmo, sem gravação</h2>
+        <h2 className="slide-title">Faça no seu ritmo</h2>
         <p className="slide-sub">
           O guia detalha a criação dos arquivos, os critérios de conteúdo, a licença e um clone de teste.
           Use também a referência rápida de comandos.
