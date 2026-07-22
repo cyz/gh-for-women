@@ -17,6 +17,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
 # local env files
 .env*.local
@@ -25,5 +26,17 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# generated slide PDFs
+/public/downloads/slides/
+
+# editor directories
+.vscode/
+.idea/
+*.swp
+*~
+
 # Mac system files
 .DS_Store
+**/.DS_Store
+# Windows system files
+Thumbs.db
