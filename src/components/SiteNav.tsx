@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import GitHubContributeBadge from '@/components/GitHubContributeBadge';
 
 export default function SiteNav() {
   return (
@@ -10,6 +11,7 @@ export default function SiteNav() {
           <span className="logo-mark">⚡</span>
           <span>GitHub for Women</span>
         </Link>
+        <GitHubContributeBadge />
       </div>
     </nav>
   );

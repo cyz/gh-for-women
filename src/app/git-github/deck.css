@@ -83,6 +83,13 @@
   transform: translateY(-1px);
 }
 
+.deck-github-badge {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 99;
+}
+
 /* ── Setas / dots / contador ────────────────────── */
 .deck-nav-prev,
 .deck-nav-next {

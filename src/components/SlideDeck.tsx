@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import GitHubContributeBadge from '@/components/GitHubContributeBadge';
 
 export interface DeckSlide {
   /** Unique id used as key and DOM id */
@@ -104,6 +105,9 @@ export default function SlideDeck({ slides, backHref = '/', backLabel = 'Todas a
         <span aria-hidden="true">☰</span>
         <span>{backLabel}</span>
       </Link>
+      <div className="deck-github-badge">
+        <GitHubContributeBadge />
+      </div>
 
       <div className="deck-stage" onClick={advance}>
         {slides.map((slide, i) => (
